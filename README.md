@@ -1,24 +1,10 @@
 # TranslationWMcs435
 Converts JSON files to test cases
 
-Team name:
+Team name: $team_name$
 
-  $team_name$
-
-Team members:
-
-  Nathan Chen
+Team members: Nathan Chen, Avon Davey, Mark Hutchens, Tho Tran
   
-  Avon Davey
+Techs: No technologies used yet
   
-  Mark Hutchens
-  
-  Tho Tran
-  
-Techs:
-
-  No technologies used yet
-  
-References:
-
-  No references yet
+References: No references yet
