@@ -1,0 +1,53 @@
+import classes.*;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+
+
+public class Main {
+	/*
+	 * Produce a series of actions to later be run into the espresso translator.
+	 */
+    public static Component parse() throws IOException {
+        int b = 0;
+        Component a = null;
+        /*FileInputStream i = new FileInputStream(f);*/
+        /*InputStream stream = Main.class.getResourceAsStream("json.json");*/
+        InputStream stream = new FileInputStream("./jsonsource.json");
+        System.out.println(stream);
+        Reader reader = new InputStreamReader(stream, "UTF-8");
+        try{
+            b++;  
+            Gson gson = new GsonBuilder().create();
+            b++;
+            a = gson.fromJson(reader, Component.class);
+            b++;
+
+            return a;
+            
+        } catch (Exception e){
+        	System.out.println("Parsing failed. Returning null.");
+            return a;
+        }
+
+    }
+	
+	
+	public static void main(String [] args){
+		
+        String toreturn = "Fail case";
+        String testtext;
+        try {
+            toreturn = parse();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.printf(toreturn);
+		
+		return;
+	}
+}

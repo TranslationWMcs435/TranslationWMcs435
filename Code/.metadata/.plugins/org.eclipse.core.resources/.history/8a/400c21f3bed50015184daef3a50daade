@@ -1,0 +1,53 @@
+import classes.*;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+
+
+public class Main {
+	private static Component comp = null;
+	private static StepTestCase stc = null;
+	/*
+	 * Produce a StepTestCase to later be run into the espresso (or appium) translator.
+	 */
+    public static StepTestCase parse() throws IOException {
+    	StepTestCase list_of_actions = null;
+        InputStream stream = new FileInputStream("./gmdice_simple.txt");
+        System.out.println(stream);
+        Reader reader = new InputStreamReader(stream, "UTF-8");
+        try{ 
+            Gson gson = new GsonBuilder().create();
+            list_of_actions = gson.fromJson(reader, StepTestCase.class);
+
+            return stc;
+            
+        } catch (Exception e){
+        	System.out.println("Parsing failed. Returning null.");
+            return stc;
+        }
+
+    }
+	
+	/*
+	 * pretty much calls parse.
+	 */
+	public static void main(String [] args){
+		
+        String toreturn = "Fail case";
+        String testtext;
+        try {
+            stc = parse();
+            toreturn = "Successfully parsed";
+            System.out.println(comp.getId());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.printf(toreturn);
+		
+		return;
+	}
+}

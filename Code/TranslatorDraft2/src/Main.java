@@ -1,45 +1,46 @@
+import classes.*;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.*;
 
 
-import java.nio.charset.StandardCharsets;
-
-
 public class Main {
+	private static TestCase tc = null;
 	/*
-	 * Produce a series of actions to later be run into the espresso translator.
+	 * Produce a TestCase to later be run into the espresso (or appium) translator.
 	 */
-    public static String parse() throws IOException {
-        int b = 0;
-        /*FileInputStream i = new FileInputStream(f);*/
-        /*InputStream stream = Main.class.getResourceAsStream("json.json");*/
-        InputStream stream = new FileInputStream("./jsonsource.json");
+    public static TestCase parse() throws IOException {
+    	TestCase list_of_actions = null;
+    	//If there's a need to get rid of hard coding, this is where to do it.
+        InputStream stream = new FileInputStream("./gmdice_simple.txt");
         System.out.println(stream);
         Reader reader = new InputStreamReader(stream, "UTF-8");
-        try{
-            b++;  
+        try{ 
             Gson gson = new GsonBuilder().create();
-            b++;
-            Action a = gson.fromJson(reader, Action.class);
-            b++;
-
-            return a.tostring();
-            
+            list_of_actions = gson.fromJson(reader,TestCase.class);
+            System.out.println("Parsing... Succeeds?");
+            return list_of_actions;
         } catch (Exception e){
-            return "Failed spectacularly: " + b;
+        	System.out.println("Parsing failed. Returning null.");
+            return list_of_actions;
         }
-
     }
 	
-	
+	/*
+	 * pretty much calls parse.
+	 */
 	public static void main(String [] args){
 		
         String toreturn = "Fail case";
-        String testtext;
         try {
-            toreturn = parse();
+            tc = parse();
+            toreturn = "Successfully parsed";
+            System.out.println(tc.getAppName());
+            System.out.println(tc.getPackageName());
+            System.out.println(tc.getSteps().get(0).getAction());
+            System.out.println(tc.getSteps().get(0).getComponent().getId());
         } catch (IOException e) {
             e.printStackTrace();
         }
