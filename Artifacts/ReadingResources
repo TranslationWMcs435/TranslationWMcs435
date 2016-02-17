@@ -1,0 +1,7 @@
+Some pages we'll need to understand to get off the ground.
+
+Black box testing with espresso: http://ambracode.com/index/show/339021
+
+^Necessary because without understanding how to wrap espresso around an app, our program will be useless.
+
+gson tutorial: http://www.javacreed.com/simple-gson-example/
