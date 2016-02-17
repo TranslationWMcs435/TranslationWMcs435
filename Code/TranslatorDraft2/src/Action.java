@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Action {
     /*
     component id
@@ -27,7 +25,7 @@ public class Action {
     private String is_clickable;
 	
     public String tostring() {
-        return ("Got a string, so is an object. ID is: " + id);
+        return ("Got a string, so is an object. ID is: " + id + " " + width);
     }
     
     public String[] getItems(){
@@ -42,7 +40,15 @@ public class Action {
     	toreturn[7] = y_loc;
     	toreturn[8] = width;
     	toreturn[9] = height;
-    	toreturn[0] = is_clickable;
+    	toreturn[10] = is_clickable;
+    	return toreturn;
+    }
+    
+    /*
+     * Make a series of strings that correlate to espresso code.
+     */
+    public String[] makeSelf(){
+    	String[] toreturn = new String [1];
     	return toreturn;
     }
     
