@@ -1,4 +1,4 @@
-package Espresso;
+package espresso;
 
 import java.util.List;
 import classes.Component;

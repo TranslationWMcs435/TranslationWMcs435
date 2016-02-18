@@ -31,8 +31,9 @@ public class AppiumServerWorker {
 	
 	/**
 	 * Programmatically starts an Appium server.
+	 * @throws InterruptedException 
 	 */
-	public void startServer() {
+	public void startServer() throws InterruptedException {
 		
 		System.out.println("Starting Appium server...");
 		
@@ -42,11 +43,11 @@ public class AppiumServerWorker {
 		serverArguments.setArgument("--port", 4723);
 		serverArguments.setArgument("--no-reset", true);
 		serverArguments.setArgument("--local-timezone", true);
+		serverArguments.setArgument("--log-level", "warn:error");
 
 		appiumServer = new AppiumServer(new File(appiumDir), serverArguments);
-
 		appiumServer.startServer();
-		
+		Thread.sleep(500);
 		System.out.println("Server started!");
 	}
 	
@@ -63,16 +64,12 @@ public class AppiumServerWorker {
 	 */
 	public void getServerResponse(String serverURL) throws ClientProtocolException, IOException {
 		
-		// TODO: Will work on this tonight (2/17)
+		if(!appiumServer.isServerRunning())
+			return;
 		
 		/*
-		HttpGet request = new HttpGet(serverURL + "/sessions");
-		@SuppressWarnings("resource")
-		HttpClient httpClient = new DefaultHttpClient();
-		HttpResponse response = httpClient.execute(request);
-		HttpEntity entity = response.getEntity();
-		JSONObject jsonObject = (JsonObject) new JsonObject().parse(EntityUtils.toString(entity));
-		*/
+		 * TODO in second sprint
+		 */
 	}
 	
 	/**
