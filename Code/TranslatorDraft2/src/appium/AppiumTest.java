@@ -60,9 +60,8 @@ public class AppiumTest {
 			System.exit(-1);
 		}
 
-		//TODO: Ask user about their google emulator/device options, set other Strings accordingly
-		//TODO: prompt user to select an absolute path for their apk of choice
-		//TODO: prompt user for JSON file to parse with Gson
+		//TODO: Ask user about their google emulator/device options --This seems like it can be ignored since my Physical device is working with mismatched specs right now
+		//TODO: prompt user to select path for their apk of choice --further down the road. Stick with gmdice for now
 		
 		// Start Appium server
 		AppiumServerWorker serverWorker = new AppiumServerWorker(directory);
@@ -96,7 +95,10 @@ public class AppiumTest {
 		System.exit(0);
 	}
 	
-	//borrowed the parse method...TODO: Update to prompt user for JSON file location
+	/*borrowed the parse method...
+	 *TODO: Update to prompt user for JSON file location instead of using the given file
+	 *TODO: Clean up code to avoid copy/pasting. Pull a basic version from Main.java and then change parts accordingly here
+	**/
     public static TestCase parse() throws IOException {
     	TestCase list_of_actions = null;
     	//If there's a need to get rid of hard coding, this is where to do it.
@@ -123,17 +125,16 @@ public class AppiumTest {
 		int i;
         for(i=0; i<appiumTest.getSteps().size() ; i++)
         {
-        	//String fullID = appiumTest.getPackageName() + ":" + appiumTest.getSteps().get(i).getComponent().getId();
-        	String fullID = appiumTest.getSteps().get(i).getComponent().getText();
+        	String buttonName = appiumTest.getSteps().get(i).getComponent().getText();
         	if(appiumTest.getSteps().get(i).getAction().contentEquals("CLICK")){
-        		driver.findElement(By.name(fullID)).click();
+        		driver.findElement(By.name(buttonName)).click();
         		Thread.sleep(500);
-        		System.out.println("clicked button at " + fullID);
+        		System.out.println("clicked button at " + buttonName);
         	}else if(appiumTest.getSteps().get(i).getAction().contentEquals("LONG_CLICK")){
-        		MobileElement button = (MobileElement)driver.findElement(By.name(fullID));
+        		MobileElement button = (MobileElement)driver.findElement(By.name(buttonName));
         		button.tap(1, 1000);
 				Thread.sleep(500);
-				System.out.println("long clicked button at" + fullID);
+				System.out.println("long clicked button at" + buttonName);
         		
         	}
         }
