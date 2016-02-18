@@ -99,22 +99,22 @@ public class AppiumTest {
 	 *TODO: Update to prompt user for JSON file location instead of using the given file
 	 *TODO: Clean up code to avoid copy/pasting. Pull a basic version from Main.java and then change parts accordingly here
 	**/
-    public static TestCase parse() throws IOException {
-    	TestCase list_of_actions = null;
-    	//If there's a need to get rid of hard coding, this is where to do it.
-    	InputStream stream = new FileInputStream("Code/TranslatorDraft2/gmdice_simple.txt");
-        System.out.println(stream);
-        Reader reader = new InputStreamReader(stream, "UTF-8");
-        try{ 
-            Gson gson = new GsonBuilder().create();
-            list_of_actions = gson.fromJson(reader,TestCase.class);
-            System.out.println("Parsing... Succeeds?");
-            return list_of_actions;
-        } catch (Exception e){
-        	System.out.println("Parsing failed. Returning null.");
-            return list_of_actions;
-        }
-    }
+	public static TestCase parse() throws IOException {
+	    	TestCase list_of_actions = null;
+	    	//If there's a need to get rid of hard coding, this is where to do it.
+	    	InputStream stream = new FileInputStream("Code/TranslatorDraft2/gmdice_simple.txt");
+	        System.out.println(stream);
+	        Reader reader = new InputStreamReader(stream, "UTF-8");
+	        try{ 
+	            Gson gson = new GsonBuilder().create();
+	            list_of_actions = gson.fromJson(reader,TestCase.class);
+	            System.out.println("Parsing... Succeeds?");
+	            return list_of_actions;
+	        } catch (Exception e){
+	        	System.out.println("Parsing failed. Returning null.");
+	            return list_of_actions;
+	        }
+	}
 	
     
 	public static void performTest(RemoteWebDriver driver) throws IOException, InterruptedException {
@@ -123,21 +123,21 @@ public class AppiumTest {
 		/* Obtain tap IDs from parse method and JSON file*/
 		TestCase appiumTest = parse();
 		int i;
-        for(i=0; i<appiumTest.getSteps().size() ; i++)
-        {
-        	String buttonName = appiumTest.getSteps().get(i).getComponent().getText();
-        	if(appiumTest.getSteps().get(i).getAction().contentEquals("CLICK")){
-        		driver.findElement(By.name(buttonName)).click();
-        		Thread.sleep(500);
-        		System.out.println("clicked button at " + buttonName);
-        	}else if(appiumTest.getSteps().get(i).getAction().contentEquals("LONG_CLICK")){
-        		MobileElement button = (MobileElement)driver.findElement(By.name(buttonName));
-        		button.tap(1, 1000);
+	        for(i=0; i<appiumTest.getSteps().size() ; i++)
+	        {
+	        	String buttonName = appiumTest.getSteps().get(i).getComponent().getText();
+	        	if(appiumTest.getSteps().get(i).getAction().contentEquals("CLICK")){
+	        		driver.findElement(By.name(buttonName)).click();
+	        		Thread.sleep(500);
+	        		System.out.println("clicked button at " + buttonName);
+	        	}else if(appiumTest.getSteps().get(i).getAction().contentEquals("LONG_CLICK")){
+	        		MobileElement button = (MobileElement)driver.findElement(By.name(buttonName));
+	        		button.tap(1, 1000);
 				Thread.sleep(500);
 				System.out.println("long clicked button at" + buttonName);
-        		
-        	}
-        }
+	        		
+	        	}
+	        }
 	}
 	
 	
