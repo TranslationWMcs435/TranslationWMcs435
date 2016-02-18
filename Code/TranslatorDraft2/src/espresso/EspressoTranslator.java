@@ -47,6 +47,9 @@ public class EspressoTranslator {
 		if(action.equals("CLICK")){
 			make_click_command(s.getComponent());
 		}
+		if(action.equals("LONG_CLICK")){
+			make_long_click_command(s.getComponent());
+		}
 	}
 
 	/**
@@ -56,6 +59,16 @@ public class EspressoTranslator {
 	private void make_click_command(Component c) {
 		String espresso_command = new String();		
 		espresso_command += "onView(withId(R.id." + c.getId().substring(3) + ")).perform(click());";
+		System.out.println(espresso_command);
+	}
+	
+	/**
+	 * Generates the long click command formatted in the Espresso framework
+	 * @param c Component object of the current stepTestCase being analyzed
+	 */
+	private void make_long_click_command(Component c) {
+		String espresso_command = new String();		
+		espresso_command += "onView(withId(R.id." + c.getId().substring(3) + ")).perform(longClick());";
 		System.out.println(espresso_command);
 	}
 }
