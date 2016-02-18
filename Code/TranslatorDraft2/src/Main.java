@@ -36,6 +36,10 @@ public class Main {
         String toreturn = "Fail case";
         try {
             tc = parse();
+            
+            EspressoTranslator et = new EspressoTranslator();
+            et.steps_iterator(tc);
+            
             toreturn = "Successfully parsed";
             System.out.println(tc.getAppName());
             System.out.println(tc.getPackageName());
