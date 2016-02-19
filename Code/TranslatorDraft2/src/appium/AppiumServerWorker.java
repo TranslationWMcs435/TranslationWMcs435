@@ -43,7 +43,7 @@ public class AppiumServerWorker {
 		serverArguments.setArgument("--port", 4723);
 		serverArguments.setArgument("--no-reset", true);
 		serverArguments.setArgument("--local-timezone", true);
-		serverArguments.setArgument("--log-level", "warn:error");
+		//serverArguments.setArgument("--log-level", "warn:error");
 
 		appiumServer = new AppiumServer(new File(appiumDir), serverArguments);
 		appiumServer.startServer();
