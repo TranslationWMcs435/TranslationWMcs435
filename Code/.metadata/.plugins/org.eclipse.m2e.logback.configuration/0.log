@@ -1,2 +1,0 @@
-2016-02-17 14:16:45,354 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-8.1.14.v20131031
-2016-02-17 14:16:45,373 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started SelectChannelConnector@127.0.0.1:62087
