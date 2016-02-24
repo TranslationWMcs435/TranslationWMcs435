@@ -1,7 +1,7 @@
-package Espresso;
+package edu.wm.translationengine.espresso;
 
-import classes.Component;
-import classes.StepTestCase;
+import edu.wm.translationengine.classes.Component;
+import edu.wm.translationengine.classes.StepTestCase;
 
 public class EspressoFunctions {
 	private boolean clicky;

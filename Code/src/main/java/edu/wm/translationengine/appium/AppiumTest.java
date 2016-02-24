@@ -1,6 +1,6 @@
 package edu.wm.translationengine.appium;
 
-import classes.*;
+import edu.wm.translationengine.classes.*;
 import java.io.*;
 import java.net.URL;
 

@@ -1,4 +1,4 @@
-package Espresso;
+package edu.wm.translationengine.espresso;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,9 +11,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import classes.Component;
-import classes.StepTestCase;
-import classes.TestCase;
+import edu.wm.translationengine.classes.*;
 
 /**
  * This is the EspressoTranslator class, it takes Action objects and creates Espresso
