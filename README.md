@@ -1,9 +1,7 @@
 # TranslationEngine
 
-Team name: Translation Team
-Team members: Nathan Chen, Avon Davey, Mark Hutchens, Tho Tran
-
-<hr>
+<p>Team name: Translation Team</p>
+<p>Team members: Nathan Chen, Avon Davey, Mark Hutchens, Tho Tran</p>
 
 TranslationEngine automatically generates test cases for Android's user interface (UI) testing frameworks. It parses UI events defined in a JSON file and converts them into test cases.
 
