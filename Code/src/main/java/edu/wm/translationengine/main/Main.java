@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 import edu.wm.translationengine.espresso.EspressoTranslator;
 
 import java.io.*;
+import java.util.ArrayList;
 
 
 public class Main {
@@ -20,12 +21,10 @@ public class Main {
     	//If there's a need to get rid of hard coding, this is where to do it.
     	//I put the file right next to this one. But there will probably be an I/O folder later.
         InputStream stream = new FileInputStream("./IO/gmdice_simple.txt");
-        System.out.println(stream);
         Reader reader = new InputStreamReader(stream, "UTF-8");
         try{ 
             Gson gson = new GsonBuilder().create();
             list_of_actions = gson.fromJson(reader,TestCase.class);
-            System.out.println("Parsing... Succeeds?");
             return list_of_actions;
         } catch (Exception e){
         	System.out.println("Parsing failed. Returning null.");
@@ -37,22 +36,55 @@ public class Main {
 	 * pretty much calls parse.
 	 */
 	public static void main(String [] args){
+		Translator et = null;
+		//Espresso == 0, Appium == 1. Others to follow.
+		int environment_switch = 0;
+		//Whether to print to the output file or not.
+		int to_print = 0;
+		//File name for printing.
+		String filename = "./IO/tester.java";
+		
+		if(args.length > 0){
+			environment_switch = Integer.parseInt(args[0]);
+			to_print = Integer.parseInt(args[1]);
+		}
+		
+
 		
         String toreturn = "Fail case";
         try {
             tc = parse();
-            
-            EspressoTranslator et = new EspressoTranslator();
-            et.steps_iterator(tc);
-            
+            switch (environment_switch){
+	            case 0:
+		            et = new EspressoTranslator();
+		            et.steps_iterator(tc);
+		            break;
+	            case 1:
+	            	//Have a translator for Appium.
+	            	
+	            	break;
+            }
             toreturn = "Successfully parsed";
-            System.out.println(tc.getAppName());
-            System.out.println(tc.getPackageName());
-            System.out.println(tc.getSteps().get(0).getAction());
-            System.out.println(tc.getSteps().get(0).getComponent().getId());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        //Either print to a file or start up a server.
+        switch(to_print){
+        	case 0:
+        		//Use the print-to-file function to make the tester go in a file.
+				try {
+					et.writeToFile();
+					et.closeFile();
+				} catch (IOException e) {
+					// Had to have catch.
+					e.printStackTrace();
+				}
+        		break;
+        	case 1:
+        		break;
+        }
+        
         
         System.out.printf(toreturn);
 		

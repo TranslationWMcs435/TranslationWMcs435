@@ -11,7 +11,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import edu.wm.translationengine.classes.*;
+import edu.wm.translationengine.main.*;
 
 /**
  * This is the EspressoTranslator class, it takes Action objects and creates Espresso
@@ -20,25 +22,29 @@ import edu.wm.translationengine.classes.*;
  * @author Nathan Chen
  *
  */
-public class EspressoTranslator {
+public class EspressoTranslator extends GenericTranslator {
 	private EspressoFunctions ef;
+	/*
 	public static File fout;
 	private FileOutputStream fos;
 	private BufferedWriter bw;
 	public static ArrayList<String> toWrite;
-	
+	*/
 	
 	/**
 	 * Constructor for the EspressoTranslator class.
 	 * @throws IOException 
 	 */
 	public EspressoTranslator() throws IOException{
-		ef = new EspressoFunctions();
+		super();
+		/*
 		fout = new File("TestFile.java");
 		fos = new FileOutputStream(fout);
 		bw = new BufferedWriter(new OutputStreamWriter(fos));
 		toWrite = new ArrayList<String>();
 		setupFile();
+		*/
+		ef = new EspressoFunctions();
 	}
 	
 	
@@ -58,21 +64,26 @@ public class EspressoTranslator {
 		toWrite.add("import junit.framework.TestSuite;\n");
 	}
 	
-	
-	/**
-	 * Closes the BufferedWriter
-	 * @throws IOException
-	 */
-	public void closeFile() throws IOException{
-		bw.close();
-	}
-	
 	/**
 	 * Writes the argument String s to the file fout
 	 * @param s String s to be written into file
 	 * @throws IOException
 	 */
 	public void writeToFile(ArrayList<String> al) throws IOException{
+		for(int i = 0; i < al.size(); i++){
+			bw.write(al.get(i));
+		}
+	}
+	
+	/**
+	 * Edit by Mark: Make a default, works w/out anything passed in.
+	 * 
+	 * Writes the argument String s to the file fout
+	 * @param s String s to be written into file
+	 * @throws IOException
+	 */
+	public void writeToFile() throws IOException{
+		ArrayList<String> al = toWrite;
 		for(int i = 0; i < al.size(); i++){
 			bw.write(al.get(i));
 		}
@@ -105,9 +116,16 @@ public class EspressoTranslator {
 			ef.espresso_switcher(cur.getAction(), cur);
 		}
 		toWrite.add("\t }\n }");
-		writeToFile(toWrite);
-		closeFile();
 		
+		/*Deleted since they are now called in main()
+		 * 
+		 * 		writeToFile(toWrite);
+		 * 		closeFile();
+		 * 
+		 * 
+		 */
+
 	}
+
 
 }
