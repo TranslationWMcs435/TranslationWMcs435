@@ -9,6 +9,7 @@ import edu.wm.translationengine.espresso.EspressoTranslator;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Main {
@@ -47,6 +48,16 @@ public class Main {
 		if(args.length > 0){
 			environment_switch = Integer.parseInt(args[0]);
 			to_print = Integer.parseInt(args[1]);
+		}else{
+			Scanner user_input = new Scanner( System.in );
+			System.out.println("What environment are you using? Espresso (0) or Appium (1)?\n");
+			environment_switch = Integer.parseInt(user_input.next());
+			if(environment_switch == 1){
+				System.out.println("Would you like a .java file (0) or a server (1)?\n");
+				to_print = Integer.parseInt(user_input.next());
+			}else{
+				to_print = 0;
+			}
 		}
 		
 

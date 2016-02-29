@@ -36,7 +36,7 @@ public abstract class GenericTranslator implements Translator {
 	
 	
 	public void steps_iterator(TestCase tc) throws IOException {
-		// TODO Auto-generated method stub
+		// Should use the SupportedCommands interface as it iterates through the steps.
 
 	}
 
