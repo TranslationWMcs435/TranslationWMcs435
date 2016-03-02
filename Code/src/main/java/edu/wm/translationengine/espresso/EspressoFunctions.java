@@ -2,8 +2,9 @@ package edu.wm.translationengine.espresso;
 
 import edu.wm.translationengine.classes.Component;
 import edu.wm.translationengine.classes.StepTestCase;
+import edu.wm.translationengine.trans.*;
 
-public class EspressoFunctions {
+public class EspressoFunctions extends GenericFunctions{
 	private boolean clicky;
 	private boolean long_clicky;
 	
@@ -90,6 +91,105 @@ public class EspressoFunctions {
 		espresso_command += "\t\t\tonView(withText(\"" + c.getText() + "\")).perform(longClick());\n";
 		EspressoTranslator.toWrite.add(espresso_command);
 		System.out.println(espresso_command);
+	}
+
+
+
+
+
+	public boolean tap(StepTestCase testCase) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+
+	public boolean longTap(StepTestCase testCase) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+
+	public boolean pressKey(StepTestCase testCase) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+
+	public boolean swipe(StepTestCase testCase) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+
+	public boolean flick(StepTestCase testCase) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+
+	public boolean pinch(StepTestCase testCase) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+
+	public boolean scrollTo(StepTestCase testCase) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+
+	public boolean launchApp(StepTestCase testCase) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+
+	public boolean closeApp(StepTestCase testCase) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+
+	public boolean pressMenuKey(StepTestCase testCase) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+
+	public boolean hideKeyboard(StepTestCase testCase) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	

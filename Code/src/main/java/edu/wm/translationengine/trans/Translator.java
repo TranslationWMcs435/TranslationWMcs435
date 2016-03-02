@@ -1,4 +1,4 @@
-package edu.wm.translationengine.main;
+package edu.wm.translationengine.trans;
 
 import java.io.File;
 import java.io.IOException;

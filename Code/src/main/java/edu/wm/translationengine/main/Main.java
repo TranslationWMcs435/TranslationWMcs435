@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import edu.wm.translationengine.espresso.EspressoTranslator;
+import edu.wm.translationengine.trans.Translator;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -50,10 +51,10 @@ public class Main {
 			to_print = Integer.parseInt(args[1]);
 		}else{
 			Scanner user_input = new Scanner( System.in );
-			System.out.println("What environment are you using? Espresso (0) or Appium (1)?\n");
+			System.out.println("What environment are you using? Espresso (0) or Appium (1)?");
 			environment_switch = Integer.parseInt(user_input.next());
 			if(environment_switch == 1){
-				System.out.println("Would you like a .java file (0) or a server (1)?\n");
+				System.out.println("\nWould you like a .java file (0) or a server (1)?");
 				to_print = Integer.parseInt(user_input.next());
 			}else{
 				to_print = 0;

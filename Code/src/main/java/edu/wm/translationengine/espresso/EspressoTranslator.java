@@ -14,6 +14,7 @@ import java.util.List;
 
 import edu.wm.translationengine.classes.*;
 import edu.wm.translationengine.main.*;
+import edu.wm.translationengine.trans.GenericTranslator;
 
 /**
  * This is the EspressoTranslator class, it takes Action objects and creates Espresso

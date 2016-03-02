@@ -1,10 +1,12 @@
-package edu.wm.translationengine.classes;
+package edu.wm.translationengine.trans;
+
+import edu.wm.translationengine.classes.StepTestCase;
 
 /**
  * SupportedCommands specifies all actions that
  * are supported by the translation engine.
  */
-public interface SupportedCommands {
+public interface Functions {
 
 	/**
 	 * <p>Tap on the element or screen at the precise location.</p>
