@@ -6,6 +6,7 @@ import java.util.List;
 
 import edu.wm.translationengine.classes.*;
 import edu.wm.translationengine.main.*;
+import edu.wm.translationengine.trans.*;
 
 public class AppiumTranslator extends GenericTranslator{
 	private AppiumFunctions af;

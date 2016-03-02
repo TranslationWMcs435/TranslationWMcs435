@@ -3,10 +3,11 @@ package edu.wm.translationengine.appium;
 import org.openqa.selenium.By;
 
 import edu.wm.translationengine.classes.*;
+import edu.wm.translationengine.trans.GenericFunctions;
 import io.appium.java_client.MobileElement;
 
 
-public class AppiumFunctions {
+public class AppiumFunctions extends GenericFunctions{
 
 
 	public void appium_switcher(String action, StepTestCase s){

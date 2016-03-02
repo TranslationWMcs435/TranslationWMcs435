@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import edu.wm.translationengine.espresso.EspressoTranslator;
+import edu.wm.translationengine.appium.AppiumTranslator;
 import edu.wm.translationengine.trans.Translator;
 
 import java.io.*;
@@ -73,7 +74,8 @@ public class Main {
 		            break;
 	            case 1:
 	            	//Have a translator for Appium.
-	            	
+	            	et = new AppiumTranslator();
+	            	et.steps_iterator(tc);
 	            	break;
             }
             toreturn = "Successfully parsed";
