@@ -1,13 +1,13 @@
 package edu.wm.translationengine.appium;
 
 import edu.wm.translationengine.classes.*;
+
 import java.io.*;
 import java.net.URL;
 
-
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,33 +15,15 @@ import com.google.gson.GsonBuilder;
 import io.appium.java_client.*;
 import io.appium.java_client.android.*;
 
-
-
-
 public class AppiumTest {
-
-	// Default server is localhost (127.0.0.1) on port 4723
-	public static String DEFAULT_SERVER = "http://localhost";
-	public static String DEFAULT_PORT = "4723";
-	public static String DEFAULT_SUFFIX = "/wd/hub";
-	private static String DEFAULT_APPIUM_DIR = "C:\\Program Files (x86)\\Appium";
-	
-	/* 
-	 * Android emulator's attributes.
-	 * Needed to connect with Appium.
-	 * 
-	 * Obtain device info by going into "Settings" --> "About phone" on your device/emulator
-	 *
-	 * (Replace with your own emulator/device info...)
-	*/
-	public static String DEVICE_NAME = "Google Nexus 4 - 5.1.0 - API 22 - 768x1280";
-	public static String PLATFORM_NAME = "Android";
-	public static String PLATFORM_VERSION = "5.1";
 	
 	public static String GMDICE_DIR = System.getProperty("user.dir") + "\\res\\apk\\gmdice.apk";
 	//public static String GMDICE_DIR = "gmdice.apk";
 	
-	public static void main( String [] args ) throws IOException, AppiumException, InterruptedException {
+	private LiveModeServerWorker serverWorker;
+	private RemoteWebDriver driver;
+	
+	public void start() throws IOException, AppiumException, InterruptedException {
 		
 		//used to handle user input into the console
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -54,7 +36,7 @@ public class AppiumTest {
 		
 		if(input.matches("[y|Y].*")){
 			System.out.println("Using DEFAULT APPIUM DIRECTORY...");
-			directory = DEFAULT_APPIUM_DIR;
+			directory = LiveModeServerWorker.getOSAppiumDir();
 		}else if(input.matches("[n|N].*")){
 			System.out.println("Okay. Enter the absolute path to the Appium directory on your system:");
 			directory = in.readLine();
@@ -62,34 +44,15 @@ public class AppiumTest {
 			System.out.println("Invalid Choice. Goodbye.");
 			System.exit(-1);
 		}
-
+		
 		//TODO: Ask user about their google emulator/device options --This seems like it can be ignored since my Physical device is working with mismatched specs right now
 		//TODO: prompt user to select path for their apk of choice --further down the road. Stick with gmdice for now
 		
 		// Start Appium server
-		AppiumServerWorker serverWorker = new AppiumServerWorker(directory);
+		serverWorker = new LiveModeServerWorker(directory, GMDICE_DIR);
 		serverWorker.startServer();
 		
-		// Minimum # of capabilities to run
-		// Remember 'no reset' because you don't want it to install apk every time!!
-		DesiredCapabilities capability = new DesiredCapabilities();
-		capability.setCapability("deviceName", DEVICE_NAME);
-		capability.setCapability("platformName", PLATFORM_NAME);
-		capability.setCapability("platformVersion", PLATFORM_VERSION);
-		
-		// Specify apk file to test
-		File file = new File(GMDICE_DIR);
-		capability.setCapability("app", file.getAbsolutePath());
-		
-		URL serverURL = new URL(DEFAULT_SERVER + ":" + DEFAULT_PORT + DEFAULT_SUFFIX);
-		
-		// Connect capability to server
-		// AppiumDriver is the main class that allows us to interact with Appium, 
-		// which then interacts with the mobile device
-		AndroidDriver driver = new AndroidDriver(serverURL, capability);
-		// Check that driver was able to connect to emulator/device
-		//serverWorker.getServerResponse(DEFAULT_SERVER + ":" + DEFAULT_PORT + DEFAULT_SUFFIX);
-		
+		driver = new AndroidDriver<WebElement>(new URL(serverWorker.getServerURL()), serverWorker.getCapabilities());
 		performTest(driver);
 		
 		// Quit
