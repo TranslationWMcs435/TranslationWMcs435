@@ -1,4 +1,4 @@
-package Espresso;
+package edu.wm.translationengine.espresso;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,9 +11,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import classes.Component;
-import classes.StepTestCase;
-import classes.TestCase;
+
+import edu.wm.translationengine.classes.*;
+import edu.wm.translationengine.main.*;
+import edu.wm.translationengine.trans.GenericTranslator;
 
 /**
  * This is the EspressoTranslator class, it takes Action objects and creates Espresso
@@ -22,25 +23,35 @@ import classes.TestCase;
  * @author Nathan Chen
  *
  */
-public class EspressoTranslator {
+public class EspressoTranslator extends GenericTranslator {
 	private EspressoFunctions ef;
+	public static String appName;
+	public static String packageName; 
+	public static String mainActivity; 
+	
+	
+	
+	/*
 	public static File fout;
 	private FileOutputStream fos;
 	private BufferedWriter bw;
 	public static ArrayList<String> toWrite;
-	
+	*/
 	
 	/**
 	 * Constructor for the EspressoTranslator class.
 	 * @throws IOException 
 	 */
 	public EspressoTranslator() throws IOException{
-		ef = new EspressoFunctions();
+		super();
+		/*
 		fout = new File("TestFile.java");
 		fos = new FileOutputStream(fout);
 		bw = new BufferedWriter(new OutputStreamWriter(fos));
 		toWrite = new ArrayList<String>();
 		setupFile();
+		*/
+		ef = new EspressoFunctions();
 	}
 	
 	
@@ -60,21 +71,26 @@ public class EspressoTranslator {
 		toWrite.add("import junit.framework.TestSuite;\n");
 	}
 	
-	
-	/**
-	 * Closes the BufferedWriter
-	 * @throws IOException
-	 */
-	public void closeFile() throws IOException{
-		bw.close();
-	}
-	
 	/**
 	 * Writes the argument String s to the file fout
 	 * @param s String s to be written into file
 	 * @throws IOException
 	 */
 	public void writeToFile(ArrayList<String> al) throws IOException{
+		for(int i = 0; i < al.size(); i++){
+			bw.write(al.get(i));
+		}
+	}
+	
+	/**
+	 * Edit by Mark: Make a default, works w/out anything passed in.
+	 * 
+	 * Writes the argument String s to the file fout
+	 * @param s String s to be written into file
+	 * @throws IOException
+	 */
+	public void writeToFile() throws IOException{
+		ArrayList<String> al = toWrite;
 		for(int i = 0; i < al.size(); i++){
 			bw.write(al.get(i));
 		}
@@ -86,9 +102,9 @@ public class EspressoTranslator {
 	 * @throws IOException 
 	 */
 	public void steps_iterator(TestCase testCase) throws IOException{
-		String appName = testCase.getAppName();
-		String packageName = testCase.getPackageName();
-		String mainActivity = testCase.getMainActivity();
+		appName = testCase.getAppName();
+		packageName = testCase.getPackageName();
+		mainActivity = testCase.getMainActivity();
 		List<StepTestCase> stepTestCases = testCase.getSteps();
 		
 		toWrite.add("import " + packageName + "." + mainActivity + ";\n");
@@ -107,9 +123,16 @@ public class EspressoTranslator {
 			ef.espresso_switcher(cur.getAction(), cur);
 		}
 		toWrite.add("\t }\n }");
-		writeToFile(toWrite);
-		closeFile();
 		
+		/*Deleted since they are now called in main()
+		 * 
+		 * 		writeToFile(toWrite);
+		 * 		closeFile();
+		 * 
+		 * 
+		 */
+
 	}
+
 
 }
