@@ -21,7 +21,7 @@ public interface Translator {
 	
 	public void closeFile() throws IOException;
 	
-	public void setFile(File f) throws IOException;
+	public void setFile(String f) throws IOException;
 	
 	
 	

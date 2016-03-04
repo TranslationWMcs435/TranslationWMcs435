@@ -58,9 +58,15 @@ public abstract class GenericTranslator implements Translator {
 		bw.close();
 	}
 	
-	public void setFile(File f) throws IOException {
-		// Need to set the file from outside.
-		fout = f;
+	public void setFile(String f) throws IOException {
+		// Need to set the file from outside. Deletes old option for output file. Hopefully not a problem.
+		bw.close();
+		fout.delete();
+		fout = new File(f);
+		fos = new FileOutputStream(fout);
+		bw = new BufferedWriter(new OutputStreamWriter(fos));
+		toWrite = new ArrayList<String>();
+		setupFile();
 		
 	}
 

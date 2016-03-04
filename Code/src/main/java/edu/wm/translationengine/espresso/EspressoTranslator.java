@@ -96,6 +96,8 @@ public class EspressoTranslator extends GenericTranslator {
 	 * @throws IOException 
 	 */
 	public void steps_iterator(TestCase testCase) throws IOException{
+		System.out.println(fout);
+		
 		String appName = testCase.getAppName();
 		String packageName = testCase.getPackageName();
 		String mainActivity = testCase.getMainActivity();

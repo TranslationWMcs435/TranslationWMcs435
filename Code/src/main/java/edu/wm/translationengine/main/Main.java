@@ -18,12 +18,32 @@ public class Main {
 	private static TestCase tc = null;
 	/*
 	 * Produce a TestCase to later be run into the espresso (or appium) translator.
+	 * Deprecated as of 3/3/2016, new version feeds in a filename.
 	 */
     public static TestCase parse() throws IOException {
     	TestCase list_of_actions = null;
     	//If there's a need to get rid of hard coding, this is where to do it.
     	//I put the file right next to this one. But there will probably be an I/O folder later.
         InputStream stream = new FileInputStream("./IO/gmdice_simple.txt");
+        Reader reader = new InputStreamReader(stream, "UTF-8");
+        try{ 
+            Gson gson = new GsonBuilder().create();
+            list_of_actions = gson.fromJson(reader,TestCase.class);
+            return list_of_actions;
+        } catch (Exception e){
+        	System.out.println("Parsing failed. Returning null.");
+            return list_of_actions;
+        }
+    }
+    
+	/*
+	 * Produce a TestCase to later be run into the espresso (or appium) translator.
+	 */
+    public static TestCase parse(String filename) throws IOException {
+    	TestCase list_of_actions = null;
+    	//If there's a need to get rid of hard coding, this is where to do it.
+    	//I put the file right next to this one. But there will probably be an I/O folder later.
+        InputStream stream = new FileInputStream(filename);
         Reader reader = new InputStreamReader(stream, "UTF-8");
         try{ 
             Gson gson = new GsonBuilder().create();
@@ -45,11 +65,19 @@ public class Main {
 		//Whether to print to the output file or not.
 		int to_print = 0;
 		//File name for printing.
-		String filename = "./IO/tester.java";
+		String filename = "./IO/gmdice_simple.txt";
+		//
+		String outname = "./IO/TestFile.java";
 		
 		if(args.length > 0){
 			environment_switch = Integer.parseInt(args[0]);
 			to_print = Integer.parseInt(args[1]);
+			if(args.length > 2){
+				filename = args[2];
+				if(args.length > 3){
+					outname = args[3];
+				}
+			}
 		}else{
 			Scanner user_input = new Scanner( System.in );
 			System.out.println("What environment are you using? Espresso (0) or Appium (1)?");
@@ -66,18 +94,18 @@ public class Main {
 		
         String toreturn = "Fail case";
         try {
-            tc = parse();
+            tc = parse(filename);
             switch (environment_switch){
 	            case 0:
 		            et = new EspressoTranslator();
-		            et.steps_iterator(tc);
 		            break;
 	            case 1:
 	            	//Have a translator for Appium.
 	            	et = new AppiumTranslator();
-	            	et.steps_iterator(tc);
 	            	break;
             }
+            et.setFile(outname);
+            et.steps_iterator(tc);
             toreturn = "Successfully parsed";
         } catch (IOException e) {
             e.printStackTrace();
