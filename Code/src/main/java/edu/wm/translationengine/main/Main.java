@@ -65,7 +65,7 @@ public class Main {
 		//Whether to print to the output file or not.
 		int to_print = 0;
 		//File name for printing.
-		String filename = "./IO/gmdice_simple.txt";
+		String filename = "./IO/gmdice_simple_2.txt";
 		//
 		String outname = "./IO/TestFile.java";
 		
