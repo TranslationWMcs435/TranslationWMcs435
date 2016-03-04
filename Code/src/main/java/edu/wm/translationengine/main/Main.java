@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import edu.wm.translationengine.espresso.EspressoTranslator;
-import edu.wm.translationengine.appium.AppiumTranslator;
+import edu.wm.translationengine.appium.*;
 import edu.wm.translationengine.trans.Translator;
 
 import java.io.*;
@@ -124,7 +124,19 @@ public class Main {
 				}
         		break;
         	case 1:
-        		
+        		AppiumLive al = new AppiumLive();
+			try {
+				al.start(tc);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (AppiumException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         		break;
         }
         
