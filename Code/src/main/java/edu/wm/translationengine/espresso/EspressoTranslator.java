@@ -25,12 +25,15 @@ import edu.wm.translationengine.trans.GenericTranslator;
  */
 public class EspressoTranslator extends GenericTranslator {
 	private EspressoFunctions ef;
+<<<<<<< HEAD
 	public static String appName;
 	public static String packageName; 
 	public static String mainActivity; 
 	
 	
 	
+=======
+>>>>>>> origin/master
 	/*
 	public static File fout;
 	private FileOutputStream fos;
@@ -102,9 +105,17 @@ public class EspressoTranslator extends GenericTranslator {
 	 * @throws IOException 
 	 */
 	public void steps_iterator(TestCase testCase) throws IOException{
+<<<<<<< HEAD
 		appName = testCase.getAppName();
 		packageName = testCase.getPackageName();
 		mainActivity = testCase.getMainActivity();
+=======
+		System.out.println(fout);
+		
+		String appName = testCase.getAppName();
+		String packageName = testCase.getPackageName();
+		String mainActivity = testCase.getMainActivity();
+>>>>>>> origin/master
 		List<StepTestCase> stepTestCases = testCase.getSteps();
 		
 		toWrite.add("import " + packageName + "." + mainActivity + ";\n");

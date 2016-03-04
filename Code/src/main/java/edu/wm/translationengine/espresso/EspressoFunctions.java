@@ -1,6 +1,9 @@
 package edu.wm.translationengine.espresso;
 
+<<<<<<< HEAD
 //import espresso.EspressoTranslator;
+=======
+>>>>>>> origin/master
 import edu.wm.translationengine.classes.Component;
 import edu.wm.translationengine.classes.StepTestCase;
 import edu.wm.translationengine.trans.*;
@@ -127,6 +130,7 @@ public class EspressoFunctions extends GenericFunctions{
 		System.out.println(espresso_command);
 	}
 
+<<<<<<< HEAD
 	public void type(Component c){
 		String espresso_command = new String();
 		String id = c.getId().substring((EspressoTranslator.packageName.length() + 4));
@@ -134,6 +138,9 @@ public class EspressoFunctions extends GenericFunctions{
 		EspressoTranslator.toWrite.add(espresso_command);
 		System.out.println(espresso_command);
 	}
+=======
+
+>>>>>>> origin/master
 
 
 

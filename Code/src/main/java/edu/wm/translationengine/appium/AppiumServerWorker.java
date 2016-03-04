@@ -43,33 +43,11 @@ public class AppiumServerWorker {
 		serverArguments.setArgument("--port", 4723);
 		serverArguments.setArgument("--no-reset", true);
 		serverArguments.setArgument("--local-timezone", true);
-		//serverArguments.setArgument("--log-level", "warn:error");
 
 		appiumServer = new AppiumServer(new File(appiumDir), serverArguments);
 		appiumServer.startServer();
 		Thread.sleep(500);
 		System.out.println("Server started!");
-	}
-	
-	/**
-	 * Get Appium server response. 
-	 * 
-	 * Appium will communicate back to the user once it receives a command.
-	 * It will respond if there is anything wrong on it's end. We need to capture
-	 * that response and alert the user if there is an error with Appium.
-	 * 
-	 * @param serverURL
-	 * @throws ClientProtocolException
-	 * @throws IOException
-	 */
-	public void getServerResponse(String serverURL) throws ClientProtocolException, IOException {
-		
-		if(!appiumServer.isServerRunning())
-			return;
-		
-		/*
-		 * TODO in second sprint
-		 */
 	}
 	
 	/**
