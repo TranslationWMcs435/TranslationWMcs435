@@ -17,7 +17,7 @@ public class AppiumTranslator extends GenericTranslator{
 	
 	/* setup for the java file being created*/
 	public void setupFile(){
-		toWrite.add("import edu.wm.translationengine.appium;\n"
+		toWrite.add("import edu.wm.translationengine.appium.*;\n"
 				+ "import io.appium.java_client.AppiumDriver;\n"
 				+ "import io.appium.java_client.MobileElement;\n"
 				+ "import io.appium.java_client.android.AndroidDriver;\n"
