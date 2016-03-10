@@ -138,6 +138,7 @@ public class EspressoFunctions extends GenericFunctions{
 	}
 
 
+
 	public boolean tap(StepTestCase testCase) throws Exception {
 		// TODO Auto-generated method stub
 		return false;

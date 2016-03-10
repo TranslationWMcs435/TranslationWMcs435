@@ -29,7 +29,6 @@ public class EspressoTranslator extends GenericTranslator {
 	public static String packageName; 
 	public static String mainActivity; 
 	
-
 	/*
 	public static File fout;
 	private FileOutputStream fos;
