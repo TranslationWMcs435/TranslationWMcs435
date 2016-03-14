@@ -1,6 +1,7 @@
 {
     "appName": "gmdice",
     "packageName": "de.duenndns.gmdice",
+    "mainActivity": "de.duenndns.gmdice.GameMasterDice",
     "stepTestCases": [
         {
             "action": "CLICK",
