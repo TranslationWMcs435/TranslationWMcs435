@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 import edu.wm.translationengine.classes.TestCase;
+import edu.wm.translationengine.espresso.EspressoFileModifier;
 import edu.wm.translationengine.espresso.EspressoFunctions;
 
 /*
@@ -20,6 +21,7 @@ public abstract class GenericTranslator implements Translator {
 	protected FileOutputStream fos;
 	protected BufferedWriter bw;
 	public static ArrayList<String> toWrite;
+	public EspressoFileModifier fm;
 
 	/**
 	 * Constructor for the EspressoTranslator class.
@@ -31,7 +33,8 @@ public abstract class GenericTranslator implements Translator {
 		fos = new FileOutputStream(fout);
 		bw = new BufferedWriter(new OutputStreamWriter(fos));
 		toWrite = new ArrayList<String>();
-		setupFile();
+		fm = new EspressoFileModifier();
+		fm.setupFileImports();
 	}
 	
 	
@@ -66,7 +69,7 @@ public abstract class GenericTranslator implements Translator {
 		fos = new FileOutputStream(fout);
 		bw = new BufferedWriter(new OutputStreamWriter(fos));
 		toWrite = new ArrayList<String>();
-		setupFile();
+		fm.setupFileImports();
 		
 	}
 
