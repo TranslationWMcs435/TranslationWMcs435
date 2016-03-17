@@ -21,7 +21,7 @@ public abstract class GenericTranslator implements Translator {
 	protected FileOutputStream fos;
 	public static BufferedWriter bw;
 	public static ArrayList<String> toWrite;
-	public EspressoFileModifier fm;
+	public FileModifierInterface fm;
 
 	/**
 	 * Constructor for the EspressoTranslator class.
