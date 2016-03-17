@@ -19,7 +19,7 @@ public abstract class GenericTranslator implements Translator {
 	//private EspressoFunctions ef;
 	public static File fout;
 	protected FileOutputStream fos;
-	protected BufferedWriter bw;
+	public static BufferedWriter bw;
 	public static ArrayList<String> toWrite;
 	public EspressoFileModifier fm;
 
