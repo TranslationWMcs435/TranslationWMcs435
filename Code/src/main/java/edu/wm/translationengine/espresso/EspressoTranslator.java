@@ -15,6 +15,7 @@ import java.util.List;
 import edu.wm.translationengine.classes.*;
 import edu.wm.translationengine.main.*;
 import edu.wm.translationengine.trans.GenericTranslator;
+import edu.wm.translationengine.uiautomator.UiAutomatorFileModifier;
 
 /**
  * This is the EspressoTranslator class, it takes Action objects and creates Espresso
@@ -49,36 +50,46 @@ public class EspressoTranslator extends GenericTranslator {
 		toWrite = new ArrayList<String>();
 		setupFile();
 		*/
+		fm = new EspressoFileModifier();
 		ef = new EspressoFunctions();
+		
 	}
 	
 	
-	public void setupFile() throws IOException{
-		toWrite.add("import static android.support.test.espresso.Espresso.onView;\n");
-		toWrite.add("import static android.support.test.espresso.matcher.ViewMatchers.withId;\n");
-		toWrite.add("import static android.support.test.espresso.matcher.ViewMatchers.withText;\n");
-		toWrite.add("import org.junit.runner.RunWith;\n");
-		toWrite.add("import android.app.Activity;\n");
-		toWrite.add("import android.support.test.espresso.action.ViewActions;\n");
-		toWrite.add("import android.support.test.espresso.matcher.ViewMatchers;\n");
-		toWrite.add("import android.support.test.rule.ActivityTestRule;\n");
-		toWrite.add("import android.support.test.runner.AndroidJUnit4;\n");
-		toWrite.add("import android.test.ActivityInstrumentationTestCase2;\n");
-		toWrite.add("import android.test.suitebuilder.annotation.LargeTest;\n");
-		toWrite.add("import android.support.test.runner.AndroidJUnitRunner;\n");
-		toWrite.add("import junit.framework.TestSuite;\n");
-	}
-	
+//	public void setupFile() throws IOException{
+//		toWrite.add("import static android.support.test.espresso.Espresso.onView;\n");
+//		toWrite.add("import static android.support.test.espresso.Espresso.onData;\n");
+//		toWrite.add("import static android.support.test.espresso.matcher.ViewMatchers.withId;\n");
+//		toWrite.add("import static android.support.test.espresso.matcher.ViewMatchers.withText;\n");
+//		toWrite.add("import android.support.test.espresso.action.ViewActions;\n");
+//		toWrite.add("import android.support.test.espresso.matcher.ViewMatchers;\n");
+//		
+//		toWrite.add("import static org.hamcrest.Matchers.allOf;\n");
+//		toWrite.add("import static org.hamcrest.Matchers.is;\n");
+//		
+//		toWrite.add("import android.app.Activity;\n");
+//		toWrite.add("import android.support.test.rule.ActivityTestRule;\n");
+//		toWrite.add("import android.support.test.runner.AndroidJUnit4;\n");
+//		toWrite.add("import android.test.ActivityInstrumentationTestCase2;\n");
+//		toWrite.add("import android.test.suitebuilder.annotation.LargeTest;\n");
+//		toWrite.add("import android.support.test.runner.AndroidJUnitRunner;\n");
+//		
+//		toWrite.add("import org.junit.Rule;\n");
+//		toWrite.add("import org.junit.Test;\n");
+//		toWrite.add("import org.junit.runner.RunWith;\n");
+//		toWrite.add("import junit.framework.TestSuite;\n");
+//	}
+//	
 	/**
 	 * Writes the argument String s to the file fout
 	 * @param s String s to be written into file
 	 * @throws IOException
 	 */
-	public void writeToFile(ArrayList<String> al) throws IOException{
-		for(int i = 0; i < al.size(); i++){
-			bw.write(al.get(i));
-		}
-	}
+//	public void writeToFile(ArrayList<String> al) throws IOException{
+//		for(int i = 0; i < al.size(); i++){
+//			bw.write(al.get(i));
+//		}
+//	}
 	
 	/**
 	 * Edit by Mark: Make a default, works w/out anything passed in.
@@ -102,30 +113,18 @@ public class EspressoTranslator extends GenericTranslator {
 	public void steps_iterator(TestCase testCase) throws IOException{
 		appName = testCase.getAppName();
 		packageName = testCase.getPackageName();
-		mainActivity = testCase.getMainActivity();
+		mainActivity = testCase.getMainActivity().substring(packageName.length() + 1);
 		System.out.println(fout);
 		
-		String appName = testCase.getAppName();
-		String packageName = testCase.getPackageName();
-		String mainActivity = testCase.getMainActivity();
 		List<StepTestCase> stepTestCases = testCase.getSteps();
-		
-		toWrite.add("import " + packageName + "." + mainActivity + ";\n");
-		toWrite.add("import " + packageName + ".R;\n");
-		toWrite.add("\n\n\n@RunWith(AndroidJUnit4.class)\n");
-		toWrite.add("@LargeTest\n");
-		toWrite.add("public class TestFile extends TestSuite{\n");
-		toWrite.add("\t public ActivityTestRule<" + mainActivity + "> "
-				+ "mActivityRule = new ActivityTestRule<" + mainActivity +
-				">(" + mainActivity + ".class);\n");
-		toWrite.add("\t\t@Test\n");
-		toWrite.add("\t\tpublic void test(){\n");
-		
+		fm.setupFileImports();
+		fm.setupTestMethodHeader(packageName, mainActivity);
 		for(int i = 0; i < stepTestCases.size(); i++){
 			StepTestCase cur = stepTestCases.get(i);
 			ef.espresso_switcher(cur.getAction(), cur);
 		}
-		toWrite.add("\t }\n }");
+		fm.closeTestMethod();
+		
 		
 		/*Deleted since they are now called in main()
 		 * 

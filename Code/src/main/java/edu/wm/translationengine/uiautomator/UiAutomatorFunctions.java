@@ -24,14 +24,14 @@ public class UiAutomatorFunctions implements Functions{
 	
 	public boolean tap(StepTestCase testCase) throws Exception {
 		String uiautomator_command = new String();		
-		uiautomator_command += "new UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).click();\n";
+		uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).click();\n";
 		UiAutomatorTranslator.toWrite.add(uiautomator_command);
 		return true;
 	}
 
 	public boolean longTap(StepTestCase testCase) throws Exception {
 		String uiautomator_command = new String();		
-		uiautomator_command += "new UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).longClick();\n";
+		uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).longClick();\n";
 		UiAutomatorTranslator.toWrite.add(uiautomator_command);
 		return true;
 	}

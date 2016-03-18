@@ -2,7 +2,6 @@ package edu.wm.translationengine.espresso;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import edu.wm.translationengine.trans.FileModifierInterface;
 /**
  * This is the EspressoFileModifier class, it is the centralized hub for formatting the output

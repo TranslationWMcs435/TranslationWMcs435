@@ -6,6 +6,7 @@ import java.util.List;
 
 import edu.wm.translationengine.classes.StepTestCase;
 import edu.wm.translationengine.classes.TestCase;
+import edu.wm.translationengine.espresso.EspressoFileModifier;
 import edu.wm.translationengine.espresso.EspressoFunctions;
 import edu.wm.translationengine.trans.GenericTranslator;
 
@@ -17,6 +18,7 @@ public class UiAutomatorTranslator extends GenericTranslator{
 	
 	public UiAutomatorTranslator() throws IOException {
 		super();
+		fm = new UiAutomatorFileModifier();
 		uf = new UiAutomatorFunctions();	}
 
 	public void writeToFile() throws IOException {
@@ -38,7 +40,7 @@ public class UiAutomatorTranslator extends GenericTranslator{
 		System.out.println(fout);
 		
 		List<StepTestCase> stepTestCases = testCase.getSteps();
-		
+		fm.setupFileImports();
 		fm.setupTestMethodHeader(packageName, mainActivity);
 		for(int i = 0; i < stepTestCases.size(); i++){
 			StepTestCase cur = stepTestCases.get(i);

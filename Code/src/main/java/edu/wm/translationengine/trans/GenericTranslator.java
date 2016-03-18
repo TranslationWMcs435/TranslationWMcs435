@@ -33,8 +33,8 @@ public abstract class GenericTranslator implements Translator {
 		fos = new FileOutputStream(fout);
 		bw = new BufferedWriter(new OutputStreamWriter(fos));
 		toWrite = new ArrayList<String>();
-		fm = new EspressoFileModifier();
-		fm.setupFileImports();
+//		fm = new EspressoFileModifier(); //removed and placed in constructor for the respective translation engines
+//		fm.setupFileImports(); //removed because not supposed to be here
 	}
 	
 	
@@ -69,7 +69,7 @@ public abstract class GenericTranslator implements Translator {
 		fos = new FileOutputStream(fout);
 		bw = new BufferedWriter(new OutputStreamWriter(fos));
 		toWrite = new ArrayList<String>();
-		fm.setupFileImports();
+//		fm.setupFileImports(); //removed and placed in steps_iterator(args)
 		
 	}
 
