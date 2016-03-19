@@ -14,7 +14,7 @@ public interface FileModifierInterface {
 	public void writeToFile(ArrayList<String> al) throws IOException;
 	
 	public void writeToFile() throws IOException;
-	
-	
+
+	public void setupTestMethodHeader(String packageName, String mainActivity);
 	
 }

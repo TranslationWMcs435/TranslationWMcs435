@@ -2,9 +2,9 @@ package edu.wm.translationengine.uiautomator;
 
 import java.io.IOException;
 
-import edu.wm.translationengine.trans.FileModifierInterface;
+import edu.wm.translationengine.trans.FileModifier;
 
-public class UiAutomatorFileModifier implements FileModifierInterface{
+public class UiAutomatorFileModifier extends FileModifier{
 
 	public void setupFileImports() throws IOException {
 		// TODO Auto-generated method stub
