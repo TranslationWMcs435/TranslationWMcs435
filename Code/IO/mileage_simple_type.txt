@@ -1,0 +1,97 @@
+{
+    "appName": "mileage",
+    "packageName": "com.evancharlton.mileage",
+    "mainActivity": "com.evancharlton.mileage.Mileage",
+    "stepTestCases": [
+    {
+            "action": "CLICK",
+            "component": {
+                "description": "Price per Gallons text box",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/price",
+                "index": "1",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "235",
+                "text": "Price per Gallons",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/price",
+                "index": "2",
+                "isClickable": true,
+                "positionX": "384",
+                "positionY": "235",
+                "text": "9999999",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "Gallons text box",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/volume",
+                "index": "2",
+                "isClickable": true,
+                "positionX": "384",
+                "positionY": "235",
+                "text": "Gallons",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/volume",
+                "index": "2",
+                "isClickable": true,
+                "positionX": "384",
+                "positionY": "235",
+                "text": "1234567890",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "Odometer",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/odometer",
+                "index": "3",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "Price per Gallons",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/odometer",
+                "index": "3",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "3333333",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        }
+    ]
+}
