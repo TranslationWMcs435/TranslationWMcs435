@@ -1,13 +1,13 @@
 package edu.wm.translationengine.robotium;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.wm.translationengine.classes.StepTestCase;
 import edu.wm.translationengine.trans.FileModifierInterface;
 
 /**
+ *
  * RobotiumFileModifier specifies the content
  * of a test case file.
  *
@@ -44,7 +44,6 @@ public class RobotiumFileModifier implements FileModifierInterface {
 		RobotiumTranslator.toWrite.add("\n");
 	}
 
-	@Override
 	public void setupTestMethodHeader() {
 		
 		setupTestMethodHeader(packageName, mainActivityName);
@@ -107,13 +106,4 @@ public class RobotiumFileModifier implements FileModifierInterface {
 		RobotiumTranslator.toWrite.add("}");
 	}
 
-	@Override
-	public void writeToFile(ArrayList<String> al) throws IOException {
-		
-	}
-
-	@Override
-	public void writeToFile() throws IOException {
-		
-	}
 }

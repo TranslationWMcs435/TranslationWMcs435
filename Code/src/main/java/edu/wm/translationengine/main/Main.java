@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import edu.wm.translationengine.espresso.EspressoTranslator;
+import edu.wm.translationengine.robotium.RobotiumTranslator;
 import edu.wm.translationengine.appium.*;
 import edu.wm.translationengine.trans.Translator;
 import edu.wm.translationengine.uiautomator.UiAutomatorTranslator;
@@ -81,7 +82,7 @@ public class Main {
 			}
 		}else{
 			Scanner user_input = new Scanner( System.in );
-			System.out.println("What environment are you using? Espresso (0), Appium (1), or UiAutomator (2)?");
+			System.out.println("What environment are you using? Espresso (0), Appium (1), UiAutomator (2), or Robotium (3)?");
 			environment_switch = Integer.parseInt(user_input.next());
 			if(environment_switch == 1){
 				System.out.println("\nWould you like a .java file (0) or a server (1)?");
@@ -106,6 +107,8 @@ public class Main {
 	            	break;
 	            case 2:
 	            	et = new UiAutomatorTranslator();
+	            case 3:
+	            	et = new RobotiumTranslator();
             }
             et.setFile(outname);
             et.steps_iterator(tc);
