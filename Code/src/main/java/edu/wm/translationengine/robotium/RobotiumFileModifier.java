@@ -1,13 +1,13 @@
 package edu.wm.translationengine.robotium;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.wm.translationengine.classes.StepTestCase;
 import edu.wm.translationengine.trans.FileModifier;
 
 /**
+ *
  * RobotiumFileModifier specifies the content
  * of a test case file.
  *
@@ -104,13 +104,4 @@ public class RobotiumFileModifier extends FileModifier {
 		RobotiumTranslator.toWrite.add("}");
 	}
 
-	@Override
-	public void writeToFile(ArrayList<String> al) throws IOException {
-		
-	}
-
-	@Override
-	public void writeToFile() throws IOException {
-		
-	}
 }
