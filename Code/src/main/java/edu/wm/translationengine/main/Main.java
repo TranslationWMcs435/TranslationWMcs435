@@ -11,7 +11,12 @@ import edu.wm.translationengine.trans.Translator;
 import edu.wm.translationengine.uiautomator.UiAutomatorTranslator;
 
 import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -93,6 +98,20 @@ public class Main {
 		String outname = "./IO/TestFile.java";
 		
 		if(args.length > 0){
+			if (args[0].contains(".txt")){
+				Path file = FileSystems.getDefault().getPath("IO", args[0]);
+				List<String> fileArray;
+				try {
+					fileArray = Files.readAllLines(file);
+					//The lazy way of making args continue to work in future bits.
+					args = fileArray.get(0).split(" ");
+					System.out.println(fileArray.get(0));
+					System.out.println(args[0] + args[1]);
+				} catch (IOException e) {
+					System.out.println("Given file name does not exist.");
+					e.printStackTrace();
+				}
+			}
 			environment_switch = Integer.parseInt(args[0]);
 			to_print = Integer.parseInt(args[1]);
 			if(args.length > 2){
@@ -101,6 +120,8 @@ public class Main {
 					outname = args[3];
 				}
 			}
+			
+			
 		}else{
 			Scanner user_input = new Scanner( System.in );
 			System.out.println("What environment are you using? Espresso (0), Appium (1), or UiAutomator (2)?");
