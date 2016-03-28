@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import edu.wm.translationengine.classes.StepTestCase;
-import edu.wm.translationengine.trans.FileModifierInterface;
+import edu.wm.translationengine.trans.FileModifier;
 
 /**
  *
@@ -12,7 +12,7 @@ import edu.wm.translationengine.trans.FileModifierInterface;
  * of a test case file.
  *
  */
-public class RobotiumFileModifier implements FileModifierInterface {
+public class RobotiumFileModifier extends FileModifier {
 	
 	private String packageName;
 	private String mainActivityName;
@@ -26,7 +26,6 @@ public class RobotiumFileModifier implements FileModifierInterface {
 		functions = new RobotiumFunctions();
 	}
 	
-	@Override
 	public void setupFileImports() throws IOException {
 		
 		// package declaration
@@ -49,7 +48,6 @@ public class RobotiumFileModifier implements FileModifierInterface {
 		setupTestMethodHeader(packageName, mainActivityName);
 	}
 
-	@Override
 	public void setupTestMethodHeader(String a, String b) {
 				
 		// Class name

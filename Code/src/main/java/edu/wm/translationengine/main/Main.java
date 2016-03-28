@@ -12,7 +12,12 @@ import edu.wm.translationengine.trans.Translator;
 import edu.wm.translationengine.uiautomator.UiAutomatorTranslator;
 
 import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -56,7 +61,29 @@ public class Main {
             return list_of_actions;
         }
     }
-	
+    
+    /*
+     * Calls to make a server. Only goes off w/ Appium selection.
+     */
+	private static void appiumServer(String filename){
+		try {
+			tc = parse(filename);
+			AppiumLive al = new AppiumLive();
+			al.start(tc);
+		} 
+		//TODO: Handle some of these exceptions, maybe.
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (AppiumException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+    
 	/*
 	 * pretty much calls parse.
 	 */
@@ -72,6 +99,20 @@ public class Main {
 		String outname = "./IO/TestFile.java";
 		
 		if(args.length > 0){
+			if (args[0].contains(".txt")){
+				Path file = FileSystems.getDefault().getPath("IO", args[0]);
+				List<String> fileArray;
+				try {
+					fileArray = Files.readAllLines(file);
+					//The lazy way of making args continue to work in future bits.
+					args = fileArray.get(0).split(" ");
+					System.out.println(fileArray.get(0));
+					System.out.println(args[0] + args[1]);
+				} catch (IOException e) {
+					System.out.println("Given file name does not exist.");
+					e.printStackTrace();
+				}
+			}
 			environment_switch = Integer.parseInt(args[0]);
 			to_print = Integer.parseInt(args[1]);
 			if(args.length > 2){
@@ -80,6 +121,8 @@ public class Main {
 					outname = args[3];
 				}
 			}
+			
+			
 		}else{
 			Scanner user_input = new Scanner( System.in );
 			System.out.println("What environment are you using? Espresso (0), Appium (1), UiAutomator (2), or Robotium (3)?");
@@ -87,12 +130,15 @@ public class Main {
 			if(environment_switch == 1){
 				System.out.println("\nWould you like a .java file (0) or a server (1)?");
 				to_print = Integer.parseInt(user_input.next());
+				if (to_print == 1){
+					//Server means we want to do something totally different.
+					appiumServer(filename);
+					return;
+				}
 			}else{
 				to_print = 0;
 			}
 		}
-		
-
 		
         String toreturn = "Fail case";
         try {
@@ -130,22 +176,9 @@ public class Main {
 				}
         		break;
         	case 1:
-        		AppiumLive al = new AppiumLive();
-			try {
-				al.start(tc);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (AppiumException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+        		//Handled higher up, inside a function. I don't want to make et if it isn't gonna get used.
         		break;
         }
-        
         
         System.out.printf(toreturn);
 		

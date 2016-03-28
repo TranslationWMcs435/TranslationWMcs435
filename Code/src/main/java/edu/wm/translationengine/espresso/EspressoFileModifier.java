@@ -2,7 +2,7 @@ package edu.wm.translationengine.espresso;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import edu.wm.translationengine.trans.FileModifierInterface;
+import edu.wm.translationengine.trans.FileModifier;
 /**
  * This is the EspressoFileModifier class, it is the centralized hub for formatting the output
  * test file. It sets up the immediately necessary imports and sets of the test method
@@ -10,7 +10,7 @@ import edu.wm.translationengine.trans.FileModifierInterface;
  * @author Nathan Chen
  *
  */
-public class EspressoFileModifier implements FileModifierInterface{
+public class EspressoFileModifier extends FileModifier{
 	/**
 	 * Constructor for the EspressoFileModifier class.
 	 */
