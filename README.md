@@ -5,14 +5,20 @@
 
 <hr>
 
-TranslationEngine automatically generates test cases for Android's user interface (UI) testing frameworks. It parses UI events defined in a JSON file and converts them into test cases.
+<p>
+TranslationEngine automatically generates test cases for Android's graphical user interface (GUI) testing frameworks. It parses GUI events defined in a JSON file and converts them into test cases.
+</p>
 
+<p>
 Testing software is an important task of software engineering because it assures the quality of the systems that users will use. Moreover, there are different metrics that help to identify whether a software is ready to go to production after executing different tests. In particular for Android applications there are several testing frameworks (e.g. Robotium, Robolectric) that help generate test cases in order to improve the quality of Android applications.
+</p>
 
-The goal of this project is to generate a translation engine that will take in a JSON file with GUI events and parse those events into different testing frameworks.
+<p>
+Therefore, the goal of this project is to generate a translation engine that will take in a JSON file with GUI events and parse those events into different testing frameworks.
+</p>
 
 ## Supported frameworks
-TranslationEngine currently supports the following testing frameworks: Espresso, Appium
+TranslationEngine currently supports the following testing frameworks: Appium, Espresso, Robolectric (soon), Robotium, UIAutomator
 
 ## Dependencies
  - Selenium Client & WebDriver 2.52.0 (Java)
