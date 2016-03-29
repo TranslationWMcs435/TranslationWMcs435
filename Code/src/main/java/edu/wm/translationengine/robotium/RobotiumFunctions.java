@@ -15,14 +15,17 @@ public class RobotiumFunctions extends GenericFunctions {
 		String action = testCase.getAction();
 		
 		RobotiumTranslator.toWrite.add("\n");
-		if(action.equals("CLICK")) {
+		if(action.equalsIgnoreCase("CLICK")) {
 			tap(testCase);
 		}
-		else if(action.equals("LONG_CLICK")) {
+		else if(action.equalsIgnoreCase("LONG_CLICK")) {
 			longTap(testCase);
 		}
-		RobotiumTranslator.toWrite.add("\n");
+		else if(action.equalsIgnoreCase("TYPE")) {
+			pressKey(testCase);
+		}
 		
+		RobotiumTranslator.toWrite.add("\n");
 	}
 
 	@Override
@@ -55,6 +58,23 @@ public class RobotiumFunctions extends GenericFunctions {
 
 	@Override
 	public boolean pressKey(StepTestCase testCase) throws Exception {
+		
+		if(testCase != null) {
+			
+			RobotiumTranslator.toWrite.add("\t\t// " + testCase.getComponent().getId() + "\n");
+			RobotiumTranslator.toWrite.add("\t\tcurView = solo.getView(" + testCase.getComponent().getType() + ".class, " + testCase.getComponent().getIndex() + ");\n");
+			
+			String textToType = testCase.getComponent().getText();
+			
+			if(textToType == null) {
+				return false;
+			}
+			
+			RobotiumTranslator.toWrite.add("\t\tsolo.enterText(curView, \"" + textToType + ");");
+			return true;
+		}
+		
+		
 		return false;
 	}
 
