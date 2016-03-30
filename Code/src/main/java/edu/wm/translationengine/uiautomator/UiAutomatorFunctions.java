@@ -3,6 +3,7 @@ package edu.wm.translationengine.uiautomator;
 
 
 import edu.wm.translationengine.classes.StepTestCase;
+import edu.wm.translationengine.espresso.EspressoTranslator;
 import edu.wm.translationengine.trans.Functions;
 import edu.wm.translationengine.trans.GenericFunctions;
 
@@ -18,28 +19,41 @@ public class UiAutomatorFunctions implements Functions{
 			longTap(s);
 		}
 		if(action.equals("TYPE")){
-
+			type(s);
 		}
 	}
 	
 	public boolean tap(StepTestCase testCase) throws Exception {
-		String uiautomator_command = new String();		
-		uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).click();\n";
-		UiAutomatorTranslator.toWrite.add(uiautomator_command);
+		String uiautomator_command = new String();	
+		if(testCase.getComponent().getType().equals("android.widget.CheckedTextView")){
+			uiautomator_command += "\t\tnew UiObject(new UiSelector().className(\"android.widget.ListView\")).getChild(new UiSelector().text(\"" + testCase.getComponent().getText() + "\")).click();\n";
+			UiAutomatorTranslator.toWrite.add(uiautomator_command);
+		}
+		else{
+			uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).click();\n";
+			UiAutomatorTranslator.toWrite.add(uiautomator_command);
+		}
+		
 		return true;
 	}
 
 	public boolean longTap(StepTestCase testCase) throws Exception {
 		String uiautomator_command = new String();		
+		if(testCase.getComponent().getType().equals("android.widget.CheckedTextView")){
+			uiautomator_command += "\t\tnew UiObject(new UiSelector().className(\"android.widget.ListView\")).getChild(new UiSelector().text(\"" + testCase.getComponent().getText() + "\")).longClick();\n";
+			UiAutomatorTranslator.toWrite.add(uiautomator_command);
+		}
+		else{
 		uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).longClick();\n";
 		UiAutomatorTranslator.toWrite.add(uiautomator_command);
+		}
 		return true;
 	}
 
 	public boolean type(StepTestCase testCase) throws Exception{
-		
-		//asoifjowjfej[pijf
-		
+		String uiautomator_command = new String();		
+		uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).setText(" + testCase.getComponent().getText() + ");\n";
+		UiAutomatorTranslator.toWrite.add(uiautomator_command);
 		return true;
 	}
 	public boolean pressKey(StepTestCase testCase) throws Exception {
