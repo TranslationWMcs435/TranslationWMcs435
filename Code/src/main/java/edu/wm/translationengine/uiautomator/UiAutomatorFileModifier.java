@@ -2,9 +2,9 @@ package edu.wm.translationengine.uiautomator;
 
 import java.io.IOException;
 
-import edu.wm.translationengine.trans.FileModifier;
+import edu.wm.translationengine.trans.FileModifierInterface;
 
-public class UiAutomatorFileModifier extends FileModifier{
+public class UiAutomatorFileModifier implements FileModifierInterface{
 
 	public void setupFileImports() throws IOException {
 		// TODO Auto-generated method stub
@@ -18,12 +18,12 @@ public class UiAutomatorFileModifier extends FileModifier{
 	public void setupTestMethodHeader(String packageName, String mainActivity) {
 		// TODO Auto-generated method stub
 		UiAutomatorTranslator.toWrite.add("public class TestBackPress extends UiAutomatorTestCase {\n");
-		UiAutomatorTranslator.toWrite.add("\tpublic void uiautomator_test() throws UiObjectNotFoundException{\n");
+		UiAutomatorTranslator.toWrite.add("\tpublic void test_uiautomator() throws UiObjectNotFoundException{\n");
 	}
 
 	public void closeTestMethod() {
 		// TODO Auto-generated method stub
-		UiAutomatorTranslator.toWrite.add("\t}\n");
+		UiAutomatorTranslator.toWrite.add("\t}\n}");
 		UiAutomatorTranslator.toWrite.add(0, "package [Test_package_name_here]\n\n");
 	}
 
