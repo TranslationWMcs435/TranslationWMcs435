@@ -52,7 +52,7 @@ public class UiAutomatorFunctions implements Functions{
 
 	public boolean type(StepTestCase testCase) throws Exception{
 		String uiautomator_command = new String();		
-		uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).setText(" + testCase.getComponent().getText() + ");\n";
+		uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
 		UiAutomatorTranslator.toWrite.add(uiautomator_command);
 		return true;
 	}
