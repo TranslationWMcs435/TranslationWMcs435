@@ -30,7 +30,17 @@ public class AppiumFunctions extends GenericFunctions{
 					+"\t\t\tThread.sleep(250);\n";
 			AppiumTranslator.toWrite.add(format); 			
 		}
-		//TODO: add typing?
+		
+		if(action.equals("TYPE")){
+			//pull component ID
+			String id = s.getComponent().getId();
+			String typingtext = s.getComponent().getText();
+			//format string
+			String format = "\t\t\tdriver.findElement(By.id(\""+id+"\")).sendkeys("+typingtext+");\n"
+					+ "\t\t\tThread.sleep(250);\n";
+			AppiumTranslator.toWrite.add(format);
+			
+		}
 	}	
 	
 }
