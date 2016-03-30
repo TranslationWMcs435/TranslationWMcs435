@@ -31,8 +31,8 @@ public class AppiumTestType {
 		public static String DEVICE_NAME = "Google Nexus 4 - 5.1.0 - API 22 - 768x1280";
 		public static String PLATFORM_NAME = "Android";
 		public static String PLATFORM_VERSION = "5.1";
-		
-		public static String GMDICE_DIR = System.getProperty("user.dir") + "\\res\\apk\\gmdice.apk";
+		//revamped to play with mileage
+		public static String MILEAGE_DIR = System.getProperty("user.dir") + "\\res\\apk\\com.evancharlton.mileage_3110.apk";
 		
 		private AppiumDriver<MobileElement> driver;
 		private AppiumServerWorker serverWorker;
@@ -54,7 +54,7 @@ public class AppiumTestType {
 			//DesiredCapabilities capability = DesiredCapabilities.android();
 			
 			// Specify apk file to test
-			File file = new File(GMDICE_DIR);
+			File file = new File(MILEAGE_DIR);
 			capability.setCapability("app", file.getAbsolutePath());
 			
 			URL serverURL = new URL(DEFAULT_SERVER + ":" + DEFAULT_PORT + DEFAULT_SUFFIX);
@@ -73,25 +73,24 @@ public class AppiumTestType {
 		}
 		
 		@Test
-		public void testType(){
+		public void testType() throws InterruptedException{
 			
 			/* Element IDs obtained from uiautomatorviewer */
-			// Tap ellipsis
-			driver.findElement(By.id("de.duenndns.gmdice:id/more")).click();
-			// Tap first 1d2 dice
-			driver.findElement(By.name("More...")).click();
-			//declare first and second textfields 
-			List<MobileElement> textfields = driver.findElements(By.className("android.widget.EditText"));
-			// Clear the first textfield
-			textfields.get(0).clear();
-			// Type in the number 20 into the first textfield
-			textfields.get(0).sendKeys("20");
-			// Clear the second textfield
-			textfields.get(1).clear();
-			// Type in the number 5 into the first textfield
-			textfields.get(1).sendKeys("5");
-			// Tap "OK" and roll the newly created dice
-			driver.findElement(By.id("android:id/button1")).click();
+			// Type to Price per Gallons
+			driver.findElement(By.name("Price per Gallons")).sendKeys("1.75");
+			//Type to Gallons
+			driver.findElement(By.name("Gallons")).sendKeys("10");
+			//Type to Odometer
+			driver.findElement(By.name("Odometer")).sendKeys("123456");
+			//Type to Comment
+			driver.findElement(By.name("Comment")).sendKeys("My car exploded halfway through fueling!");
+			// Tap "Save Filup"
+			driver.findElement(By.name("Save Fillup")).tap(1,50);
+			Thread.sleep(300);
+			//Tap by id
+			driver.findElement(By.id("android:id/text1")).tap(1,50);
+			Thread.sleep(5000);
+			
 		}
 
 }
