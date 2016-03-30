@@ -153,8 +153,10 @@ public class Main {
 	            	break;
 	            case 2:
 	            	et = new UiAutomatorTranslator();
+	            	break;
 	            case 3:
 	            	et = new RobotiumTranslator();
+	            	break;
             }
             et.setFile(outname);
             et.steps_iterator(tc);
