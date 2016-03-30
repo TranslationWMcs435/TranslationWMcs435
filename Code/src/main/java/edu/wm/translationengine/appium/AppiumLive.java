@@ -69,15 +69,21 @@ public class AppiumLive {
 	        {
 	        	StepTestCase cur = stepTestCases.get(i);
 	        	String buttonName = cur.getComponent().getText();
+	        	String buttonID = cur.getComponent().getId();
 	        	if(cur.getAction().contentEquals("CLICK")){
 	        		driver.findElement(By.name(buttonName)).click();
-	        		Thread.sleep(500);
+	        		Thread.sleep(300);
 	        		System.out.println("clicked button at " + buttonName);
 	        	}else if(cur.getAction().contentEquals("LONG_CLICK")){
 	        		MobileElement button = (MobileElement)driver.findElement(By.name(buttonName));
 	        		button.tap(1, 1000);
-				Thread.sleep(500);
-				System.out.println("long clicked button at" + buttonName);
+	        		Thread.sleep(300);
+	        		System.out.println("long clicked button at" + buttonName);
+	        	}else if(cur.getAction().contentEquals("TYPE")){
+	        		driver.findElement(By.id(buttonID)).sendKeys(cur.getComponent().getText());
+	        		Thread.sleep(300);
+	        		System.out.println("Typed text at" + buttonName);
+	        		
 	        	}
 	        	//need an example JSON file with typing so I can properly implement typing actions
 	        }
