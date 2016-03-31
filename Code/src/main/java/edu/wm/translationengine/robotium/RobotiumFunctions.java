@@ -70,7 +70,7 @@ public class RobotiumFunctions extends GenericFunctions {
 				return false;
 			}
 			
-			RobotiumTranslator.toWrite.add("\t\tsolo.enterText(curView, \"" + textToType + ");");
+			RobotiumTranslator.toWrite.add("\t\tsolo.enterText(" + testCase.getComponent().getIndex() + ", \"" + testCase.getComponent().getText() + "\");");
 			return true;
 		}
 		

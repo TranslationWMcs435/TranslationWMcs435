@@ -36,7 +36,8 @@ public class RobotiumFileModifier extends FileModifier {
 		RobotiumTranslator.toWrite.add("import android.util.Log;\n" + 
 					"import junit.framework.AssertionFailedError;\n" +
 					"import com.robotium.solo.Solo;\n\n" +
-					"import android.annotation.TargetApi;\n" + 
+					"import android.annotation.TargetApi;\n" +
+					"import android.test.ActivityInstrumentationTestCase2;\n" +
 					"import android.os.Build;\n" + 
 					"import android.view.View;\n\n");
 		RobotiumTranslator.toWrite.add("import " + mainActivityName + ";\n");
@@ -51,7 +52,7 @@ public class RobotiumFileModifier extends FileModifier {
 	public void setupTestMethodHeader(String a, String b) {
 				
 		// Class name
-		RobotiumTranslator.toWrite.add("public class TestBasic extends " + 
+		RobotiumTranslator.toWrite.add("public class TestFile extends " + 
 				"ActivityInstrumentationTestCase2<" + mainActivityName + "> {\n");
 		RobotiumTranslator.toWrite.add("\n");
 		
@@ -60,9 +61,9 @@ public class RobotiumFileModifier extends FileModifier {
 		RobotiumTranslator.toWrite.add("\n");
 		
 		// Constructor
-		RobotiumTranslator.toWrite.add("\t@TargetApi(Build.VERSION_CODES.FROYO)\n");
-		RobotiumTranslator.toWrite.add("\tpublic TestBasic() {\n" + 
-				"\t\tsuper(GameMasterDice.class);\n"
+		RobotiumTranslator.toWrite.add("\t@TargetApi(Build.VERSION_CODES.JELLY_BEAN)\n");
+		RobotiumTranslator.toWrite.add("\tpublic TestFile() {\n" + 
+				"\t\tsuper(" + mainActivityName + ".class);\n"
 				+ "\t}\n"
 				);
 		RobotiumTranslator.toWrite.add("\n");
