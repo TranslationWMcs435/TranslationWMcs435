@@ -83,7 +83,7 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
-    
+
 	/*
 	 * pretty much calls parse.
 	 */
@@ -124,12 +124,28 @@ public class Main {
 			
 			
 		}else{
+			
 			Scanner user_input = new Scanner( System.in );
-			System.out.println("What environment are you using? Espresso (0), Appium (1), UiAutomator (2), or Robotium (3)?");
-			environment_switch = Integer.parseInt(user_input.next());
+			do {
+				System.out.println("What environment are you using? Espresso (0), Appium (1), UiAutomator (2), or Robotium (3)?");
+				environment_switch = Integer.parseInt(user_input.next());
+				
+				if(environment_switch > 3)
+					System.err.println("Invalid value. Please try again...");
+			}
+			while(environment_switch > 3);
+			
 			if(environment_switch == 1){
-				System.out.println("\nWould you like a .java file (0) or a server (1)?");
-				to_print = Integer.parseInt(user_input.next());
+				
+				do {
+					System.out.println("\nWould you like a .java file (0) or a server (1)?");
+					to_print = Integer.parseInt(user_input.next());
+					
+					if(to_print > 1)
+						System.err.println("Invalid value. Please try again...");
+				}
+				while(to_print > 1);
+				
 				if (to_print == 1){
 					//Server means we want to do something totally different.
 					appiumServer(filename);
