@@ -12,6 +12,7 @@ import edu.wm.translationengine.trans.Translator;
 import edu.wm.translationengine.uiautomator.UiAutomatorTranslator;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,25 +24,6 @@ import java.util.Scanner;
 
 public class Main {
 	private static TestCase tc = null;
-	/*
-	 * Produce a TestCase to later be run into the espresso (or appium) translator.
-	 * Deprecated as of 3/3/2016, new version feeds in a filename.
-	 */
-    public static TestCase parse() throws IOException {
-    	TestCase list_of_actions = null;
-    	//If there's a need to get rid of hard coding, this is where to do it.
-    	//I put the file right next to this one. But there will probably be an I/O folder later.
-        InputStream stream = new FileInputStream("./IO/gmdice_simple.txt");
-        Reader reader = new InputStreamReader(stream, "UTF-8");
-        try{ 
-            Gson gson = new GsonBuilder().create();
-            list_of_actions = gson.fromJson(reader,TestCase.class);
-            return list_of_actions;
-        } catch (Exception e){
-        	System.out.println("Parsing failed. Returning null.");
-            return list_of_actions;
-        }
-    }
     
 	/*
 	 * Produce a TestCase to later be run into the espresso (or appium) translator.
@@ -83,18 +65,20 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
-
+    
 	/*
 	 * pretty much calls parse.
 	 */
 	public static void main(String [] args){
+		String[] instructs;
+		final Charset cs = Charset.defaultCharset();
 		Translator et = null;
 		//Espresso == 0, Appium == 1. Others to follow.
-		int environment_switch = 0;
+		String environment_switch = "0";
 		//Whether to print to the output file or not.
-		int to_print = 0;
+		String to_print = "0";
 		//File name for printing.
-		String filename = "./IO/gmdice_simple_2.txt";
+		String filename = "./IO/mileage_simple_type.txt";
 		//
 		String outname = "./IO/TestFile.java";
 		
@@ -103,56 +87,45 @@ public class Main {
 				Path file = FileSystems.getDefault().getPath("IO", args[0]);
 				List<String> fileArray;
 				try {
-					fileArray = Files.readAllLines(file);
+					fileArray = Files.readAllLines(file, cs);
+					//fileArray = Files.readAllLines(file);
 					//The lazy way of making args continue to work in future bits.
-					args = fileArray.get(0).split(" ");
+					instructs = fileArray.get(0).split(" ");
 					System.out.println(fileArray.get(0));
-					System.out.println(args[0] + args[1]);
+					//System.out.println(instructs[0] + instructs[1]);
 				} catch (IOException e) {
 					System.out.println("Given file name does not exist.");
+					instructs = args;
 					e.printStackTrace();
 				}
+			}else{
+				instructs = args;
 			}
-			environment_switch = Integer.parseInt(args[0]);
-			to_print = Integer.parseInt(args[1]);
-			if(args.length > 2){
-				filename = args[2];
-				if(args.length > 3){
-					outname = args[3];
+			environment_switch = instructs[0];
+			to_print = instructs[1];
+			//Optional args for filenames. Input first, then output.
+			if(instructs.length > 2){
+				filename = instructs[2];
+				if(instructs.length > 3){
+					outname = instructs[3];
 				}
 			}
 			
 			
 		}else{
-			
 			Scanner user_input = new Scanner( System.in );
-			do {
-				System.out.println("What environment are you using? Espresso (0), Appium (1), UiAutomator (2), or Robotium (3)?");
-				environment_switch = Integer.parseInt(user_input.next());
-				
-				if(environment_switch > 3)
-					System.err.println("Invalid value. Please try again...");
-			}
-			while(environment_switch > 3);
-			
-			if(environment_switch == 1){
-				
-				do {
-					System.out.println("\nWould you like a .java file (0) or a server (1)?");
-					to_print = Integer.parseInt(user_input.next());
-					
-					if(to_print > 1)
-						System.err.println("Invalid value. Please try again...");
-				}
-				while(to_print > 1);
-				
-				if (to_print == 1){
+			System.out.println("What environment are you using? Espresso (0), Appium (1), UiAutomator (2), or Robotium (3)?");
+			environment_switch = user_input.next();
+			if(environment_switch == "1"){
+				System.out.println("\nWould you like a .java file (0) or a server (1)?");
+				to_print = user_input.next();
+				if (to_print == "1"){
 					//Server means we want to do something totally different.
 					appiumServer(filename);
 					return;
 				}
 			}else{
-				to_print = 0;
+				to_print = "0";
 			}
 		}
 		
@@ -160,17 +133,21 @@ public class Main {
         try {
             tc = parse(filename);
             switch (environment_switch){
-	            case 0:
+	            case "0":
+	            case "Espresso":
 		            et = new EspressoTranslator();
 		            break;
-	            case 1:
+	            case "1":
+	            case "Appium":
 	            	//Have a translator for Appium.
 	            	et = new AppiumTranslator();
 	            	break;
-	            case 2:
+	            case "2":
+	            case "UIAutomator":
 	            	et = new UiAutomatorTranslator();
 	            	break;
-	            case 3:
+	            case "3":
+	            case "Robotium":
 	            	et = new RobotiumTranslator();
 	            	break;
             }
@@ -183,7 +160,8 @@ public class Main {
         
         //Either print to a file or start up a server.
         switch(to_print){
-        	case 0:
+        	case "0":
+        	case "file":
         		//Use the print-to-file function to make the tester go in a file.
 				try {
 					et.writeToFile();
@@ -193,7 +171,8 @@ public class Main {
 					e.printStackTrace();
 				}
         		break;
-        	case 1:
+        	case "1":
+        	case "live":
         		//Handled higher up, inside a function. I don't want to make et if it isn't gonna get used.
         		break;
         }
