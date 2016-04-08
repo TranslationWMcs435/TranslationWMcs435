@@ -61,7 +61,6 @@ public class RobotiumFileModifier extends FileModifier {
 		RobotiumTranslator.toWrite.add("\n");
 		
 		// Constructor
-		RobotiumTranslator.toWrite.add("\t@TargetApi(Build.VERSION_CODES.JELLY_BEAN)\n");
 		RobotiumTranslator.toWrite.add("\tpublic TestFile() {\n" + 
 				"\t\tsuper(" + mainActivityName + ".class);\n"
 				+ "\t}\n"
