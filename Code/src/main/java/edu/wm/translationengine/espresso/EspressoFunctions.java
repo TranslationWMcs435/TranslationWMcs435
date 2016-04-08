@@ -3,15 +3,16 @@ package edu.wm.translationengine.espresso;
 
 //import espresso.EspressoTranslator;
 
-import edu.wm.translationengine.classes.Component;
 import edu.wm.translationengine.classes.StepTestCase;
-import edu.wm.translationengine.trans.*;
+import edu.wm.translationengine.trans.GenericFunctions;
+import edu.wm.translationengine.trans.StepTestCaseDataPrinter;
 
 public class EspressoFunctions extends GenericFunctions{
 	private boolean clicky;
 	private boolean long_clicky;
 	private boolean typey;
-	
+	StepTestCaseDataPrinter p;
+
 	/**
 	 * Constructor for the EspressoFunctions class
 	 */
@@ -19,6 +20,7 @@ public class EspressoFunctions extends GenericFunctions{
 		clicky = false;
 		long_clicky = false;
 		typey = false;
+		p = new StepTestCaseDataPrinter();
 	}
 	
 
@@ -35,21 +37,21 @@ public class EspressoFunctions extends GenericFunctions{
 				EspressoTranslator.toWrite.add(0, "import static android.support.test.espresso.action.ViewActions.click;\n");
 				clicky = true;
 			}
-			make_click_command(s.getComponent());
+			make_click_command(s);
 		}
 		if(action.equals("LONG_CLICK")){
 			if(long_clicky == false){
 				EspressoTranslator.toWrite.add(0, "import static android.support.test.espresso.action.ViewActions.longClick;\n"); 
 				long_clicky = true;
 			}
-			make_long_click_command(s.getComponent());
+			make_long_click_command(s);
 		}
 		if(action.equals("TYPE")){
 			if(typey == false){
 				EspressoTranslator.toWrite.add(0, "import static android.support.test.espresso.action.ViewActions.typeText;\n"); 
 				typey = true;
 			}
-			type(s.getComponent());
+			type(s);
 		}
 	}
 
@@ -57,19 +59,27 @@ public class EspressoFunctions extends GenericFunctions{
 	 * Generates the click command formatted in the Espresso framework
 	 * @param c Component object of the current stepTestCase being analyzed
 	 */
-	private void make_click_command(Component c) {
+	private void make_click_command(StepTestCase s) {
 		String espresso_command = new String();
-		if(c.getType().equals("android.widget.CheckedTextView")){
-			espresso_command += "\t\t\tonData(allOf(is(\"" + c.getText() + "\"))).perform(click());\n";
+		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
+			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(click());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
+			if(s.getComponent().getText() == null){
+				System.out.println("Text field is null in the following stepTestCase:\n");
+				p.printData(s);
+			}
 		}
-		else if(c.getId().length() > 11 && c.getId().substring(0, 11).equals("android:id/")){
-			make_click_command_with_text(c);
+		else if(s.getComponent().getId().length() > 11 && s.getComponent().getId().substring(0, 11).equals("android:id/")){
+			make_click_command_with_text(s);
 		}
 		else{
-			String id = c.getId().substring((EspressoTranslator.packageName.length() + 4));
+			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
 			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(click());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
+			if(s.getComponent().getId() == null){
+				System.out.println("Id field is null in the following stepTestCase:\n");
+				p.printData(s);
+			}
 		}
 	}
 	
@@ -77,46 +87,70 @@ public class EspressoFunctions extends GenericFunctions{
 	 * Generates the click command formatted in the Espresso framework
 	 * @param c Component object of the current stepTestCase being analyzed
 	 */
-	private void make_click_command_with_text(Component c) {
+	private void make_click_command_with_text(StepTestCase s) {
 		String espresso_command = new String();		
-		espresso_command += "\t\t\tonView(withText(\"" + c.getText() + "\")).perform(click());\n";
+		espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(click());\n";
 		EspressoTranslator.toWrite.add(espresso_command);
+		if(s.getComponent().getText() == null){
+			System.out.println("Text field is null in the following stepTestCase:\n");
+			p.printData(s);
+		}
 	}
 	
 	/**
 	 * Generates the long click command formatted in the Espresso framework
 	 * @param c Component object of the current stepTestCase being analyzed
 	 */
-	private void make_long_click_command(Component c) {
+	private void make_long_click_command(StepTestCase s) {
 		String espresso_command = new String();
-		if(c.getType().equals("android.widget.CheckedTextView")){
-			espresso_command += "\t\t\tonData(allOf(is(\"" + c.getText() + "\"))).perform(longClick());\n";
+		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
+			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(longClick());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
+			if(s.getComponent().getText() == null){
+				System.out.println("Text field is null in the following stepTestCase:\n");
+				p.printData(s);
+			}
 		}
-		else if(c.getId().length() > 11 && c.getId().substring(0, 11).equals("android:id/")){
-			make_long_click_command_with_text(c);
+		else if(s.getComponent().getId().length() > 11 && s.getComponent().getId().substring(0, 11).equals("android:id/")){
+			make_long_click_command_with_text(s);
 		}
 		else{
-			String id = c.getId().substring((EspressoTranslator.packageName.length() + 4));
+			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
 			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(longClick());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
+			if(s.getComponent().getId() == null){
+				System.out.println("Id field is null in the following stepTestCase:\n");
+				p.printData(s);
+			}
 		}
 	}
 	/**
 	 * Generates the long click command formatted in the Espresso framework
 	 * @param c Component object of the current stepTestCase being analyzed
 	 */
-	private void make_long_click_command_with_text(Component c) {
+	private void make_long_click_command_with_text(StepTestCase s) {
 		String espresso_command = new String();	
-		espresso_command += "\t\t\tonView(withText(\"" + c.getText() + "\")).perform(longClick());\n";
+		espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(longClick());\n";
 		EspressoTranslator.toWrite.add(espresso_command);
+		if(s.getComponent().getText() == null){
+			System.out.println("Text field is null in the following stepTestCase:\n");
+			p.printData(s);
+		}
 	}
 
-	public void type(Component c){
+	public void type(StepTestCase s){
 		String espresso_command = new String();
-		String id = c.getId().substring((EspressoTranslator.packageName.length() + 4));
-		espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(typeText(\"" + c.getText() + "\"));\n";
+		String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
+		espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(typeText(\"" + s.getComponent().getText() + "\"));\n";
 		EspressoTranslator.toWrite.add(espresso_command);
+		if(s.getComponent().getText() == null){
+			System.out.println("Text field is null in the following stepTestCase:\n");
+			p.printData(s);
+		}
+		if(s.getComponent().getId() == null){
+			System.out.println("Id field is null in the following stepTestCase:\n");
+			p.printData(s);
+		}
 	}
 
 
