@@ -17,6 +17,17 @@ Testing software is an important task of software engineering because it assures
 Therefore, the goal of this project is to generate a translation engine that will take in a JSON file with GUI events and parse those events into different testing frameworks.
 </p>
 
+## User Guide
+The purpose of the program is to parse a JSON file into a usable Android testing framework.
+
+It's fairly easy to use the program. Run the program with command line prompts, with a preference file passed as the first parameter, or type in parameters with a prompt.  The prompt is self-explanatory. You can type the numbers, or you can type the name of the framework (Case-sensitive at the moment. Easy to change). Input and output files require "./IO/" at the front if you have them saved in the IO folder! (I could also make that flexible, but then absolute path would be harder to use.)
+
+The command-line uses the same ordering as the prompter: Framework, Mode ("file"/"live"), Input, Output. e.g. "UIAutomator file ./IO/mileage_swipe.txt ./IO/standard_out.txt" without the quotes.
+
+If you want to use a preference file, pass in a single parameter, your preference file's name. Your file must end with ".txt" which is how we're telling the difference between this and directly plugging in your commands.
+
+The only live mode actually integrated at the moment is Appium. For all file modes, you will need to copy-paste the outputted code into your preexisting test framework. A list of required items on a per-framework basis could be added to meet demand.
+
 ## Supported frameworks
 TranslationEngine currently supports the following testing frameworks: Appium, Espresso, Robolectric (soon), Robotium, UIAutomator
 
