@@ -111,18 +111,25 @@ public class EspressoTranslator extends GenericTranslator {
 	 * @throws IOException 
 	 */
 	public void steps_iterator(TestCase testCase) throws IOException{
-		appName = testCase.getAppName();
 		if(testCase.getAppName() == null){
-			System.out.println("App Name is null\n");
+			System.out.println("\nERROR: App Name is null\n");
 		}
-		packageName = testCase.getPackageName();
+		else{
+			appName = testCase.getAppName();
+		}
 		if(testCase.getPackageName() == null){
-			System.out.println("Package Name is null\n");
-		}		
-		mainActivity = testCase.getMainActivity().substring(packageName.length() + 1);
-		if(testCase.getMainActivity() == null){
-			System.out.println("Main Activity is null\n");
+			System.out.println("\nERROR: Package Name is null\n");
+		}	
+		else{
+			packageName = testCase.getPackageName();
 		}
+		if(testCase.getMainActivity() == null){
+			System.out.println("\nERROR: Main Activity is null\n");
+		}
+		else{
+			mainActivity = testCase.getMainActivity().substring(packageName.length() + 1);
+		}
+
 		System.out.println(fout);
 		
 		List<StepTestCase> stepTestCases = testCase.getSteps();
@@ -132,6 +139,7 @@ public class EspressoTranslator extends GenericTranslator {
 			StepTestCase cur = stepTestCases.get(i);
 			ef.espresso_switcher(cur.getAction(), cur);
 		}
+		
 		fm.closeTestMethod();
 		
 		

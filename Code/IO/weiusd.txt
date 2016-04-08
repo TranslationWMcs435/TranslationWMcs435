@@ -1,5 +1,5 @@
 package [Test_package_name_here]
-import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.action.ViewActions.longClick;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.onData;
@@ -19,8 +19,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import junit.framework.TestSuite;
-import com.evancharlton.mileage.Mileage;
-import com.evancharlton.mileage.R;
+import null.null;
+import null.R;
 
 
 
@@ -28,14 +28,17 @@ import com.evancharlton.mileage.R;
 @LargeTest
 public class TestFile extends TestSuite{
 	@Rule
-	public ActivityTestRule<Mileage> mActivityRule = new ActivityTestRule<Mileage>(Mileage.class);
+	public ActivityTestRule<null> mActivityRule = new ActivityTestRule<null>(null.class);
 	@Test
 	public void test(){
-			onView(withId(R.id.price)).perform(click());
-			onView(withId(R.id.price)).perform(typeText("9999999"));
-			onView(withId(R.id.volume)).perform(click());
-			onView(withId(R.id.volume)).perform(typeText("1234567890"));
-			onView(withId(R.id.odometer)).perform(click());
-			onView(withId(R.id.odometer)).perform(typeText("3333333"));
+			\\This StepTestCase had an error, its code was not written to file.
+			\\This StepTestCase had an error, its code was not written to file.
+			\\This StepTestCase had an error, its code was not written to file.
+			\\This StepTestCase had an error, its code was not written to file.
+			\\This StepTestCase had an error, its code was not written to file.
+			onData(allOf(is("More..."))).perform(click());
+			onView(withText("Cancel")).perform(click());
+			\\This StepTestCase had an error, its code was not written to file.
+			onData(allOf(is("1d2"))).perform(click());
 	 }
  }
