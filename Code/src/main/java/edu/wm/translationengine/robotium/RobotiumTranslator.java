@@ -19,7 +19,6 @@ public class RobotiumTranslator extends GenericTranslator {
 		super();
 	}
 	
-	@Override
 	public void steps_iterator(TestCase testCase) throws IOException { 
 		
 		mainActivityName = testCase.getMainActivity();
@@ -31,16 +30,17 @@ public class RobotiumTranslator extends GenericTranslator {
 		fileModifier.closeTestMethod();
 	}
 	
-	public void writeToFile() throws IOException {
-		
-		writeToFile(toWrite);
-	}
+//	public void writeToFile() throws IOException {
+//		
+//		writeToFile(toWrite);
+//	}
 
-	public void writeToFile(ArrayList<String> al) throws IOException {
-		
-		for(int i = 0; i < toWrite.size(); i++){
-			bw.write(toWrite.get(i));
-		}
-	}
+
+//	public void writeToFile(ArrayList<String> al) throws IOException {
+//		
+//		for(int i = 0; i < toWrite.size(); i++){
+//			bw.write(toWrite.get(i));
+//		}
+//	}
 
 }

@@ -38,21 +38,28 @@ public abstract class GenericTranslator implements Translator {
 	}
 	
 	
-	public void steps_iterator(TestCase tc) throws IOException {
-		// Should use the SupportedCommands interface as it iterates through the steps.
+//	public void steps_iterator(TestCase tc) throws IOException {
+//		// Should use the SupportedCommands interface as it iterates through the steps.
+//
+//	}
+//
+//	public void writeToFile(ArrayList<String> al) throws IOException {
+//		// TODO Auto-generated method stub
+//
+//	}
 
+//	public void setupFile() throws IOException {
+//		// TODO Auto-generated method stub
+//		
+//	}
+
+	public void writeToFile() throws IOException {
+		ArrayList<String> al = toWrite;
+		for(int i = 0; i < al.size(); i++){
+			bw.write(al.get(i));
+		}
 	}
-
-	public void writeToFile(ArrayList<String> al) throws IOException {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void setupFile() throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	/**
 	 * Closes the BufferedWriter
 	 * @throws IOException

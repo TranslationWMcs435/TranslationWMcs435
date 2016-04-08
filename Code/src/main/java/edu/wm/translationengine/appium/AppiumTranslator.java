@@ -19,13 +19,14 @@ public class AppiumTranslator extends GenericTranslator{
 		af = new AppiumFunctions();
 	}
 	
-	public void writeToFile() throws IOException {
-		// TODO copy shit
-		ArrayList<String> al = toWrite;
-		for(int i = 0; i < al.size(); i++){
-			bw.write(al.get(i));
-		}
-	}
+//	public void writeToFile() throws IOException {
+//		// TODO copy shit
+//		ArrayList<String> al = toWrite;
+//		for(int i = 0; i < al.size(); i++){
+//			bw.write(al.get(i));
+//		}
+//	}
+	
 	
 	/* write to the file generating a test case suitable for use with the appium server*/
 	public void steps_iterator(TestCase testCase) throws IOException{

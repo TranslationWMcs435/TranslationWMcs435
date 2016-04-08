@@ -98,12 +98,12 @@ public class EspressoTranslator extends GenericTranslator {
 	 * @param s String s to be written into file
 	 * @throws IOException
 	 */
-	public void writeToFile() throws IOException{
-		ArrayList<String> al = toWrite;
-		for(int i = 0; i < al.size(); i++){
-			bw.write(al.get(i));
-		}
-	}	
+//	public void writeToFile() throws IOException{
+//		ArrayList<String> al = toWrite;
+//		for(int i = 0; i < al.size(); i++){
+//			bw.write(al.get(i));
+//		}
+//	}	
 	
 	/**
 	 * Iterates through all the StepTestCase objects in the stepTestCases List.

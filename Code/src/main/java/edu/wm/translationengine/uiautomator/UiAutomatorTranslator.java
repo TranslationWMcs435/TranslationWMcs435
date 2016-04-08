@@ -21,12 +21,6 @@ public class UiAutomatorTranslator extends GenericTranslator{
 		fm = new UiAutomatorFileModifier();
 		uf = new UiAutomatorFunctions();	}
 
-	public void writeToFile() throws IOException {
-		ArrayList<String> al = toWrite;
-		for(int i = 0; i < al.size(); i++){
-			bw.write(al.get(i));
-		}
-	}
 	
 	/**
 	 * Iterates through all the StepTestCase objects in the stepTestCases List.
