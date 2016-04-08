@@ -36,3 +36,14 @@ The project is structured into three different parts: JSON Parser, Translation E
 3. Finally, the Execution Engine outputs test cases from those commands. It can:
 	- Output a Java source file, which can be directly executed (available for Espresso and Appium)
 	- Execute those commands directly on a physical Android device or emulator (Appium only)
+
+## Extension
+To extend the project to work with another framework, you mostly need to implement a translation engine, which you can base off of preexisting abstract classes in the .trans package. Then you must link that engine up to the Main class with with a couple lines of code.
+
+The major function in your engine will be Translator.steps_iterator(TestCase). This function should iterate through the TestCase that has been created from the user's JSON file. Your Translator should pass the actions to a Functions class, which decides between all the actions a user inputs, and places code corresponding to those actions in the toWrite attribute of your Translator.
+
+Then you tell the Translator to print out toWrite in Main (that code's already there).
+
+In Main, you need to add lines in three places. First, import your package up top. Second, add your new classname to the switch statement that currently (4/7/2016) has "Espresso" and "Appium" and such. Put yours at the end, and follow the pattern. The third place is if you have a live mode, in which case you will need to add code to the next switch statement, or handle it more cleverly above. Live mode is more difficult to support overall, since each framework differs more wildly.
+
+And that is how you make a file-printing extension. I can't give you much more advice on making the Functions class, other than that switch statements are where it's at.
