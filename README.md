@@ -20,6 +20,17 @@ Therefore, the goal of this project is to generate a translation engine that wil
 ## Supported frameworks
 TranslationEngine currently supports the following testing frameworks: Appium, Espresso, Robolectric (soon), Robotium, UIAutomator
 
+<hr>
+Appium is a black box testing framework. It sets up a server that controls your Android device/emulator remotely to perform live testing. It doesn't know how long actions will take to halt, so it lets a timer run for a bit before inputting again. http://appium.io
+
+Espresso is a white box testing framework. It uses the Android JUnit service to test on your android device/emulator. Because it is connected to the source, it can tell when activities end, so the tests run faster. https://google.github.io/android-testing-support-library/docs/espresso/index.html
+
+Robolectric is a white box testing framework. It runs the activity lifecycle itself, so it doesn't need a device or emulator. It is also very finicky with imported code, so we haven't gotten it to work yet. http://robolectric.org
+
+Robotium is a white-or-black box testing framework that can record and play back test cases on a device or emulator. It has a whole bunch of customization options for your test cases. http://robotium.com/pages/user-guide-android-studio
+
+UIAutomator is a white-or-black box testing framework that is able to automate across the entire android system, and is good for managing apps in the context of actual usage. It uses the AndroidJUnitRunner test runner. https://developer.android.com/training/testing/ui-testing/uiautomator-testing.html
+
 ## Dependencies
  - Selenium Client & WebDriver 2.52.0 (Java)
  - Gson 2.2.4
