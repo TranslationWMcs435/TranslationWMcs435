@@ -1,0 +1,3 @@
+This directory is going to hold the various pictures for Use Cases as they are described in the UseCases.pdf in the parent folder to this folder. 
+These pictures are rudimentary right now due to my Gliffy free trial having ended. These diagrams are made with GenMyModel.
+They will be replaced by superior Gliffy diagrams when time permits.
