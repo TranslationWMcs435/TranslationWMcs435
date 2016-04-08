@@ -1,1 +1,1 @@
-Espresso file ./IO/mileage_simple_type.txt ./IO/weiusd.txt
+UIAutomator file ./IO/mileage_swipe.txt ./IO/standard_out.txt

@@ -1,0 +1,140 @@
+{
+    "appName": "mileage",
+    "packageName": "com.evancharlton.mileage",
+    "mainActivity": "com.evancharlton.mileage.Mileage",
+    "stepTestCases": [
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/partial",
+                "index": "2",
+                "isClickable": false,
+                "positionX": "0",
+                "positionY": "427",
+                "text": "Tank was not filled to the top",
+                "type": "android.widget.CheckBox",
+                "width": "1200"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "64",
+                "id": "android:id/icon",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "717",
+                "positionY": "70",
+                "text": "",
+                "type": "android.widget.ImageView",
+                "width": "64"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "49",
+                "id": "android:id/text1",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "12",
+                "positionY": "236",
+                "text": "Average fuel economy",
+                "type": "android.widget.TextView",
+                "width": "1176"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "height": "96",
+                "id": "id/back",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "216",
+                "positionY": "1824",
+                "text": "",
+                "type": "com.android.systemui.statusbar.policy.KeyButtonView",
+                "width": "256"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "49",
+                "id": "android:id/text1",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "12",
+                "positionY": "1386",
+                "text": "Maximum price",
+                "type": "android.widget.TextView",
+                "width": "1176"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "height": "96",
+                "id": "id/back",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "216",
+                "positionY": "1824",
+                "text": "",
+                "type": "com.android.systemui.statusbar.policy.KeyButtonView",
+                "width": "256"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "64",
+                "id": "android:id/icon",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "1016",
+                "positionY": "70",
+                "text": "",
+                "type": "android.widget.ImageView",
+                "width": "64"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "59",
+                "id": "android:id/text1",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "12",
+                "positionY": "202",
+                "text": "Default vehicle",
+                "type": "android.widget.TextView",
+                "width": "1176"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/save_btn",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "0",
+                "positionY": "1036",
+                "text": "Save changes",
+                "type": "android.widget.Button",
+                "width": "1200"
+            }
+        }
+    ]
+}

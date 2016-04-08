@@ -127,6 +127,10 @@ public class Main {
 			}else{
 				to_print = "0";
 			}
+			System.out.println("What is your input file?");
+			filename = user_input.next();
+			System.out.println("What is your output file?");
+			outname = user_input.next();
 		}
 		
         String toreturn = "Fail case";
