@@ -1,0 +1,16 @@
+package [Test_package_name_here]
+
+import com.android.uiautomator.core.UiDevice;
+import com.android.uiautomator.core.UiObject;
+import com.android.uiautomator.core.UiObjectNotFoundException;
+import com.android.uiautomator.core.UiSelector;
+import com.android.uiautomator.testrunner.UiAutomatorTestCase;
+
+public class TestBackPress extends UiAutomatorTestCase {
+	public void test_uiautomator() throws UiObjectNotFoundException{
+		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/partial")).click();
+		new UiObject(new UiSelector().resourceId("android:id/icon")).click();
+		new UiObject(new UiSelector().resourceId("android:id/text1")).click();
+		new UiObject(new UiSelector().resourceId("id/back")).click();
+	}
+}

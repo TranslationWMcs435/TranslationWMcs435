@@ -23,7 +23,5 @@ public interface Translator {
 	
 	public void setFile(String f) throws IOException;
 	
-	
-	
 
 }
