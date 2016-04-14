@@ -15,15 +15,11 @@ import edu.wm.translationengine.trans.FileModifier;
 public class RobotiumFileModifier extends FileModifier {
 	
 	private String packageName;
-	private String mainActivityName;
-	private List<StepTestCase> stepTestCases;
-	private RobotiumFunctions functions;
+	private String mainActivityName;;
 	
 	public RobotiumFileModifier(String mainPackageName, String mainActivityName, List<StepTestCase> testCase) {
 		this.packageName = mainPackageName;
 		this.mainActivityName = mainActivityName;
-		this.stepTestCases = testCase;
-		functions = new RobotiumFunctions();
 	}
 	
 	public void setupFileImports() throws IOException {
@@ -77,19 +73,6 @@ public class RobotiumFileModifier extends FileModifier {
 		// @Test
 		RobotiumTranslator.toWrite.add("\tpublic void testActions() {\n");
 		RobotiumTranslator.toWrite.add("\t\tView curView = null;\n");
-		
-		for(int i = 0; i < stepTestCases.size(); i++){
-						
-			StepTestCase cur = stepTestCases.get(i);
-			
-			try {
-				functions.writeStep(cur);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}	
-
-		}
-		RobotiumTranslator.toWrite.add("\t}\n\n");
 	}
 
 	@Override
