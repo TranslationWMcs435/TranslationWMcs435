@@ -116,10 +116,10 @@ public class Main {
 			Scanner user_input = new Scanner( System.in );
 			System.out.println("What environment are you using? Espresso (0), Appium (1), UiAutomator (2), or Robotium (3)?");
 			environment_switch = user_input.next();
-			if(environment_switch == "1"){
+			if(environment_switch.equals("1") || environment_switch.equals("Appium")){
 				System.out.println("\nWould you like a .java file (0) or a server (1)?");
 				to_print = user_input.next();
-				if (to_print == "1"){
+				if (to_print.equals("1") || to_print.equals("live")){
 					//Server means we want to do something totally different.
 					appiumServer(filename);
 					return;

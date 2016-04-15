@@ -1,10 +1,7 @@
 {
     "appName": "mileage",
     "packageName": "com.evancharlton.mileage",
-<<<<<<< HEAD
     "mainActivity": "com.evancharlton.mileage.Mileage",
-=======
->>>>>>> origin/master
     "stepTestCases": [
         {
             "action": "CLICK",
