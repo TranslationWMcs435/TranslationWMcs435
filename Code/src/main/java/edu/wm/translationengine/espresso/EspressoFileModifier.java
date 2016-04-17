@@ -43,9 +43,14 @@ public class EspressoFileModifier implements FileModifierInterface{
 		
 	}
 	/**
-	 * Sets up the test method header and the imports for the main activity and R file.
+	 * Sets up the test method header and the imports for the main activity and R file. Also puts the package name at the
+	 * top of the file, done here because packageName is needed in this function so makes sense to handle package here
+	 * so other functions do not also have to take in the package name as an argument.
 	 */
 	public void setupTestMethodHeader(String packageName, String mainActivity) {
+		
+		EspressoTranslator.toWrite.add(0, "package " + packageName + ".test\n");
+		
 		EspressoTranslator.toWrite.add("import " + packageName + "." + mainActivity + ";\n");
 		EspressoTranslator.toWrite.add("import " + packageName + ".R;\n");
 		EspressoTranslator.toWrite.add("\n\n\n@RunWith(AndroidJUnit4.class)\n");
@@ -59,12 +64,9 @@ public class EspressoFileModifier implements FileModifierInterface{
 		EspressoTranslator.toWrite.add("\tpublic void test(){\n");
 	}
 	/**
-	 * Closes the test method and adds the Test package name at the beginning of the file, 
-	 * the actual package name must be added manually after since it is not provided in 
-	 * the JSON file.
+	 * Closes the test method
 	 */
 	public void closeTestMethod() {
 		EspressoTranslator.toWrite.add("\t }\n }");
-		EspressoTranslator.toWrite.add(0, "package [Test_package_name_here]\n");
 	}
 }

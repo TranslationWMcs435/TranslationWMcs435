@@ -34,21 +34,21 @@ public class EspressoFunctions extends GenericFunctions{
 		
 		if(action.equals("CLICK")){
 			if(clicky == false){
-				EspressoTranslator.toWrite.add(0, "import static android.support.test.espresso.action.ViewActions.click;\n");
+				EspressoTranslator.toWrite.add(1, "import static android.support.test.espresso.action.ViewActions.click;\n");
 				clicky = true;
 			}
 			make_click_command(s);
 		}
 		if(action.equals("LONG_CLICK")){
 			if(long_clicky == false){
-				EspressoTranslator.toWrite.add(0, "import static android.support.test.espresso.action.ViewActions.longClick;\n"); 
+				EspressoTranslator.toWrite.add(1, "import static android.support.test.espresso.action.ViewActions.longClick;\n"); 
 				long_clicky = true;
 			}
 			make_long_click_command(s);
 		}
 		if(action.equals("TYPE")){
 			if(typey == false){
-				EspressoTranslator.toWrite.add(0, "import static android.support.test.espresso.action.ViewActions.typeText;\n"); 
+				EspressoTranslator.toWrite.add(1, "import static android.support.test.espresso.action.ViewActions.typeText;\n"); 
 				typey = true;
 			}
 			type(s);
@@ -61,25 +61,19 @@ public class EspressoFunctions extends GenericFunctions{
 	 */
 	private void make_click_command(StepTestCase s) {
 		String espresso_command = new String();
-		try{
-			if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
-				espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(click());\n";
-				EspressoTranslator.toWrite.add(espresso_command);
-			}
-			else if(s.getComponent().getId().length() > 11 && s.getComponent().getId().substring(0, 11).equals("android:id/")){
-				make_click_command_with_text(s);
-			}
-			else{
-				String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
-				espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(click());\n";
-				EspressoTranslator.toWrite.add(espresso_command);
-			}
-		}catch(Exception e){
-			System.out.println("\nERROR: Error with following action:\n");
-			p.printData(s);
-			EspressoTranslator.toWrite.add("\t\t\t\\\\This StepTestCase had an error, its code was not written to file.\n");
+
+		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
+			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(click());\n";
+			EspressoTranslator.toWrite.add(espresso_command);
 		}
-		
+		else if(s.getComponent().getId().length() > 11 && s.getComponent().getId().substring(0, 11).equals("android:id/")){
+			make_click_command_with_text(s);
+		}
+		else{
+			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
+			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(click());\n";
+			EspressoTranslator.toWrite.add(espresso_command);
+		}
 	}
 	
 	/**
@@ -88,17 +82,8 @@ public class EspressoFunctions extends GenericFunctions{
 	 */
 	private void make_click_command_with_text(StepTestCase s) {
 		String espresso_command = new String();		
-		try{
-			espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(click());\n";
-			EspressoTranslator.toWrite.add(espresso_command);
-		}
-		catch(Exception e){
-			System.out.println("\nERROR: Error with following action:\n");
-			p.printData(s);
-			EspressoTranslator.toWrite.add("\t\t\t\\\\This StepTestCase had an error, its code was not written to file.\n");
-		}
-		
-
+		espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(click());\n";
+		EspressoTranslator.toWrite.add(espresso_command);
 	}
 	
 	/**
@@ -107,27 +92,21 @@ public class EspressoFunctions extends GenericFunctions{
 	 */
 	private void make_long_click_command(StepTestCase s) {
 		String espresso_command = new String();
-		try{
-			if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
-				espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(longClick());\n";
-				EspressoTranslator.toWrite.add(espresso_command);
-			}
-			else if(s.getComponent().getId().length() > 11 && s.getComponent().getId().substring(0, 11).equals("android:id/")){
-				make_long_click_command_with_text(s);
-			}
-			else{
-				String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
-				espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(longClick());\n";
-				EspressoTranslator.toWrite.add(espresso_command);
-			}
-		}
-		catch(Exception e){
-			System.out.println("\nERROR: Error with following action:\n");
-			p.printData(s);
-			EspressoTranslator.toWrite.add("\t\t\t\\\\This StepTestCase had an error, its code was not written to file.\n");
 
+		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
+			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(longClick());\n";
+			EspressoTranslator.toWrite.add(espresso_command);
 		}
-		
+		else if(s.getComponent().getId().length() > 11 && s.getComponent().getId().substring(0, 11).equals("android:id/")){
+			make_long_click_command_with_text(s);
+		}
+		else{
+			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
+			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(longClick());\n";
+			EspressoTranslator.toWrite.add(espresso_command);
+		}
+
+	
 		
 	}
 	/**
@@ -135,34 +114,17 @@ public class EspressoFunctions extends GenericFunctions{
 	 * @param c Component object of the current stepTestCase being analyzed
 	 */
 	private void make_long_click_command_with_text(StepTestCase s) {
-		
-		try{
-			String espresso_command = new String();	
-			espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(longClick());\n";
-			EspressoTranslator.toWrite.add(espresso_command);
-		}
-		catch(Exception e){
-			System.out.println("\nERROR: Error with following action:\n");
-			p.printData(s);
-			EspressoTranslator.toWrite.add("\t\t\t\\\\This StepTestCase had an error, its code was not written to file.\n");
-
-		}
+		String espresso_command = new String();	
+		espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(longClick());\n";
+		EspressoTranslator.toWrite.add(espresso_command);
 	}
 
 	public void type(StepTestCase s){
-		try{
-			String espresso_command = new String();
-			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
-			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(typeText(\"" + s.getComponent().getText() + "\"));\n";
-			EspressoTranslator.toWrite.add(espresso_command);
-		}
-		catch(Exception e){
-			System.out.println("\nERROR: Error with following action:\n");
-			p.printData(s);
-			EspressoTranslator.toWrite.add("\t\t\t\\\\This StepTestCase had an error, its code was not written to file.\n");
+		String espresso_command = new String();
+		String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
+		espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(typeText(\"" + s.getComponent().getText() + "\"));\n";
+		EspressoTranslator.toWrite.add(espresso_command);
 
-			
-		}
 
 	}
 
