@@ -6,10 +6,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import edu.wm.translationengine.espresso.EspressoTranslator;
+import edu.wm.translationengine.espresso.EspressoChecker;
+import edu.wm.translationengine.robotium.RobotiumChecker;
 import edu.wm.translationengine.robotium.RobotiumTranslator;
 import edu.wm.translationengine.appium.*;
+import edu.wm.translationengine.trans.AbstractChecker;
 import edu.wm.translationengine.trans.Translator;
 import edu.wm.translationengine.uiautomator.UiAutomatorTranslator;
+import edu.wm.translationengine.uiautomator.UiAutomatorChecker;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -73,6 +77,7 @@ public class Main {
 		String[] instructs;
 		final Charset cs = Charset.defaultCharset();
 		Translator et = null;
+		AbstractChecker checker = null;
 		//Espresso == 0, Appium == 1. Others to follow.
 		String environment_switch = "0";
 		//Whether to print to the output file or not.
@@ -139,20 +144,44 @@ public class Main {
             switch (environment_switch){
 	            case "0":
 	            case "Espresso":
-		            et = new EspressoTranslator();
+	            	checker = new EspressoChecker();
+	            	if (checker.checkAppData(tc)){
+	            		et = new EspressoTranslator();
+	            	}else{
+	            		System.out.println("Error in JSON file, not accepted by checker.");
+	            		return;
+	            	}
 		            break;
 	            case "1":
 	            case "Appium":
-	            	//Have a translator for Appium.
-	            	et = new AppiumTranslator();
+	            	//Add checker for Appium.
+	            	checker = new AppiumChecker();
+	            	if (checker.checkAppData(tc)){
+	            		et = new AppiumTranslator();
+	            	}else{
+	            		System.out.println("Error in JSON file, not accepted by checker.");
+	            		return;
+	            	}
 	            	break;
 	            case "2":
 	            case "UIAutomator":
-	            	et = new UiAutomatorTranslator();
+	            	checker = new UiAutomatorChecker();
+	            	if (checker.checkAppData(tc)){
+	            		et = new UiAutomatorTranslator();
+	            	}else{
+	            		System.out.println("Error in JSON file, not accepted by checker.");
+	            		return;
+	            	}
 	            	break;
 	            case "3":
 	            case "Robotium":
-	            	et = new RobotiumTranslator();
+	            	checker = new RobotiumChecker();
+	            	if (checker.checkAppData(tc)){
+	            		et = new RobotiumTranslator();
+	            	}else{
+	            		System.out.println("Error in JSON file, not accepted by checker.");
+	            		return;
+	            	}
 	            	break;
             }
             et.setFile(outname);
@@ -182,6 +211,10 @@ public class Main {
         }
         
         System.out.printf(toreturn);
+        
+        /*
+         * This is where we add the stuff for AST parsing.
+         */
 		
 		return;
 	}

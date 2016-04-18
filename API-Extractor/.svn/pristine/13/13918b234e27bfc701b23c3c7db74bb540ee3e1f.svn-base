@@ -1,0 +1,4 @@
+Class,Method,Level,[APICall]
+co.gov.dnp.ferias.AdminActivity,verifyWifi,2,[connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)]
+co.gov.dnp.ferias.ws.ServiceBroker,postServiceRecord,2,[httpClient.execute(httpPost)]
+co.gov.dnp.ferias.ws.ServiceBroker,readJSONFeed,2,[httpClient.execute(httpGet)]

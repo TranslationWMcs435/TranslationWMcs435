@@ -1,0 +1,2 @@
+[APICall]:Call-chain
+[client.execute(request)]:[nf.frex.android.FrexActivity.openHttpContentStream(android.net.Uri)]<--[nf.frex.android.FrexActivity.run()]

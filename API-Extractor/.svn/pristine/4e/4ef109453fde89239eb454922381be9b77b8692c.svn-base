@@ -1,0 +1,5 @@
+[APICall]:Call-chain
+[connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)]:[co.gov.dnp.ferias.AdminActivity.verifyWifi()]<--[co.gov.dnp.ferias.AdminActivity.synchronize(android.view.View)]
+[connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)]:[co.gov.dnp.ferias.AdminActivity.verifyWifi()]<--[co.gov.dnp.ferias.AdminActivity.updateData(android.view.View)]
+[httpClient.execute(httpPost)]:[co.gov.dnp.ferias.ws.ServiceBroker.postServiceRecord(java.lang.String,co.gov.dnp.ferias.vo.ServiceRecordVO)]<--[co.gov.dnp.ferias.tasks.SynchronizeRecordsTask.run()]
+[httpClient.execute(httpGet)]:[co.gov.dnp.ferias.ws.ServiceBroker.readJSONFeed(java.lang.String)]<--[co.gov.dnp.ferias.tasks.UpdateDatabaseTask.run()]
