@@ -1,0 +1,66 @@
+import edu.wm.translationengine.appium.*;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import java.io.File;
+import java.net.URL;
+import java.util.List;
+import org.junit.runner.RunWith;
+import junit.framework.TestSuite;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.remote.DesiredCapabilities;
+public class TestFile{
+	public static String DEFAULT_SERVER = "http://localhost";
+	public static String DEFAULT_PORT = "4723";
+	public static String DEFAULT_SUFFIX = "/wd/hub";
+	private static String DEFAULT_APPIUM_DIR = "C:\\Program Files (x86)\\Appium";
+	public static String DEVICE_NAME = "Google Nexus 4 - 5.1.0 - API 22 - 768x1280";
+	public static String PLATFORM_NAME = "Android";
+	public static String PLATFORM_VERSION = "5.1";
+	public static String GMDICE_DIR = System.getProperty("user.dir") + "\\res\\apk\\gmdice.apk";
+	private AppiumDriver<MobileElement> driver;
+	private AppiumServerWorker serverWorker;
+		@Before
+		public void setUp() throws Exception {
+			serverWorker = new AppiumServerWorker(DEFAULT_APPIUM_DIR);
+			serverWorker.startServer();
+			DesiredCapabilities capability = new DesiredCapabilities();
+			capability.setCapability("deviceName", DEVICE_NAME);
+			capability.setCapability("platformName", PLATFORM_NAME);
+			capability.setCapability("platformVersion", PLATFORM_VERSION);
+			File file = new File(GMDICE_DIR);
+			capability.setCapability("app", file.getAbsolutePath());
+			URL serverURL = new URL(DEFAULT_SERVER + ":" + DEFAULT_PORT + DEFAULT_SUFFIX);
+			driver = new AndroidDriver<MobileElement>(serverURL, capability);
+		}
+		@After
+		public void tearDown() throws Exception {
+			driver.quit();
+			serverWorker.stopServer();
+		}
+		@Test
+		public void testAppium() throws InterruptedException{
+			driver.findElement(By.name("3D20")).click();
+			Thread.sleep(250);
+			driver.findElement(By.name("1d20")).click();
+			Thread.sleep(250);
+			driver.findElement(By.name("1d6")).click();
+			Thread.sleep(250);
+			driver.findElement(By.name("1d6+4")).click();
+			Thread.sleep(250);
+			((MobileElement)driver.findElement(By.name("..."))).tap(1, 800);
+			Thread.sleep(250);
+			driver.findElement(By.name("More...")).click();
+			Thread.sleep(250);
+			driver.findElement(By.name("Cancel")).click();
+			Thread.sleep(250);
+			driver.findElement(By.name("...")).click();
+			Thread.sleep(250);
+			driver.findElement(By.name("1d2")).click();
+			Thread.sleep(250);
+		}
+}

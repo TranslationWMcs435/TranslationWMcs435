@@ -11,16 +11,20 @@ import edu.wm.translationengine.classes.TestCase;
  */
 public interface Translator {
 
+	//
 	public void steps_iterator(TestCase tc)  throws IOException;
 
 //	void writeToFile(ArrayList<String> al) throws IOException;
 	
+	//
 	public void writeToFile() throws IOException;
 	
 //	void setupFile() throws IOException;
 	
+	//
 	public void closeFile() throws IOException;
 	
+	//Change the file to which we are exporting.
 	public void setFile(String f) throws IOException;
 	
 

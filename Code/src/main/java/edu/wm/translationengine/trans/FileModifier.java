@@ -20,14 +20,4 @@ public abstract class FileModifier implements FileModifierInterface {
 
 	}
 
-	public void writeToFile(ArrayList<String> al) throws IOException {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void writeToFile() throws IOException {
-		// TODO Auto-generated method stub
-
-	}
-
 }

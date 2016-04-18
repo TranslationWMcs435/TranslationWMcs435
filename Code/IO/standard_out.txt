@@ -12,5 +12,10 @@ public class TestBackPress extends UiAutomatorTestCase {
 		new UiObject(new UiSelector().resourceId("android:id/icon")).click();
 		new UiObject(new UiSelector().resourceId("android:id/text1")).click();
 		new UiObject(new UiSelector().resourceId("id/back")).click();
+		new UiObject(new UiSelector().resourceId("android:id/text1")).click();
+		new UiObject(new UiSelector().resourceId("id/back")).click();
+		new UiObject(new UiSelector().resourceId("android:id/icon")).click();
+		new UiObject(new UiSelector().resourceId("android:id/text1")).click();
+		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/save_btn")).click();
 	}
 }
