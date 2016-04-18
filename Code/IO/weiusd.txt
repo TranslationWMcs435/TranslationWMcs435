@@ -1,44 +1,26 @@
 package [Test_package_name_here]
-import static android.support.test.espresso.action.ViewActions.longClick;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.Espresso.onData;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import android.support.test.espresso.action.ViewActions;
-import android.support.test.espresso.matcher.ViewMatchers;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
-import android.app.Activity;
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
-import android.test.ActivityInstrumentationTestCase2;
-import android.test.suitebuilder.annotation.LargeTest;
-import android.support.test.runner.AndroidJUnitRunner;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import junit.framework.TestSuite;
-import null.null;
-import null.R;
 
+import com.android.uiautomator.core.UiDevice;
+import com.android.uiautomator.core.UiObject;
+import com.android.uiautomator.core.UiObjectNotFoundException;
+import com.android.uiautomator.core.UiSelector;
+import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
-
-@RunWith(AndroidJUnit4.class)
-@LargeTest
-public class TestFile extends TestSuite{
-	@Rule
-	public ActivityTestRule<null> mActivityRule = new ActivityTestRule<null>(null.class);
-	@Test
-	public void test(){
-			\\This StepTestCase had an error, its code was not written to file.
-			\\This StepTestCase had an error, its code was not written to file.
-			\\This StepTestCase had an error, its code was not written to file.
-			\\This StepTestCase had an error, its code was not written to file.
-			\\This StepTestCase had an error, its code was not written to file.
-			onData(allOf(is("More..."))).perform(click());
-			onView(withText("Cancel")).perform(click());
-			\\This StepTestCase had an error, its code was not written to file.
-			onData(allOf(is("1d2"))).perform(click());
-	 }
- }
+public class TestBackPress extends UiAutomatorTestCase {
+	public void test_uiautomator() throws UiObjectNotFoundException{
+		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/volume")).click();
+		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/volume")).setText("58");
+		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/price")).click();
+		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/price")).setText("50");
+		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/odometer")).click();
+		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/odometer")).setText("20");
+		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/partial")).click();
+		new UiObject(new UiSelector().text("Comment")).click();
+		new UiObject(new UiSelector().resourceId("")).setText("");
+		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/date")).click();
+		new UiObject(new UiSelector().resourceId("android:id/increment")).click();
+		new UiObject(new UiSelector().resourceId("android:id/decrement")).click();
+		new UiObject(new UiSelector().resourceId("android:id/increment")).click();
+		new UiObject(new UiSelector().resourceId("android:id/button1")).click();
+	}
+}

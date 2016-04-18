@@ -9,8 +9,8 @@ import edu.wm.translationengine.trans.StepTestCaseDataPrinter;
 public class UiAutomatorFunctions implements Functions{
 	
 	StepTestCaseDataPrinter p;
-	String last_id = null;
-	String last_text = null;
+	String last_id = "";
+	String last_text = "";
 	
 	public UiAutomatorFunctions(){
 		p = new StepTestCaseDataPrinter();
@@ -27,15 +27,23 @@ public class UiAutomatorFunctions implements Functions{
 		if(action.equals("TYPE")){
 			type(s);
 		}
-		if (s.getComponent().getId() != null){
+		if(action.contains("SWIPE")){
+			System.out.println("Swiped");
+			swipe(s);
+		}
+		
+		last_id = s.getComponent().getId();
+		last_text = s.getComponent().getText();
+		/*
+		if (s.getComponent().getId().equals("")){
 			last_id = s.getComponent().getId();
 		}else if(s.getComponent().getText() != null){
 			last_id = null;
-			last_text = s.getComponent().getId();
+			last_text = s.getComponent().getText();
 		}else{
 			last_id = null;
 			last_text = null;
-		}
+		}*/
 		
 	}
 	
@@ -43,7 +51,7 @@ public class UiAutomatorFunctions implements Functions{
 		String uiautomator_command = new String();	
 		
 		if(testCase.getComponent().getId().equals("")){
-			System.out.println("Got in: " + testCase.getComponent().getText());
+			System.out.println("Got in, but no ID: " + testCase.getComponent().getText());
 			uiautomator_command += "\t\tnew UiObject(new UiSelector().text(\"" + testCase.getComponent().getText() + "\")).click();\n";
 			UiAutomatorTranslator.toWrite.add(uiautomator_command);
 		}else{
@@ -91,22 +99,29 @@ public class UiAutomatorFunctions implements Functions{
 
 	public boolean type(StepTestCase testCase) throws Exception{
 		String uiautomator_command = "";		
-		if(testCase.getComponent().getId() == null){
-			if (last_id.equals(null)){
+		if(testCase.getComponent().getId().equals("")){
+			System.out.println("Id field is null in the following stepTestCase:\n");
+			if (last_id.equals("")){
+				System.out.println("No ID on current or last input. Basing from text on last input.");
 				uiautomator_command += "\t\tnew UiObject(new UiSelector().text(\"" + last_text + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
 			}else{
-				System.out.println("Id field is null in the following stepTestCase:\n");
-				uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
-				p.printData(testCase);
+				System.out.println("ID found from last input.");
+				uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + last_id + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
+				//p.printData(testCase);
+			}
+		}else if(testCase.getComponent().getId().equals("id/keyboard_view")){
+			System.out.println("ID is keyboard, basing location on prior click.");
+			if (last_id.equals("")){
+				System.out.println("No ID on current or last input. Basing from text on last input.");
+				uiautomator_command += "\t\tnew UiObject(new UiSelector().text(\"" + last_text + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
+			}else{
+				System.out.println("ID found from last input.");
+				uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + last_id + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
+				//p.printData(testCase);
 			}
 		}
-		if(testCase.getComponent().getId().equals("id/keyboard_view")){
-			uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + last_id + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
-		}else{
-			uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
-		}
-		if(testCase.getComponent().getText() == null){
-			System.out.println("Text field is null in the following stepTestCase:\n");
+		if(testCase.getComponent().getText().equals("")){
+			System.out.println("Text field is null in the following stepTestCase, so nothing will be typed in-app:\n");
 			p.printData(testCase);
 		}
 		UiAutomatorTranslator.toWrite.add(uiautomator_command);
@@ -114,12 +129,36 @@ public class UiAutomatorFunctions implements Functions{
 		return true;
 	}
 	public boolean pressKey(StepTestCase testCase) throws Exception {
-		// TODO Auto-generated method stub
+		// Haven't seen as an input yet.
 		return false;
 	}
 
 	public boolean swipe(StepTestCase testCase) throws Exception {
-		// TODO Auto-generated method stub
+		// Requires: Stuff
+		// public boolean swipe (int startX, int startY, int endX, int endY, int steps)
+		// The trick is to figure out the end positions when you only know the start and the direction.
+		String uiautomator_command = "";
+		int startX = Integer.parseInt(testCase.getComponent().getPositionX());
+		int startY = Integer.parseInt(testCase.getComponent().getPositionY());
+		int endY;
+		int endX;
+		
+		
+		// Generate the end coordinates based on initial ones and direction.
+		switch(testCase.getComponent().getType()){
+		case "SWIPE-UP-RIGHT":
+			break;
+		case "SWIPE-UP-LEFT":
+			break;
+		case "SWIPE-DOWN-RIGHT":
+			break;
+		case "SWIPE-DOWN-LEFT":
+			break;
+		}
+		
+		// Actually add the string to uiautomator_command
+		
+		UiAutomatorTranslator.toWrite.add(uiautomator_command);
 		return false;
 	}
 
@@ -139,12 +178,12 @@ public class UiAutomatorFunctions implements Functions{
 	}
 
 	public boolean launchApp(StepTestCase testCase) throws Exception {
-		// TODO Auto-generated method stub
+		// Stretch goal: Figure out a generic name for the app based on JSON. May be impossible.
 		return false;
 	}
 
 	public boolean closeApp(StepTestCase testCase) throws Exception {
-		// TODO Auto-generated method stub
+		// Exit the application at the end of the test.
 		return false;
 	}
 
