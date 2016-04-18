@@ -19,10 +19,13 @@ public class EspressoFileModifier implements FileModifierInterface{
 	}
 	
 	public void setupFileImports() throws IOException {
+		EspressoTranslator.toWrite.add("import static android.support.test.espresso.action.ViewActions.scrollTo;\n");
 		EspressoTranslator.toWrite.add("import static android.support.test.espresso.Espresso.onView;\n");
 		EspressoTranslator.toWrite.add("import static android.support.test.espresso.Espresso.onData;\n");
 		EspressoTranslator.toWrite.add("import static android.support.test.espresso.matcher.ViewMatchers.withId;\n");
 		EspressoTranslator.toWrite.add("import static android.support.test.espresso.matcher.ViewMatchers.withText;\n");
+		EspressoTranslator.toWrite.add("import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;\n");
+
 		EspressoTranslator.toWrite.add("import android.support.test.espresso.action.ViewActions;\n");
 		EspressoTranslator.toWrite.add("import android.support.test.espresso.matcher.ViewMatchers;\n");
 		
@@ -49,7 +52,7 @@ public class EspressoFileModifier implements FileModifierInterface{
 	 */
 	public void setupTestMethodHeader(String packageName, String mainActivity) {
 		
-		EspressoTranslator.toWrite.add(0, "package " + packageName + ".test\n");
+		EspressoTranslator.toWrite.add(0, "package " + packageName + ".test;\n\n");
 		
 		EspressoTranslator.toWrite.add("import " + packageName + "." + mainActivity + ";\n");
 		EspressoTranslator.toWrite.add("import " + packageName + ".R;\n");

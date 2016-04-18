@@ -24,6 +24,16 @@ public class EspressoChecker extends AbstractChecker{
 				return false;
 			}
 		}
+		else if(c.getType().equals("android.widget.ImageButton")){
+			if(c.getDescription() == null || c.getDescription().equals("")){
+				return false;
+			}
+		}
+		else if(c.getId().equals("")){
+			if(c.getText() == null){
+				return false;
+			}
+		}
 		else if(c.getId().length() > 11 && c.getId().substring(0, 11).equals("android:id/")){
 			if(c.getText() == null){
 				return false;
@@ -44,6 +54,16 @@ public class EspressoChecker extends AbstractChecker{
 				return false;
 			}
 		}
+		else if(c.getType().equals("android.widget.ImageButton")){
+			if(c.getDescription() == null || c.getDescription().equals("")){
+				return false;
+			}
+		}
+		else if(c.getId().equals("")){
+			if(c.getText() == null){
+				return false;
+			}
+		}
 		else if(c.getId().length() > 11 && c.getId().substring(0, 11).equals("android:id/")){
 			if(c.getText() == null){
 				return false;
@@ -59,9 +79,6 @@ public class EspressoChecker extends AbstractChecker{
 	
 	@Override
 	public boolean checkType(Component c){
-		if(c.getId() == null || c.getId().equals("")){
-			return false;
-		}
 		if(c.getText() == null){
 			return false;
 		}

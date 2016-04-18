@@ -12,7 +12,10 @@ public class EspressoFunctions extends GenericFunctions{
 	private boolean long_clicky;
 	private boolean typey;
 	StepTestCaseDataPrinter p;
-
+	String storedId;
+	String storedText;
+	boolean useId; //if true use id in type else use the text of the component
+	
 	/**
 	 * Constructor for the EspressoFunctions class
 	 */
@@ -21,6 +24,8 @@ public class EspressoFunctions extends GenericFunctions{
 		long_clicky = false;
 		typey = false;
 		p = new StepTestCaseDataPrinter();
+		storedId = "";
+		storedText = "";
 	}
 	
 
@@ -49,6 +54,7 @@ public class EspressoFunctions extends GenericFunctions{
 		if(action.equals("TYPE")){
 			if(typey == false){
 				EspressoTranslator.toWrite.add(1, "import static android.support.test.espresso.action.ViewActions.typeText;\n"); 
+				EspressoTranslator.toWrite.add(1, "import static android.support.test.espresso.matcher.ViewMatchers.withHint;\n"); 
 				typey = true;
 			}
 			type(s);
@@ -62,16 +68,35 @@ public class EspressoFunctions extends GenericFunctions{
 	private void make_click_command(StepTestCase s) {
 		String espresso_command = new String();
 
+		
+		if(s.getComponent().getType().equals("android.widget.EditText")){
+			if(s.getComponent().getId().equals("")){
+				storedText = s.getComponent().getText();
+				useId = false;
+			}
+			else{
+				storedId = s.getComponent().getId();
+				useId = true;
+			}
+		}
+
 		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
-			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(click());\n";
+			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(scrollTo(), click());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
+		}
+		else if(s.getComponent().getType().equals("android.widget.ImageButton")){
+			espresso_command += "\t\t\tonView(withContentDescription(\"" + s.getComponent().getDescription() + "\")).perform(scrollTo(), click());\n";
+			EspressoTranslator.toWrite.add(espresso_command);
+		}
+		else if(s.getComponent().getId().equals("")){
+			make_click_command_with_text(s);
 		}
 		else if(s.getComponent().getId().length() > 11 && s.getComponent().getId().substring(0, 11).equals("android:id/")){
 			make_click_command_with_text(s);
 		}
 		else{
 			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
-			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(click());\n";
+			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(scrollTo(), click());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
 		}
 	}
@@ -81,8 +106,13 @@ public class EspressoFunctions extends GenericFunctions{
 	 * @param c Component object of the current stepTestCase being analyzed
 	 */
 	private void make_click_command_with_text(StepTestCase s) {
-		String espresso_command = new String();		
-		espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(click());\n";
+		String espresso_command = new String();
+		if(s.getComponent().getType().equals("android.widget.EditText")){
+			espresso_command += "\t\t\tonView(withHint(\"" + s.getComponent().getText() + "\")).perform(scrollTo(), click());\n";
+		}
+		else{
+			espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(scrollTo(), click());\n";
+		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
 	
@@ -94,15 +124,22 @@ public class EspressoFunctions extends GenericFunctions{
 		String espresso_command = new String();
 
 		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
-			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(longClick());\n";
+			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(scrollTo(), longClick());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
+		}
+		else if(s.getComponent().getType().equals("android.widget.ImageButton")){
+			espresso_command += "\t\t\tonView(withContentDescription(\"" + s.getComponent().getDescription() + "\")).perform(scrollTo(), longClick());\n";
+			EspressoTranslator.toWrite.add(espresso_command);
+		}
+		else if(s.getComponent().getId().equals("")){
+			make_long_click_command_with_text(s);
 		}
 		else if(s.getComponent().getId().length() > 11 && s.getComponent().getId().substring(0, 11).equals("android:id/")){
 			make_long_click_command_with_text(s);
 		}
 		else{
 			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
-			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(longClick());\n";
+			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(scrollTo(), longClick());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
 		}
 
@@ -115,17 +152,25 @@ public class EspressoFunctions extends GenericFunctions{
 	 */
 	private void make_long_click_command_with_text(StepTestCase s) {
 		String espresso_command = new String();	
-		espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(longClick());\n";
+		if(s.getComponent().getType().equals("android.widget.EditText")){
+			espresso_command += "\t\t\tonView(withHint(\"" + s.getComponent().getText() + "\")).perform(scrollTo(), longClick());\n";
+		}
+		else{
+			espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(scrollTo(), longClick());\n";
+		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
 
 	public void type(StepTestCase s){
 		String espresso_command = new String();
-		String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
-		espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(typeText(\"" + s.getComponent().getText() + "\"));\n";
+		if(useId == true){
+			String id = storedId.substring((EspressoTranslator.packageName.length() + 4));
+			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(scrollTo(), typeText(\"" + s.getComponent().getText() + "\"));\n";
+		}
+		else{
+			espresso_command += "\t\t\tonView(withHint(\"" + storedText + "\")).perform(scrollTo(), typeText(\"" + s.getComponent().getText() + "\"));\n";
+		}
 		EspressoTranslator.toWrite.add(espresso_command);
-
-
 	}
 
 
