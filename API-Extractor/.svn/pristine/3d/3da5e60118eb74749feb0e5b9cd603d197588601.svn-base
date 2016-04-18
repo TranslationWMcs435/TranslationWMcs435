@@ -1,0 +1,33 @@
+#local 
+local_header = <b>This method implements the following db-related operations:</b><br>
+local_insert = <br>- It inserts the <i>#attr</i> attributes into table <i>#table</i> <br>
+local_insert_no_columns = <br>- It inserts values for the first <i>#attr</i> columns into table <i>#table</i><br>
+local_delete = <br>- It deletes rows from table(s) <i>#table</i> <br>
+local_update = <br>- It updates the <i>#attr</i> attribute(s) in table <i>#table</i> <br>
+local_queries = <br>- It queries the table(s) <i>#table</i><br>
+local_drop = <br>- It drops the <i>#table</i> <br>
+local_create = <br>- It creates the table(s) <i>#table</i> <br>
+local_truncate = <br>- It deletes all the rows in table(s) <i>#table</i> <br>
+local_alter =  <br>- It alters the structure of table(s) <i>#table</i> <br>
+
+#delegation
+delegate_header = <br><b>This method invokes db-related operations via delegation:</b><br>
+delegate_insert = <br>- It inserts the <i>#attr</i> attributes into table <i>#table</i> via <i>#method</i><br>
+delegate_insert_no_columns = <br>- It inserts values for the first <i>#attr</i> columns of table <i>#table</i> via <i>#method</i><br>
+delegate_delete = <br>- It deletes rows from table(s) <i>#table</i> via <i>#method</i> <br>
+delegate_update = <br>- It updates the <i>#attr</i> attribute(s) in table <i>#table</i> via <i>#method</i> <br>
+delegate_queries = <br>- It queries the table(s) <i>#table</i> via <i>#method</i><br>
+delegate_drop = <br>- It drops the <i>#table</i> via <i>#method</i><br>
+delegate_create = <br>- It creates the table(s) <i>#table</i> via <i>#method</i><br> 
+delegate_truncate = <br>- It deletes all the rows in table(s) <i>#table</i> via <i>#method</i><br>
+delegate_alter =  <br>- It alters the structure of table(s) <i>#table</i> via <i>#method</i><br>
+
+#constraints
+constr_header = <br><b>Some constraints that should be taken into the account are the following:</b><br>
+constr_autonum = <br>- Insertions in table <i>#table</i> do not require to set the attribute <i>#attr</i> because it is auto-numeric<br>
+constr_varchar = <br>- Make sure the strings to be stored in <i>#table</i> do not overflow the varchar limits: <i>#limits</i> <br>
+constr_unique = <br>- Make sure the values of attribute <i>#table</i>.<i>#attr</i> are unique because there is a UNIQUENESS constraint<br>
+constr_non_null = <br>- Make sure the values in <i>#table</i>.<i>#attr</i> are not null <br>
+constr_ref_integrity = <br>- When inserting into table <i>#table</i>, make sure the referential integrity imposed by attribute(s) <i>#attr</i> is accomplished. The foreign keys in the table are the following: <i>#foreign-keys</i> <br>
+constr_ref_update = <br>- Updating the attribute <i>#attr</i> in table <i>#table</i>, may affect registers in table(s) #list, because these table(s) declare foreign keys pointing to <i>#table</i>  <br>
+constr_ref_delete = <br>- Deleting rows from table <i>#table</i>, may affect registers in table(s) #list, because these table(s) declare foreign keys pointing to <i>#table</i> <br>

@@ -1,0 +1,2 @@
+Class,Method,Level,[APICall]
+nf.frex.android.FrexActivity,openHttpContentStream,2,[client.execute(request)]
