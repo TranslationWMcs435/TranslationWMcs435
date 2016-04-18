@@ -16,12 +16,17 @@ public class RobotiumTranslator extends GenericTranslator {
 	private String mainActivityName;
 	private String packageName;
 	private RobotiumFileModifier fileModifier;
+	private RobotiumChecker robotiumChecker;
+	private RobotiumFunctions functions;
 	
 	public RobotiumTranslator() throws IOException {
 		super();
 	}
 	
 	public void steps_iterator(TestCase testCase) throws IOException { 
+		
+		robotiumChecker = new RobotiumChecker();
+		robotiumChecker.runCheck(testCase);
 		
 		mainActivityName = testCase.getMainActivity();
 		packageName = testCase.getPackageName();
@@ -31,7 +36,7 @@ public class RobotiumTranslator extends GenericTranslator {
 		fileModifier.setupTestMethodHeader();
 		
 		List<StepTestCase> stepTestCases = testCase.getSteps();
-		RobotiumFunctions functions = new RobotiumFunctions();
+		functions = new RobotiumFunctions();
 		
 		for(int i = 0; i < stepTestCases.size(); i++){
 			

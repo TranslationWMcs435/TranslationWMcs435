@@ -1,5 +1,3 @@
-package [Test_package_name_here]
-
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
@@ -24,3 +22,28 @@ public class TestBackPress extends UiAutomatorTestCase {
 		new UiObject(new UiSelector().resourceId("android:id/button1")).click();
 	}
 }
+=======
+
+@RunWith(AndroidJUnit4.class)
+@LargeTest
+public class TestFile extends TestSuite{
+	@Rule
+	public ActivityTestRule<Mileage> mActivityRule = new ActivityTestRule<Mileage>(Mileage.class);
+	@Test
+	public void test(){
+			onView(withId(R.id.volume)).perform(scrollTo(), click());
+			onView(withId(R.id.volume)).perform(scrollTo(), typeText("58"));
+			onView(withId(R.id.price)).perform(scrollTo(), click());
+			onView(withId(R.id.price)).perform(scrollTo(), typeText("50"));
+			onView(withId(R.id.odometer)).perform(scrollTo(), click());
+			onView(withId(R.id.odometer)).perform(scrollTo(), typeText("20"));
+			onView(withId(R.id.partial)).perform(scrollTo(), click());
+			onView(withHint("Comment")).perform(scrollTo(), click());
+			onView(withHint("Comment")).perform(scrollTo(), typeText(""));
+			onView(withId(R.id.date)).perform(scrollTo(), click());
+			onView(withContentDescription("Increase month")).perform(scrollTo(), click());
+			onView(withContentDescription("Decrease day")).perform(scrollTo(), click());
+			onView(withContentDescription("Increase year")).perform(scrollTo(), click());
+			onView(withText("Done")).perform(scrollTo(), click());
+	 }
+ }
