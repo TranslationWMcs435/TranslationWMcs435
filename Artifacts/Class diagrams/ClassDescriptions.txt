@@ -1,0 +1,104 @@
+# Class descriptions
+This artifact enumerates classes within this project and contains a brief overview of their core functionalities.
+
+## edu.wm.translationengine.appium
+
+AppiumException
+Exception generated when there is there is a problem writing or executing Appium commands at runtime.
+
+AppiumServerWorker
+Programmatically starts, stops, and manages the server required for Appium to directly execute mobile commands. Used in output java files.
+
+LiveModeServerWorker
+Same as AppiumServerWorker, but is used in live mode for Appium.
+
+AppiumLive
+Holds all relevenat info to start an Appium server in live mode.
+
+AppiumTest
+Main Appium class writes test cases and directly executes commands.
+
+AppiumTranslator
+Directs translation from beginning to end.
+
+AppiumFunctions
+Contains methods to output source code for the Appium framework.
+
+AppiumChecker
+Checks tests cases in JSON file to see if it has all necessary info to translate.
+
+AppiumFileModifier
+Writes the basic skeleton for the output file.
+
+## edu.wm.translationengine.espresso
+
+EspressoFunctions
+Contains methods to output source code for the Espresso framework.
+
+EspressoTranslator
+Takes Action objects and creates Espresso commands that correspond to those Action objects.
+
+EspressoChecker
+Checks tests cases in JSON file to see if it has all necessary info to translate.
+
+EspressoFileModifier
+Writes the basic skeleton for the output file.
+
+## edu.wm.translationengine.robotium
+
+RobotiumFunctions
+Contains methods to output source code for the Robotium framework.
+
+RobotiumTranslator
+Directs translation from beginning to end.
+
+RobotiumFileModifier
+Writes the basic skeleton for the output file.
+
+RobotiumChecker
+Checks tests cases in JSON file to see if it has all necessary info to translate.
+
+## edu.wm.translationengine.uiautomator
+
+UIAutomatorFunctions
+Contains methods to output source code for the UIAutomator framework.
+
+UIAutomatorFunctionsTranslator
+Directs translation from beginning to end.
+
+UIAutomatorFileModifier
+Writes the basic skeleton for the output file.
+
+UIAutomatorChecker
+Checks tests cases in JSON file to see if it has all necessary info to translate.
+
+## edu.wm.translationengine.classes
+
+Component
+Storage class that contains information about a UI component.
+
+StepTestCase
+Storage class that stores an action and an associated UI component the action will be performed on.
+
+TestCase
+Contains information relevant to create a test case, such as information about the test application, as well as a list of actions to perform on UI components.
+
+## edu.wm.translationengine.trans
+
+Translator
+This interface specifies actions that translators should have for each environment.
+
+GenericTranslator
+A superclass with some nice, generic implementations of the Translator interface.
+
+Functions
+Functions specifies all actions that are supported by the translation engine.
+
+GenericFunctions
+A superclass to the functions methods tied to each environment.
+
+Checker
+Abstract class that specifies how to check input JSON file for each framework.
+
+StepTestDataPrinter
+Prints out a test case.
