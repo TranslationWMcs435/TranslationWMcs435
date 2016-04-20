@@ -10,7 +10,7 @@ import edu.wm.translationengine.trans.AbstractChecker;
  *
  */
 public class RobotiumChecker extends AbstractChecker {
-
+	
 	public RobotiumChecker() {
 		super();
 	}
@@ -40,7 +40,7 @@ public class RobotiumChecker extends AbstractChecker {
 				
 		if(!hasBasicComponentInfo(c, "click"))
 			return false;
-		
+
 		return true;
 	}
 	
@@ -54,15 +54,31 @@ public class RobotiumChecker extends AbstractChecker {
 	
 	public boolean checkType(Component c) {
 		
-		if(!hasBasicComponentInfo(c, "long click"))
-			return false;
-		
 		if(c.getText() == null) {
 			// don't check c.getText().equals("") because 
 			// empty strings can be inputted for type action
 			
 			System.err.println("*** Information needed for long click action is missing: id\n" +
 					"Input test case file should include the component id as a value for the key \'text\' in stepTestCases");
+			return false;
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * Need positionX, positionY
+	 */
+	public boolean checkSwipe(Component c) {
+
+		if(c.getPositionX().equals("") || c.getPositionX() == null) {
+			System.err.println("*** Information needed for swipe action is missing: positionX\n"+ 
+					"Input test case file should include the component id as a value for the key 'positionX' in stepTestCases");
+			return false;
+		}
+		if(c.getPositionY().equals("") || c.getPositionY() == null) {
+			System.err.println("*** Information needed for swipe action is missing: positionY\n"+ 
+					"Input test case file should include the component id as a value for the key 'positionY' in stepTestCases");
 			return false;
 		}
 		
