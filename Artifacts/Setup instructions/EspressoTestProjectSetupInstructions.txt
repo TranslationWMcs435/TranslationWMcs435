@@ -1,0 +1,23 @@
+Nathan Chen
+Translation Engine Group
+
+ESPRESSO TEST SETUP:
+1. Create new Android Test Project
+	-Name project whatever you would like
+	-select an existing Android project to test
+	-specify the build target, usually preselected for you
+	-hit finish
+2. Configure the build path
+	-Go to https://google.github.io/android-testing-support-library/downloads/index.html
+	-Go to the bottom and click on the link "ATSL JAR files with dependencies"
+		-or just go to https://github.com/googlesamples/android-testing/tree/master/ui/espresso/BasicSampleBundled/libs
+	-To run the Espresso tests you need the jar files on this page, so go to the root of the repository and download the ZIP
+	-Extract the files from the ZIP in a safe place and navigate to where the jar files are. Take note of where they are and add them to the build path of your Android Test Project
+3. Export all build paths
+	-Navigate to where you configure the build path and click on the Order and Export tab
+	-Next choose "Select All" and then hit apply.
+
+4. Configure the Android Test Project's AndroidManifest.xml
+	-In the AndroidManifest file in the instrumentation section, find "android:name=". Remove the parts in the quotes and set android:name equal to "android.support.test.runner.AndroidJUnitRunner"
+	-It should look like this:
+		android:name="android.support.test.runner.AndroidJUnitRunner"
