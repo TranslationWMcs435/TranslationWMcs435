@@ -2,6 +2,13 @@ package edu.wm.translationengine.trans;
 
 import edu.wm.translationengine.classes.StepTestCase;
 
+
+/**
+ * Just real quick print out the data from a StepTestCase, which is presumably missing something 
+ * that it's supposed to have. Useful for debugging.
+ * @author Mark for comment, Nathan for code (I assume)
+ *
+ */
 public class StepTestCaseDataPrinter {
 
 	public StepTestCaseDataPrinter(){

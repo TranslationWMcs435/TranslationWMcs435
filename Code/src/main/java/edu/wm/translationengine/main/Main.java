@@ -1,5 +1,6 @@
 package edu.wm.translationengine.main;
 
+import edu.semeru.wm.qextractor.processors.SourceCodeProcessor;
 import edu.wm.translationengine.classes.*;
 
 import com.google.gson.Gson;
@@ -24,6 +25,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import org.eclipse.core.internal.resources.Folder;
 
 
 public class Main {
@@ -78,6 +81,8 @@ public class Main {
 		final Charset cs = Charset.defaultCharset();
 		Translator et = null;
 		AbstractChecker checker = null;
+		SourceCodeProcessor processor = null;
+		
 		//Espresso == 0, Appium == 1. Others to follow.
 		String environment_switch = "0";
 		//Whether to print to the output file or not.
@@ -147,6 +152,7 @@ public class Main {
 	            	checker = new EspressoChecker();
 	            	if (checker.checkAppData(tc)){
 	            		et = new EspressoTranslator();
+	            		//processor = new SourceCodeProcessor(); //Turn into EspressoCodeProcessor, etc.
 	            	}else{
 	            		System.out.println("Error in JSON file, not accepted by checker.");
 	            		return;
@@ -158,6 +164,7 @@ public class Main {
 	            	checker = new AppiumChecker();
 	            	if (checker.checkAppData(tc)){
 	            		et = new AppiumTranslator();
+	            		//processor = new SourceCodeProcessor();
 	            	}else{
 	            		System.out.println("Error in JSON file, not accepted by checker.");
 	            		return;
@@ -168,6 +175,7 @@ public class Main {
 	            	checker = new UiAutomatorChecker();
 	            	if (checker.checkAppData(tc)){
 	            		et = new UiAutomatorTranslator();
+	            		//processor = new SourceCodeProcessor();
 	            	}else{
 	            		System.out.println("Error in JSON file, not accepted by checker.");
 	            		return;
@@ -178,6 +186,7 @@ public class Main {
 	            	checker = new RobotiumChecker();
 	            	if (checker.checkAppData(tc)){
 	            		et = new RobotiumTranslator();
+	            		//processor = new SourceCodeProcessor();
 	            	}else{
 	            		System.out.println("Error in JSON file, not accepted by checker.");
 	            		return;
@@ -215,6 +224,11 @@ public class Main {
         /*
          * This is where we add the stuff for AST parsing.
          */
+        File outfile = new File(outname);
+        File binaries = new File("/libs4ast/temp.txt");
+        String binariesFolder = binaries.getAbsolutePath().replace("/temp.txt", "");
+        //processor.processFolder(outfile.getAbsolutePath(), binariesFolder);
+        
 		
 		return;
 	}
