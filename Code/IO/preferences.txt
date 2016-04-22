@@ -1,1 +1,1 @@
-UIAutomator file ./IO/mileage_type.txt ./IO/weiusd.txt
+UIAutomator file ./IO/mileage_type_Mark.txt ./IO/standard_out.txt

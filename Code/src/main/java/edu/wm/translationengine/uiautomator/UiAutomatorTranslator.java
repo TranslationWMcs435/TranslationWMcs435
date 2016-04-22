@@ -44,7 +44,12 @@ public class UiAutomatorTranslator extends GenericTranslator{
 		
 		List<StepTestCase> stepTestCases = testCase.getSteps();
 		fm.setupFileImports();
-		fm.setupTestMethodHeader(packageName, mainActivity);
+		if(appName == null || appName.equals("")){
+			fm.setupTestMethodHeader(packageName, mainActivity);
+		}else{
+			fm.setupTestMethodHeader(appName, "");
+		}
+		
 		for(int i = 0; i < stepTestCases.size(); i++){
 			StepTestCase cur = stepTestCases.get(i);
 			try {
