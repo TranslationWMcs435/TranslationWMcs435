@@ -150,7 +150,7 @@ public class Main {
 	            case "0":
 	            case "Espresso":
 	            	checker = new EspressoChecker();
-	            	if (checker.checkAppData(tc)){
+	            	if (checker.runCheck(tc)){
 	            		et = new EspressoTranslator();
 	            		//processor = new SourceCodeProcessor(); //Turn into EspressoCodeProcessor, etc.
 	            	}else{
@@ -162,7 +162,7 @@ public class Main {
 	            case "Appium":
 	            	//Add checker for Appium.
 	            	checker = new AppiumChecker();
-	            	if (checker.checkAppData(tc)){
+	            	if (checker.runCheck(tc)){
 	            		et = new AppiumTranslator();
 	            		//processor = new SourceCodeProcessor();
 	            	}else{
@@ -173,7 +173,7 @@ public class Main {
 	            case "2":
 	            case "UIAutomator":
 	            	checker = new UiAutomatorChecker();
-	            	if (checker.checkAppData(tc)){
+	            	if (checker.runCheck(tc)){
 	            		et = new UiAutomatorTranslator();
 	            		//processor = new SourceCodeProcessor();
 	            	}else{
@@ -184,7 +184,7 @@ public class Main {
 	            case "3":
 	            case "Robotium":
 	            	checker = new RobotiumChecker();
-	            	if (checker.checkAppData(tc)){
+	            	if (checker.runCheck(tc)){
 	            		et = new RobotiumTranslator();
 	            		//processor = new SourceCodeProcessor();
 	            	}else{
