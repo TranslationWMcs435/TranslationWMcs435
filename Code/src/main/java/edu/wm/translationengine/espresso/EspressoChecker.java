@@ -8,15 +8,25 @@ public class EspressoChecker extends AbstractChecker{
 	
 	@Override
 	public boolean checkAppData(TestCase tc){
+		int checksum = 0;
 		if(tc.getPackageName() != null && !tc.getPackageName().equals("")){
-			System.out.println("Package name is missing");
-			return true;
+			checksum++;
+		}
+		else{
+			System.out.println("Package name is missing.");
 		}
 		if(tc.getMainActivity() != null && !tc.getMainActivity().equals("")){
-			System.out.println("Main activity is missing");
+			checksum++;
+		}
+		else{
+			System.out.println("Main activity is missing.");
+		}
+		if(checksum == 2){
 			return true;
 		}
-		return false;
+		else{
+			return false;
+		}
 	}
 	
 	@Override

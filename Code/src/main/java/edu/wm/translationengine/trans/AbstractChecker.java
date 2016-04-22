@@ -45,7 +45,6 @@ public abstract class AbstractChecker {
 	public boolean runCheck(TestCase tc){
 		
 		appDataPass = checkAppData(tc);
-		
 		List<StepTestCase> stcList = tc.getSteps();
 		
 		for(int i = 0; i < stcList.size(); i++){
@@ -74,9 +73,12 @@ public abstract class AbstractChecker {
 			return true;
 		}
 		else{
-			StepTestCaseDataPrinter printer = new StepTestCaseDataPrinter();
-			for(int j = 0; j < cases_with_errors.size(); j++){
-				printer.printData(cases_with_errors.get(j));
+			if(!cases_with_errors.isEmpty()){
+				System.out.println("StepTestCase errors:");
+				StepTestCaseDataPrinter printer = new StepTestCaseDataPrinter();
+				for(int j = 0; j < cases_with_errors.size(); j++){
+					printer.printData(cases_with_errors.get(j));
+				}
 			}
 			return false;
 		}
