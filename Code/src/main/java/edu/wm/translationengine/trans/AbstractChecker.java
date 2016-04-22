@@ -67,6 +67,13 @@ public abstract class AbstractChecker {
 					cases_with_errors.add(cur);
 				}
 			}
+			else if(stcList.get(i).getAction().equals("SWIPE_UP") || stcList.get(i).getAction().equals("SWIPE_DOWN")
+					|| stcList.get(i).getAction().equals("SWIPE_LEFT") || stcList.get(i).getAction().equals("SWIPE_RIGHT")){
+				pass = checkSwipe(cur.getComponent());
+				if(pass == false){
+					cases_with_errors.add(cur);
+				}
+			}			
 		}
 		
 		if(cases_with_errors.isEmpty() && appDataPass == true){
@@ -135,4 +142,18 @@ public abstract class AbstractChecker {
 	public boolean checkType(Component c){
 		return false;
 	}
+	/**
+	 * Checks that the necessary information for swiping are present
+	 * 
+	 * OVERRIDE THIS METHOD
+	 * 
+	 * @param c
+	 * @return boolean true if necessary data is present else false
+	 */
+	public boolean checkSwipe(Component c){
+		return false;
+	}
+	
+	
+	
 }

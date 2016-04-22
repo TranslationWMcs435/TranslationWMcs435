@@ -96,4 +96,18 @@ public class EspressoChecker extends AbstractChecker{
 		}
 		return false;
 	}
+	@Override
+	public boolean checkSwipe(Component c){
+		if(c.getType().equals("android.widget.CheckedTextView")){
+			if(c.getText() != null){
+				return true;
+			}
+		}
+		else{
+			if(c.getId() != null && !c.getId().equals("")){
+				return true;
+			}
+		}
+		return false;
+	}
 }
