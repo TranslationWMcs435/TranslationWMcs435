@@ -68,6 +68,20 @@ public abstract class AbstractChecker {
 					cases_with_errors.add(cur);
 				}
 			}
+			// When request to open app.
+			else if(stcList.get(i).getAction().equals("OPEN")){
+				pass = checkType(cur.getComponent());
+				if(pass == false){
+					cases_with_errors.add(cur);
+				}
+			}
+			// When request to open app.
+			else if(stcList.get(i).getAction().contains("SWIPE")){
+				pass = checkSwipe(cur.getComponent());
+				if(pass == false){
+					cases_with_errors.add(cur);
+				}
+			}
 		}
 		
 		if(cases_with_errors.isEmpty() && appDataPass == true){
@@ -82,6 +96,11 @@ public abstract class AbstractChecker {
 		}
 	}
 	
+	public boolean checkSwipe(Component c) {
+		// Swipes exist, so we should check them.
+		return false;
+	}
+
 	/**
 	 * Checks the app data, makes sure that necessary inputs from
 	 * data such as appName, packageName, and mainActivity are
