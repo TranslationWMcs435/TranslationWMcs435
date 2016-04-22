@@ -145,7 +145,7 @@ public class Main {
 	            case "0":
 	            case "Espresso":
 	            	checker = new EspressoChecker();
-	            	if (checker.checkAppData(tc)){
+	            	if (checker.runCheck(tc)){
 	            		et = new EspressoTranslator();
 	            	}else{
 	            		System.out.println("Error in JSON file, not accepted by checker.");
@@ -156,7 +156,7 @@ public class Main {
 	            case "Appium":
 	            	//Add checker for Appium.
 	            	checker = new AppiumChecker();
-	            	if (checker.checkAppData(tc)){
+	            	if (checker.runCheck(tc)){
 	            		et = new AppiumTranslator();
 	            	}else{
 	            		System.out.println("Error in JSON file, not accepted by checker.");
@@ -166,7 +166,7 @@ public class Main {
 	            case "2":
 	            case "UIAutomator":
 	            	checker = new UiAutomatorChecker();
-	            	if (checker.checkAppData(tc)){
+	            	if (checker.runCheck(tc)){
 	            		et = new UiAutomatorTranslator();
 	            	}else{
 	            		System.out.println("Error in JSON file, not accepted by checker.");
@@ -176,7 +176,7 @@ public class Main {
 	            case "3":
 	            case "Robotium":
 	            	checker = new RobotiumChecker();
-	            	if (checker.checkAppData(tc)){
+	            	if (checker.runCheck(tc)){
 	            		et = new RobotiumTranslator();
 	            	}else{
 	            		System.out.println("Error in JSON file, not accepted by checker.");
