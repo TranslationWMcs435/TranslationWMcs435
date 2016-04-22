@@ -93,49 +93,34 @@
                 "width": "1102"
             }
         },
-        {
-            "action": "CLICK",
-            "component": {
-                "description": "",
-                "height": "96",
-                "id": "android:id/button2",
-                "index": "1",
-                "isClickable": false,
-                "positionX": "602",
-                "positionY": "782",
-                "text": "Cancel",
-                "type": "android.widget.Button",
-                "width": "316"
-            }
-        },
-        {
-            "action": "CLICK",
-            "component": {
-                "description": "",
-                "height": "110",
-                "id": "de.duenndns.gmdice:id/more",
-                "index": "4",
-                "isClickable": false,
-                "positionX": "1008",
-                "positionY": "1714",
-                "text": "...",
-                "type": "android.widget.Button",
-                "width": "192"
-            }
-        },
-        {
+                {
             "action": "CLICK",
             "component": {
                 "description": "",
                 "height": "128",
-                "id": "de.duenndns.gmdice:id/text1",
+                "id": "de.duenndns.gmdice:id/spin_sides",
                 "index": "0",
                 "isClickable": false,
                 "positionX": "51",
                 "positionY": "612",
                 "text": "1d2",
-                "type": "android.widget.CheckedTextView",
+                "type": "android.widget.Spinner",
                 "width": "1102"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "android:id/text1",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "602",
+                "positionY": "782",
+                "text": "100",
+                "type": "android.widget.CheckedTextView",
+                "width": "316"
             }
         }
     ]

@@ -11,6 +11,10 @@ public class EspressoFunctions extends GenericFunctions{
 	private boolean clicky;
 	private boolean long_clicky;
 	private boolean typey;
+	private boolean swipe_upy;
+	private boolean swipe_downy;
+	private boolean swipe_lefty;
+	private boolean swipe_righty;
 	StepTestCaseDataPrinter p;
 	String storedId;
 	String storedText;
@@ -23,6 +27,10 @@ public class EspressoFunctions extends GenericFunctions{
 		clicky = false;
 		long_clicky = false;
 		typey = false;
+		swipe_upy = false;
+		swipe_downy = false;
+		swipe_lefty = false;
+		swipe_righty = false;
 		p = new StepTestCaseDataPrinter();
 		storedId = "";
 		storedText = "";
@@ -59,6 +67,34 @@ public class EspressoFunctions extends GenericFunctions{
 			}
 			type(s);
 		}
+		if(action.equals("SWIPE-UP")){
+			if(swipe_upy == false){
+				EspressoTranslator.toWrite.add(1, "import static android.support.test.espresso.action.ViewActions.swipeUp;\n");
+				swipe_upy = true;
+			}
+			swipeUp(s);
+		}
+		if(action.equals("SWIPE-DOWN")){
+			if(swipe_downy == false){
+				EspressoTranslator.toWrite.add(1, "import static android.support.test.espresso.action.ViewActions.swipeDown;\n");
+				swipe_downy = true;
+			}
+			swipeDown(s);
+		}
+		if(action.equals("SWIPE-LEFT")){
+			if(swipe_lefty == false){
+				EspressoTranslator.toWrite.add(1, "import static android.support.test.espresso.action.ViewActions.swipeLeft;\n");
+				swipe_lefty = true;
+			}
+			swipeLeft(s);
+		}
+		if(action.equals("SWIPE-RIGHT")){
+			if(swipe_righty == false){
+				EspressoTranslator.toWrite.add(1, "import static android.support.test.espresso.action.ViewActions.swipeRight;\n");
+				swipe_righty = true;
+			}
+			swipeRight(s);
+		}
 	}
 
 	/**
@@ -81,11 +117,11 @@ public class EspressoFunctions extends GenericFunctions{
 		}
 
 		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
-			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(scrollTo(), click());\n";
+			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(click());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
 		}
 		else if(s.getComponent().getType().equals("android.widget.ImageButton")){
-			espresso_command += "\t\t\tonView(withContentDescription(\"" + s.getComponent().getDescription() + "\")).perform(scrollTo(), click());\n";
+			espresso_command += "\t\t\tonView(withContentDescription(\"" + s.getComponent().getDescription() + "\")).perform(click());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
 		}
 		else if(s.getComponent().getId().equals("")){
@@ -96,7 +132,7 @@ public class EspressoFunctions extends GenericFunctions{
 		}
 		else{
 			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
-			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(scrollTo(), click());\n";
+			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(click());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
 		}
 	}
@@ -108,10 +144,10 @@ public class EspressoFunctions extends GenericFunctions{
 	private void make_click_command_with_text(StepTestCase s) {
 		String espresso_command = new String();
 		if(s.getComponent().getType().equals("android.widget.EditText")){
-			espresso_command += "\t\t\tonView(withHint(\"" + s.getComponent().getText() + "\")).perform(scrollTo(), click());\n";
+			espresso_command += "\t\t\tonView(withHint(\"" + s.getComponent().getText() + "\")).perform(click());\n";
 		}
 		else{
-			espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(scrollTo(), click());\n";
+			espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(click());\n";
 		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
@@ -124,11 +160,11 @@ public class EspressoFunctions extends GenericFunctions{
 		String espresso_command = new String();
 
 		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
-			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(scrollTo(), longClick());\n";
+			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(longClick());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
 		}
 		else if(s.getComponent().getType().equals("android.widget.ImageButton")){
-			espresso_command += "\t\t\tonView(withContentDescription(\"" + s.getComponent().getDescription() + "\")).perform(scrollTo(), longClick());\n";
+			espresso_command += "\t\t\tonView(withContentDescription(\"" + s.getComponent().getDescription() + "\")).perform(longClick());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
 		}
 		else if(s.getComponent().getId().equals("")){
@@ -139,7 +175,7 @@ public class EspressoFunctions extends GenericFunctions{
 		}
 		else{
 			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
-			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(scrollTo(), longClick());\n";
+			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(longClick());\n";
 			EspressoTranslator.toWrite.add(espresso_command);
 		}
 
@@ -153,10 +189,10 @@ public class EspressoFunctions extends GenericFunctions{
 	private void make_long_click_command_with_text(StepTestCase s) {
 		String espresso_command = new String();	
 		if(s.getComponent().getType().equals("android.widget.EditText")){
-			espresso_command += "\t\t\tonView(withHint(\"" + s.getComponent().getText() + "\")).perform(scrollTo(), longClick());\n";
+			espresso_command += "\t\t\tonView(withHint(\"" + s.getComponent().getText() + "\")).perform(longClick());\n";
 		}
 		else{
-			espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(scrollTo(), longClick());\n";
+			espresso_command += "\t\t\tonView(withText(\"" + s.getComponent().getText() + "\")).perform(longClick());\n";
 		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
@@ -165,37 +201,56 @@ public class EspressoFunctions extends GenericFunctions{
 		String espresso_command = new String();
 		if(useId == true){
 			String id = storedId.substring((EspressoTranslator.packageName.length() + 4));
-			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(scrollTo(), typeText(\"" + s.getComponent().getText() + "\"));\n";
+			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(typeText(\"" + s.getComponent().getText() + "\"));\n";
 		}
 		else{
-			espresso_command += "\t\t\tonView(withHint(\"" + storedText + "\")).perform(scrollTo(), typeText(\"" + s.getComponent().getText() + "\"));\n";
+			espresso_command += "\t\t\tonView(withHint(\"" + storedText + "\")).perform(typeText(\"" + s.getComponent().getText() + "\"));\n";
 		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
 
-	
-	public void swipeUp(StepTestCase testCase){
+	public void swipeUp(StepTestCase s){
 		String espresso_command = new String();
-		String id = storedId.substring((EspressoTranslator.packageName.length() + 4));
-		espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(swipeUp())\n";
+		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
+			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(swipeUp());\n";
+		}
+		else{
+			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
+			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(swipeUp())\n";
+		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
-	public void swipeDown(StepTestCase testCase){
+	public void swipeDown(StepTestCase s){
 		String espresso_command = new String();
-		String id = storedId.substring((EspressoTranslator.packageName.length() + 4));
-		espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(swipeDown())\n";
+		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
+			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(swipeDown());\n";
+		}
+		else{
+			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
+			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(swipeDown())\n";
+		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
-	public void swipeLeft(StepTestCase testCase){
+	public void swipeLeft(StepTestCase s){
 		String espresso_command = new String();
-		String id = storedId.substring((EspressoTranslator.packageName.length() + 4));
-		espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(swipeLeft())\n";
+		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
+			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(swipeLeft());\n";
+		}
+		else{
+			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
+			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(swipeLeft())\n";
+		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
-	public void swipeRight(StepTestCase testCase){
+	public void swipeRight(StepTestCase s){
 		String espresso_command = new String();
-		String id = storedId.substring((EspressoTranslator.packageName.length() + 4));
-		espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(swipeRight())\n";
+		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
+			espresso_command += "\t\t\tonData(allOf(is(\"" + s.getComponent().getText() + "\"))).perform(swipeRight());\n";
+		}
+		else{
+			String id = s.getComponent().getId().substring((EspressoTranslator.packageName.length() + 4));
+			espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(swipeRight())\n";
+		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
 

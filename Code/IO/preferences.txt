@@ -1,1 +1,1 @@
-Espresso file ./IO/gmdice_simple_2.txt ./IO/weiusd.txt
+Espresso file IO/gmdice_swipe.txt ./IO/weiusd.txt
