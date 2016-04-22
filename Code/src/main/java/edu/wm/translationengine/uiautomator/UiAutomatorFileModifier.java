@@ -7,7 +7,6 @@ import edu.wm.translationengine.trans.FileModifierInterface;
 public class UiAutomatorFileModifier implements FileModifierInterface{
 
 	public void setupFileImports() throws IOException {
-		// TODO Auto-generated method stub
 		UiAutomatorTranslator.toWrite.add("import com.android.uiautomator.core.UiDevice;\n");
 		UiAutomatorTranslator.toWrite.add("import com.android.uiautomator.core.UiObject;\n");
 		UiAutomatorTranslator.toWrite.add("import com.android.uiautomator.core.UiObjectNotFoundException;\n");
@@ -15,8 +14,8 @@ public class UiAutomatorFileModifier implements FileModifierInterface{
 		UiAutomatorTranslator.toWrite.add("import com.android.uiautomator.testrunner.UiAutomatorTestCase;\n\n");
 	}
 
-	public void setupTestMethodHeader(String packageName, String mainActivity) {
-		// TODO Auto-generated method stub
+	public void setupTestMethodHeader(String appName, String mainActivity) {
+		// Makes the header if we don't have an app name.
 		UiAutomatorTranslator.toWrite.add("public class TestBackPress extends UiAutomatorTestCase {\n");
 		UiAutomatorTranslator.toWrite.add("\tpublic void test_uiautomator() throws UiObjectNotFoundException{\n");
 	}

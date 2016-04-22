@@ -1,0 +1,273 @@
+{
+    "appName": "mileage",
+    "packageName": "com.evancharlton.mileage",
+    "mainActivity": "com.evancharlton.mileage.Mileage",
+    "stepTestCases": [
+        {
+            "action": "OPEN",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "Mileage",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/volume",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "600",
+                "positionY": "235",
+                "text": "Gallons",
+                "type": "android.widget.EditText",
+                "width": "600"
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "height": "604",
+                "id": "id/keyboard_view",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "0",
+                "positionY": "1220",
+                "text": "58",
+                "type": "com.android.inputmethod.keyboard.MainKeyboardView",
+                "width": "1200"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/price",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "0",
+                "positionY": "235",
+                "text": "Price per Gallons",
+                "type": "android.widget.EditText",
+                "width": "600"
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "height": "604",
+                "id": "id/keyboard_view",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "0",
+                "positionY": "1220",
+                "text": "50",
+                "type": "com.android.inputmethod.keyboard.MainKeyboardView",
+                "width": "1200"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/odometer",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "Odometer",
+                "type": "android.widget.EditText",
+                "width": "600"
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "height": "604",
+                "id": "id/keyboard_view",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "0",
+                "positionY": "1220",
+                "text": "20",
+                "type": "com.android.inputmethod.keyboard.MainKeyboardView",
+                "width": "1200"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/partial",
+                "index": "2",
+                "isClickable": false,
+                "positionX": "0",
+                "positionY": "427",
+                "text": "Tank was not filled to the top",
+                "type": "android.widget.CheckBox",
+                "width": "1200"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "0",
+                "positionY": "572",
+                "text": "Comment",
+                "type": "android.widget.EditText",
+                "width": "1200"
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "height": "604",
+                "id": "id/keyboard_view",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "0",
+                "positionY": "1220",
+                "text": "",
+                "type": "com.android.inputmethod.keyboard.MainKeyboardView",
+                "width": "1200"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/date",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "600",
+                "positionY": "334",
+                "text": "4/7/2016",
+                "type": "android.widget.Button",
+                "width": "600"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "Increase month",
+                "height": "88",
+                "id": "android:id/increment",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "70",
+                "positionY": "754",
+                "text": "",
+                "type": "android.widget.ImageButton",
+                "width": "156"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "Decrease day",
+                "height": "88",
+                "id": "android:id/decrement",
+                "index": "2",
+                "isClickable": false,
+                "positionX": "230",
+                "positionY": "937",
+                "text": "",
+                "type": "android.widget.ImageButton",
+                "width": "156"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "Increase year",
+                "height": "88",
+                "id": "android:id/increment",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "390",
+                "positionY": "754",
+                "text": "",
+                "type": "android.widget.ImageButton",
+                "width": "165"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "android:id/button1",
+                "index": "2",
+                "isClickable": false,
+                "positionX": "336",
+                "positionY": "1188",
+                "text": "Done",
+                "type": "android.widget.Button",
+                "width": "530"
+            }
+        },
+        {
+            "action": "SWIPE-DOWN-LEFT",
+            "component": {
+                "description": "",
+                "height": "49",
+                "id": "android:id/text1",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "12",
+                "positionY": "1136",
+                "text": "Minimum cost per mi",
+                "type": "android.widget.TextView",
+                "width": "1176"
+            }
+        },
+        {
+            "action": "SWIPE-UP-RIGHT",
+            "component": {
+                "description": "",
+                "height": "49",
+                "id": "android:id/text1",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "12",
+                "positionY": "625",
+                "text": "Total cost",
+                "type": "android.widget.TextView",
+                "width": "1176"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "android:id/button1",
+                "index": "2",
+                "isClickable": false,
+                "positionX": "336",
+                "positionY": "1188",
+                "text": "Done",
+                "type": "android.widget.Button",
+                "width": "530"
+            }
+        }
+    ]
+}

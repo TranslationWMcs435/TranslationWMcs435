@@ -1,0 +1,24 @@
+This file is for describing the requirements for each framework in a JSON file. It is hopefully a little useful for prioritizing
+enhancements to the JSON file building system the grad students have going on.
+
+General Requirements: 
+
+For swipes: ATM there is not enough information to replicate a swipe with any accuracy. In order to accurately replicate a swipe,
+the command must measure start location, end location, and duration, or else start, direction, and distance.
+
+For Android-Generated icons: When the phone generates things like toolbars at the top of the screen, those objects are not
+distinguished in a way we can recognize in the JSON files. For example, in mileage_swipe.txt, the index, name, etc. of the second
+click is for a very vague button. We can only tell that it is the third button up top because of the pixel location, which will vary
+by device.
+Possible solutions: Record more of the hierarchy in JSON files (computationally complex). Or, tell us if you are using the same device
+(pixels can be accurately used for location then).
+
+UiAutomator:
+Requires Action for all, since that is crucial to determining how to build the action.
+To open an app, include a JSON component that has the action "OPEN" and the application name AS IT APPEARS IN THE APP MENU as the text.
+Clicks: an ID is a must. Could in theory rewrite framework to parse with bounds, though it requires testing only on the same device.
+It'd be related to this: http://stackoverflow.com/questions/20519905/uiautomator-click-on-a-imagebutton-with-no-text-or-content-desc
+Typing: an ID is optional, since the JSON files show clicks on the same place before typing starts. If that feature goes away,
+there will be some trouble, since the UIAutomatorFunctions class won't know what you're trying to type on. Having a real ID
+rectifies that problem.
+Swipes: Start, end, duration is the default. A skeleton of swipe implementation is incoming, but it does not yet have real functionality.

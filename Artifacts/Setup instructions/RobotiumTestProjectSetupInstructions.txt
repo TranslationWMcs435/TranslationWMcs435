@@ -1,0 +1,27 @@
+Creating a Robotium blackbox testing project in Eclipse
+
+1) Create the test project by:
+File-->New-->Project-->Android-->Android Test Project
+2) Fill all the following fields to create the test project:
+
+	- Test Project Name: ExampleApplicationTesting
+	- Test Target: Click on "This Project"
+	- Build Target: If the application was developed using SDK version 7 then select Android 2.1 - update 1. If it was developed by SDK version 8 then select Android 2.2
+	- Properties: Application name: ApplicationTesting
+	- Package name: com.Example.ApplicationTesting
+	- Min SDK version: Default value will be there according to Build Target selection.
+	- Then click finish
+
+3) In "AnroidManifest.xml":
+
+	- Change <instrumentation android:targetPackage="com.Example.ApplicationTesting"> to <instrumentation!android:targetPackage="com.Example.ApplicationToTest"
+
+4) Add the latest version of the Robotium jar to the project
+
+	- Right click on "ExampleApplicationTesting" project --> Build path --> Configure Build Path
+	- Then select Add External Jars --> select robotium jar file --> Open --> OK
+
+5) The apk file you wish to test has to have the same certificate signature that your test project has. If the applicaiton is signed then you can use the following drag and drop project to resign it:
+www.troido.de/re-sign.jar
+
+6) Make an example JUnit test case. Then run as "Android JUnit Test"

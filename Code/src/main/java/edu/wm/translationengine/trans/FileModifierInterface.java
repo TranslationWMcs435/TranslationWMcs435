@@ -24,4 +24,5 @@ public interface FileModifierInterface {
 	//Whatever you need to end all your tests. Probably just a couple close brackets. Call this last.
 	//e.g. [YourTranslator].toWrite.add("\t }\n }");
 	public void closeTestMethod();
+
 }

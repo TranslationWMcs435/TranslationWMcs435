@@ -1,8 +1,10 @@
 package edu.wm.translationengine.appium;
 
 import java.io.IOException;
+import java.util.List;
 
 import edu.wm.translationengine.trans.FileModifier;
+import io.appium.java_client.MobileElement;
 
 public class AppiumFileModifier extends FileModifier{
 	
@@ -27,7 +29,7 @@ public class AppiumFileModifier extends FileModifier{
 	
 	}
 
-	public void setupTestMethodHeader(String packageName, String mainActivity) {
+	public void setupTestMethodHeader(String directory, String appName) {
 		// TODO Auto-generated method stub
 		//stuff before the test stuff
 		AppiumTranslator.toWrite.add("public class TestFile{\n");
@@ -35,24 +37,24 @@ public class AppiumFileModifier extends FileModifier{
 		AppiumTranslator.toWrite.add("\tpublic static String DEFAULT_SERVER = \"http://localhost\";\n"
 				+ "\tpublic static String DEFAULT_PORT = \"4723\";\n"
 				+ "\tpublic static String DEFAULT_SUFFIX = \"/wd/hub\";\n"
-				+ "\tprivate static String DEFAULT_APPIUM_DIR = \"C:\\\\Program Files (x86)\\\\Appium\";\n" //TODO: fine for now, but may need to fix the way this is written to ask user for Appium Directory in future??
+				+ "\tprivate static String APPIUM_DIR = \""+directory+"\";\n" //TODO: fine for now, but may need to fix the way this is written to ask user for Appium Directory in future??
 				+ "\tpublic static String DEVICE_NAME = \"Google Nexus 4 - 5.1.0 - API 22 - 768x1280\";\n"
 				+ "\tpublic static String PLATFORM_NAME = \"Android\";\n"
 				+ "\tpublic static String PLATFORM_VERSION = \"5.1\";\n"
-				+ "\tpublic static String GMDICE_DIR = System.getProperty(\"user.dir\") + \"\\\\res\\\\apk\\\\gmdice.apk\";\n"
+				+ "\tpublic static String APP_DIR = System.getProperty(\"user.dir\") + \"\\\\res\\\\apk\\\\"+appName+".apk\";\n"
 				+ "\tprivate AppiumDriver<MobileElement> driver;\n"
 				+ "\tprivate AppiumServerWorker serverWorker;\n" );
 		
 		//@Before
 		AppiumTranslator.toWrite.add("\t\t@Before\n");
 		AppiumTranslator.toWrite.add("\t\tpublic void setUp() throws Exception {\n");
-		AppiumTranslator.toWrite.add("\t\t\tserverWorker = new AppiumServerWorker(DEFAULT_APPIUM_DIR);\n"
+		AppiumTranslator.toWrite.add("\t\t\tserverWorker = new AppiumServerWorker(APPIUM_DIR);\n"
 				+ "\t\t\tserverWorker.startServer();\n"
 				+ "\t\t\tDesiredCapabilities capability = new DesiredCapabilities();\n"
 				+ "\t\t\tcapability.setCapability(\"deviceName\", DEVICE_NAME);\n"
 				+ "\t\t\tcapability.setCapability(\"platformName\", PLATFORM_NAME);\n"
 				+ "\t\t\tcapability.setCapability(\"platformVersion\", PLATFORM_VERSION);\n"
-				+ "\t\t\tFile file = new File(GMDICE_DIR);\n"
+				+ "\t\t\tFile file = new File(APP_DIR);\n"
 				+ "\t\t\tcapability.setCapability(\"app\", file.getAbsolutePath());\n"
 				+ "\t\t\tURL serverURL = new URL(DEFAULT_SERVER + \":\" + DEFAULT_PORT + DEFAULT_SUFFIX);\n"
 				+ "\t\t\tdriver = new AndroidDriver<MobileElement>(serverURL, capability);\n");
@@ -68,6 +70,9 @@ public class AppiumFileModifier extends FileModifier{
 		//@Test 
 		AppiumTranslator.toWrite.add("\t\t@Test\n");
 		AppiumTranslator.toWrite.add("\t\tpublic void testAppium() throws InterruptedException{\n");
+		AppiumTranslator.toWrite.add("\t\t\tMobileElement button;\n");
+		AppiumTranslator.toWrite.add("\t\t\tint j;\n");
+		AppiumTranslator.toWrite.add("\t\t\tList<MobileElement> a;\n");
 		
 		
 	}
