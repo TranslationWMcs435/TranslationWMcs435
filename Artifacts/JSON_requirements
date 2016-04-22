@@ -1,0 +1,15 @@
+This file is for describing the requirements for each framework in a JSON file.
+
+General Requirements: 
+
+For swipes: ATM there is not enough information to replicate a swipe with any accuracy. In order to accurately replicate a swipe,
+the command must measure start location, end location, and duration, or else start, direction, and distance.
+
+For Android-Generated icons: When the phone generates things like toolbars at the top of the screen, those objects are not
+distinguished in a way we can recognize in the JSON files. For example, in mileage_swipe.txt, the index, name, etc. of the second
+click is for a very vague button. We can only tell that it is the third button up top because of the pixel location, which will vary
+by device.
+Possible solutions: Record more of the hierarchy in JSON files (computationally complex). Or, tell us if you are using the same device
+(pixels can be accurately used for location then).
+
+UiAutomator:
