@@ -69,6 +69,11 @@ public abstract class AbstractChecker {
 			}
 			else if(stcList.get(i).getAction().equals("SWIPE_UP") || stcList.get(i).getAction().equals("SWIPE_DOWN")
 					|| stcList.get(i).getAction().equals("SWIPE_LEFT") || stcList.get(i).getAction().equals("SWIPE_RIGHT")){
+				pass = checkSwipe(cur.getComponent());
+				if(pass == false){
+					cases_with_errors.add(cur);
+				}
+			}
 			// When request to open app.
 			else if(stcList.get(i).getAction().equals("OPEN")){
 				pass = checkType(cur.getComponent());
@@ -82,8 +87,7 @@ public abstract class AbstractChecker {
 				if(pass == false){
 					cases_with_errors.add(cur);
 				}
-			}			
-			}
+			}						
 		}
 		
 		if(cases_with_errors.isEmpty() && appDataPass == true){
