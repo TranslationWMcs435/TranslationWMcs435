@@ -173,7 +173,31 @@ public class EspressoFunctions extends GenericFunctions{
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
 
-
+	
+	public void swipeUp(StepTestCase testCase){
+		String espresso_command = new String();
+		String id = storedId.substring((EspressoTranslator.packageName.length() + 4));
+		espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(swipeUp())\n";
+		EspressoTranslator.toWrite.add(espresso_command);
+	}
+	public void swipeDown(StepTestCase testCase){
+		String espresso_command = new String();
+		String id = storedId.substring((EspressoTranslator.packageName.length() + 4));
+		espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(swipeDown())\n";
+		EspressoTranslator.toWrite.add(espresso_command);
+	}
+	public void swipeLeft(StepTestCase testCase){
+		String espresso_command = new String();
+		String id = storedId.substring((EspressoTranslator.packageName.length() + 4));
+		espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(swipeLeft())\n";
+		EspressoTranslator.toWrite.add(espresso_command);
+	}
+	public void swipeRight(StepTestCase testCase){
+		String espresso_command = new String();
+		String id = storedId.substring((EspressoTranslator.packageName.length() + 4));
+		espresso_command += "\t\t\tonView(withId(R.id." + id + ")).perform(swipeRight())\n";
+		EspressoTranslator.toWrite.add(espresso_command);
+	}
 
 	public boolean tap(StepTestCase testCase) throws Exception {
 		// TODO Auto-generated method stub
