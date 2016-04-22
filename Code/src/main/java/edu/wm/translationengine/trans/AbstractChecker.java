@@ -70,7 +70,7 @@ public abstract class AbstractChecker {
 			}
 		}
 		
-		if(cases_with_errors.isEmpty() && appDataPass == true){
+		if(cases_with_errors.isEmpty() || appDataPass == true){
 			return true;
 		}
 		else{

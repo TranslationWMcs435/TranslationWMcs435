@@ -1,1 +1,1 @@
-UIAutomator file ./IO/mileage_type.txt ./IO/weiusd.txt
+Espresso file ./IO/gmdice_simple_2.txt ./IO/weiusd.txt
