@@ -12,3 +12,6 @@ JSON file does not contain enough information:
 	-scollTo() only works on ScrollView, so when a view is not visible and needs to be scrolled to, there is no way to 
 	know if that item is off screen or in a ScrollView so scrollTo() cannot be used otherwise the program breaks. In popup 
 	listviews, onData() automatically scrolls to the item if it is not in view.  
+
+When using onData() it does not work with string representations of Integers. It cannot recognize popup listview items that are 
+have numbers only for text.
