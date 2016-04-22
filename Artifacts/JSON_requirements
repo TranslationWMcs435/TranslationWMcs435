@@ -1,4 +1,5 @@
-This file is for describing the requirements for each framework in a JSON file.
+This file is for describing the requirements for each framework in a JSON file. It is hopefully a little useful for prioritizing
+enhancements to the JSON file building system the grad students have going on.
 
 General Requirements: 
 
@@ -13,3 +14,13 @@ Possible solutions: Record more of the hierarchy in JSON files (computationally 
 (pixels can be accurately used for location then).
 
 UiAutomator:
+Requires Action for all, since that is crucial to determining how to build the action.
+Preference for application name. This allows UiAutomator to run from the home screen. If your JSON does NOT have an application name
+that matches the name on the app menu on the phone, then DON'T include an application name, and UiAutomator will run in-app when it is
+already launched.
+Clicks: an ID is a must. Could in theory rewrite framework to parse with bounds, though it requires testing only on the same device.
+It'd be related to this: http://stackoverflow.com/questions/20519905/uiautomator-click-on-a-imagebutton-with-no-text-or-content-desc
+Typing: an ID is optional, since the JSON files show clicks on the same place before typing starts. If that feature goes away,
+there will be some trouble, since the UIAutomatorFunctions class won't know what you're trying to type on. Having a real ID
+rectifies that problem.
+Swipes: Start, end, duration is the default. A skeleton of swipe implementation is incoming, but it does not yet have real functionality.
