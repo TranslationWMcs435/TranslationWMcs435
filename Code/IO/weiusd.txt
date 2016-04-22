@@ -1,7 +1,5 @@
 package de.duenndns.gmdice.test;
 
-import static android.support.test.espresso.action.ViewActions.swipeDown;
-import static android.support.test.espresso.action.ViewActions.swipeUp;
 import static android.support.test.espresso.action.ViewActions.longClick;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
@@ -27,7 +25,6 @@ import junit.framework.TestSuite;
 import de.duenndns.gmdice.GameMasterDice;
 import de.duenndns.gmdice.R;
 
-<<<<<<< HEAD
 
 
 @RunWith(AndroidJUnit4.class)
@@ -42,40 +39,9 @@ public class TestFile extends TestSuite{
 			onView(withId(R.id.die2)).perform(click());
 			onView(withId(R.id.die3)).perform(click());
 			onView(withId(R.id.more)).perform(longClick());
-			onData(allOf(is("1d2"))).perform(swipeUp());
-			onData(allOf(is("1d6+1"))).perform(swipeDown());
+			onData(allOf(is("More..."))).perform(click());
+			onView(withText("Cancel")).perform(click());
+			onView(withId(R.id.more)).perform(click());
+			onData(allOf(is("1d2"))).perform(click());
 	 }
  }
-=======
-public class TestBackPress extends UiAutomatorTestCase {
-	public void test_uiautomator() throws UiObjectNotFoundException{
-		getUiDevice().pressHome();
-		UiObject Applications = new UiObject(new UiSelector().description("Apps"));
-		Applications.clickAndWaitForNewWindow();
-		int i = 0;
-		while(i < 10){
-			try{
-				new UiObject(new UiSelector().text("Mileage")).click();
-				i = 10;
-			} catch(Exception e){
-				i++;
-				getUiDevice().swipe(500, 500, 10, 500, 5);
-			}
-		}
-		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/volume")).click();
-		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/volume")).setText("58");
-		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/price")).click();
-		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/price")).setText("50");
-		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/odometer")).click();
-		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/odometer")).setText("20");
-		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/partial")).click();
-		new UiObject(new UiSelector().text("Comment")).click();
-		new UiObject(new UiSelector().text("Comment")).setText("");
-		new UiObject(new UiSelector().resourceId("com.evancharlton.mileage:id/date")).click();
-		new UiObject(new UiSelector().resourceId("android:id/increment")).click();
-		new UiObject(new UiSelector().resourceId("android:id/decrement")).click();
-		new UiObject(new UiSelector().resourceId("android:id/increment")).click();
-		new UiObject(new UiSelector().resourceId("android:id/button1")).click();
-	}
-}
->>>>>>> origin/master

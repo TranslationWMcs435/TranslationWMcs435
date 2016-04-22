@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-Espresso file IO/gmdice_swipe.txt ./IO/weiusd.txt
-=======
-UIAutomator file ./IO/mileage_type_Mark.txt ./IO/standard_out.txt
->>>>>>> origin/master
+Espresso file IO/gmdice_simple_2.txt ./IO/weiusd.txt
