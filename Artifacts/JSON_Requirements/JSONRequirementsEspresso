@@ -4,11 +4,11 @@ NOTES:
 	"Non-repeated" means that no other view on the screen or in the CheckedTextView 
 	has the same data field. So a non-repeated text attribute is a text attribute that
 	is unique to this view, no other view has the same string as their text attribute.
-
+-----------------------------------------------------------------------------------------------------
 General:
 	The JSON file must contain a valid package name for the app and a valid main 
 	activity for the app.
-
+-----------------------------------------------------------------------------------------------------
 click (CLICK):
 
 If the StepTestCase's type is android.widget.EditText, then the StepTestCase must
@@ -25,7 +25,7 @@ If the StepTestCase's ID attribute is an android ID (ie. "android:id/_______"), 
 Otherwise if non of the above are met, then the last case is that the StepTestCase
 	must have an R file ID (ie. "R.id._______").
 
-
+-----------------------------------------------------------------------------------------------------
 long click (LONG_CLICK):
 
 If the StepTestCase's type is android.widget.EditText, then the text attribute of the 
@@ -41,7 +41,7 @@ If the StepTestCase's ID attribute is an android ID (ie. "android:id/_______"), 
 Otherwise if non of the above are met, then the last case is that the StepTestCase
 	must have an R file ID (ie. "R.id._______").
 
-
+-----------------------------------------------------------------------------------------------------
 type (TYPE):
 
 To use type, the preceding StepTestCase must be a tap or long tap on an EditText view.
@@ -52,14 +52,14 @@ To use type, the preceding StepTestCase must be a tap or long tap on an EditText
 The StepTestCase for type must have the text that needs to be typed in the text 
 	attribute of the StepTestCase.
 
-
+-----------------------------------------------------------------------------------------------------
 swipe (SWIPE-UP, SWIPE-DOWN, SWIPE-LEFT, SWIPE-RIGHT}):
 
 If the StepTestCase's type attribute is android.widget.CheckedTextView, then the 
 	StepTestCase must have a non-repeated text attribute.
 Otherwise, the StepTestCase must have a non-null, non-empty string ID attribute.
 
-
+-----------------------------------------------------------------------------------------------------
 Example valid JSON file that will work with the EspressoTranslator:
 
 {
