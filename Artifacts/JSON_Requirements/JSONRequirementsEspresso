@@ -45,7 +45,8 @@ Otherwise if non of the above are met, then the last case is that the StepTestCa
 type (TYPE):
 
 To use type, the preceding StepTestCase must be a tap or long tap on an EditText view.
-	That preceding StepTestCase must have had a non-null, non-empty string ID attribute or the text attribute must have been the hint of the EditText view being
+	That preceding StepTestCase must have had a non-null, non-empty string ID attribute 
+	or the text attribute must have been the hint of the EditText view being
 	typed in.
 
 The StepTestCase for type must have the text that needs to be typed in the text 
