@@ -1,0 +1,66 @@
+{
+    "appName": "gmdice",
+    "packageName": "de.duenndns.gmdice",
+    "mainActivity": "de.duenndns.gmdice.GMDice",
+    "stepTestCases": [
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "LONG_CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "height": "",
+                "id": "",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "SWIPE-DOWN-LEFT",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        }
+    ]
+}
