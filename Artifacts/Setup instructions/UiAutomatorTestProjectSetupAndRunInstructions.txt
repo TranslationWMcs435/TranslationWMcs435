@@ -34,7 +34,7 @@ RUNNING UIAUTOMATOR TESTS
 		-t is the target installed on your system
 	-to get the targets for -t, issue the command "android list targets"
 		-choose the highest id installed, find the id number and that is your parameter for -t
-	-After doing the above a build.xml file should have been created in the folder for you test project
+	-After doing the above a build.xml file should have been created in the folder for your test project
 
 2. Build the project with ant
 	-now navigate to the directory for your test project in the Command Prompt
