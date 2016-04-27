@@ -1,0 +1,5 @@
+There are some limitations for translating to the Robotium framework:
+
+1) First, our engine cannot differentiate different image views from one another with the same ID. It must have some other distinguishing attributes such as text or index.
+2) Next, the engine cannot interact with UI elements that are nested inside an inner layout with no uniquely identifiable id or text. However, the engine can translate if those UI elements have text.
+3) It also can't identify views that are not visible from within the viewport. You will have to specify elements which are in the viewport at any current time. It is very difficult to build develop an algorithm which knows where to navigate in order to get the desired UI element from behind the viewport into it.
