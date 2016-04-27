@@ -1,0 +1,27 @@
+{
+    "originalDevice":"[Device Name from: http://www.emirweb.com/ScreenDeviceStatistics.php]"
+    "appName": "[name of app present in the res/apk folder]",
+    "packageName": "[package name of the app]",
+    "mainActivity": "[mainActivity of the app]",
+    "stepTestCases": [
+        {
+            "action": "["CLICK"/"LONG_CLICK"/"TYPE"/"SWIPE-direction-direction"/...]",
+            "component": {
+                "description": "",
+                "height": [Height of the button, the difference between the y bounds in UIAutomator],
+                "id": "[ID specified in UIAutomator]",
+                "index": "[Index Specified in UIAutomator]",
+                "isClickable": [Specified in UIAutomator],
+                "positionStartX": "[x location of action]",
+                "positionEndX": "[Can optionally be left blank. Used to specify the X-axis endpoint of an action such as a "SWIPE" ]"
+                "positionStartY": "[y location of action]",
+                "positionEndY": "[can optionally be left blank. Used to specify the Y-axis endpoint of an action such as a "SWIPE" ]"
+                "duration": "[can be left blank, but can be used to specify the amount of time an action should take such as a "SWIPE" or "CLICK"]"
+                "text": "[text on the button or text to enter. Should match the UIAutomator specification unless we are completing a "TYPE" action]",
+                "type": "[Should match the class specification in UIAutomator]",
+                "width": "[Width of the button, the difference between the x bounds in UIAutomator]"
+            }
+        },
+        ...{more Actions}
+    ]
+}
