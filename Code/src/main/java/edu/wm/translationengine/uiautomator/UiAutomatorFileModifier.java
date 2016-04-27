@@ -14,16 +14,16 @@ public class UiAutomatorFileModifier implements FileModifierInterface{
 		UiAutomatorTranslator.toWrite.add("import com.android.uiautomator.testrunner.UiAutomatorTestCase;\n\n");
 	}
 
-	public void setupTestMethodHeader(String appName, String mainActivity) {
+	public void setupTestMethodHeader(String packageName, String mainActivity) {
 		// Makes the header if we don't have an app name.
-		UiAutomatorTranslator.toWrite.add("public class TestBackPress extends UiAutomatorTestCase {\n");
+//		UiAutomatorTranslator.toWrite.add(0, "package " + packageName + ".test\n\n");
+		UiAutomatorTranslator.toWrite.add("public class TestFile extends UiAutomatorTestCase {\n");
 		UiAutomatorTranslator.toWrite.add("\tpublic void test_uiautomator() throws UiObjectNotFoundException{\n");
 	}
 
 	public void closeTestMethod() {
 		// TODO Auto-generated method stub
 		UiAutomatorTranslator.toWrite.add("\t}\n}");
-		UiAutomatorTranslator.toWrite.add(0, "package [Test_package_name_here]\n\n");
 	}
 
 }
