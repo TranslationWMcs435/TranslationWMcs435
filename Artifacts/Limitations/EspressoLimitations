@@ -5,8 +5,8 @@ used to differentiate different views from each other. The problem is that often
 by the Android system, like increment buttons for date pickers, buttons with similar functionality have the same data, so Espresso 
 cannot tell which view it should interact with.
 
-Espresso's withContentDescription works very rarely. Sometimes it works and other times it does not. In our testing it has only worked
-	during one test.
+Espresso's withContentDescription works very rarely. Sometimes it works and other times it does not. In our testing it has only worked a 
+	few times on a physical device, but has never worked on the emulators.
 
 JSON file does not contain enough information:
 	-scollTo() only works on ScrollView, so when a view is not visible and needs to be scrolled to, there is no way to 
