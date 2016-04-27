@@ -1,1 +1,1 @@
-UIAutomator file ./IO/tasks_test_hard.txt ./IO/standard_out.txt
+UIAutomator file ./IO/mileage_simple_type.txt ./IO/standard_out.txt

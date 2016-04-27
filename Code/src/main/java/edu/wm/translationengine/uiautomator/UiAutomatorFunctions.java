@@ -118,6 +118,8 @@ public class UiAutomatorFunctions implements Functions{
 				uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + last_id + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
 				//p.printData(testCase);
 			}
+		}else{
+			uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
 		}
 		if(testCase.getComponent().getText().equals("")){
 			System.out.println("Text field is null in the following stepTestCase, so nothing will be typed in-app:\n");

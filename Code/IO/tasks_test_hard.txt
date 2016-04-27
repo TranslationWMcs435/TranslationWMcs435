@@ -1,5 +1,5 @@
 {
-    "appName": "carreport",
+    "appName": "Tasks",
     "packageName": "org.dmfs.tasks",
     "mainActivity": "org.dmfs.tasks.Tasks",
     "creenSizeX": "720",
@@ -46,6 +46,36 @@
                 "positionY": "500",
                 "text": "Get an A in CS435",
                 "type": "android.widget.EditText",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "org.dmfs.tasks:id/integer_choices_spinner",
+                "index": "0",
+                "isClickable": true,
+                "positionX": "130",
+                "positionY": "500",
+                "text": "needs action",
+                "type": "android.widget.TextView",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "org.dmfs.tasks:id/integer_choice_item_text",
+                "index": "0",
+                "isClickable": true,
+                "positionX": "350",
+                "positionY": "700",
+                "text": "done",
+                "type": "android.widget.TextView",
                 "width": ""
             }
         },
