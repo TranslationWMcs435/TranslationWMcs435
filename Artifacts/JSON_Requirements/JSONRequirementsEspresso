@@ -1,0 +1,206 @@
+JSON Requirements Espresso
+
+NOTES:
+	"Non-repeated" means that no other view on the screen or in the CheckedTextView 
+	has the same data field. So a non-repeated text attribute is a text attribute that
+	is unique to this view, no other view has the same string as their text attribute.
+-----------------------------------------------------------------------------------------------------
+General:
+	The JSON file must contain a valid package name for the app and a valid main 
+	activity for the app.
+-----------------------------------------------------------------------------------------------------
+click (CLICK):
+
+If the StepTestCase's type is android.widget.EditText, then the StepTestCase must
+	have either a non-null, non-empty string ID attribute or the text attribute
+	of the StepTestCase must be the hint of the EditText View.
+If the StepTestCase's type is android.widget.CheckedTextView, then the StepTestCase
+	must have a non-null text attribute.
+If the StepTestCase's type is android.widget.ImageButton, then the StepTestCase
+	must have a non-null, non-repeated content description attribute.
+If the StepTestCase's ID attribute is an empty string, then the StepTestCase
+	must have a non-null, non-repeated text attribute.
+If the StepTestCase's ID attribute is an android ID (ie. "android:id/_______"), the the 
+	StepTestCase must have a non-null, non-repeated text attribute.
+Otherwise if non of the above are met, then the last case is that the StepTestCase
+	must have an R file ID (ie. "R.id._______").
+
+-----------------------------------------------------------------------------------------------------
+long click (LONG_CLICK):
+
+If the StepTestCase's type is android.widget.EditText, then the text attribute of the 
+	StepTestCase must be the hint of the EditText View.
+If the StepTestCase's type is android.widget.CheckedTextView, then the StepTestCase
+	must have a non-null text attribute.
+If the StepTestCase's type is android.widget.ImageButton, then the StepTestCase
+	must have a non-null, non-repeated content description attribute.
+If the StepTestCase's ID attribute is an empty string, then the StepTestCase
+	must have a non-null, non-repeated text attribute.
+If the StepTestCase's ID attribute is an android ID (ie. "android:id/_______"), the the 
+	StepTestCase must have a non-null, non-repeated text attribute.
+Otherwise if non of the above are met, then the last case is that the StepTestCase
+	must have an R file ID (ie. "R.id._______").
+
+-----------------------------------------------------------------------------------------------------
+type (TYPE):
+
+To use type, the preceding StepTestCase must be a tap or long tap on an EditText view.
+	That preceding StepTestCase must have had a non-null, non-empty string ID attribute 
+	or the text attribute must have been the hint of the EditText view being
+	typed in.
+
+The StepTestCase for type must have the text that needs to be typed in the text 
+	attribute of the StepTestCase.
+
+-----------------------------------------------------------------------------------------------------
+swipe (SWIPE-UP, SWIPE-DOWN, SWIPE-LEFT, SWIPE-RIGHT}):
+
+If the StepTestCase's type attribute is android.widget.CheckedTextView, then the 
+	StepTestCase must have a non-repeated text attribute.
+Otherwise, the StepTestCase must have a non-null, non-empty string ID attribute.
+
+-----------------------------------------------------------------------------------------------------
+Example valid JSON file that will work with the EspressoTranslator:
+
+{
+    "appName": "gmdice",
+    "packageName": "de.duenndns.gmdice",
+    "mainActivity": "de.duenndns.gmdice.GameMasterDice",
+    "stepTestCases": [
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "110",
+                "id": "de.duenndns.gmdice:id/die0",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "0",
+                "positionY": "1714",
+                "text": "3D20",
+                "type": "android.widget.Button",
+                "width": "252"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "110",
+                "id": "de.duenndns.gmdice:id/die1",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "252",
+                "positionY": "1714",
+                "text": "1d20",
+                "type": "android.widget.Button",
+                "width": "252"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "110",
+                "id": "de.duenndns.gmdice:id/die2",
+                "index": "2",
+                "isClickable": false,
+                "positionX": "504",
+                "positionY": "1714",
+                "text": "1d6",
+                "type": "android.widget.Button",
+                "width": "252"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "110",
+                "id": "de.duenndns.gmdice:id/die3",
+                "index": "3",
+                "isClickable": false,
+                "positionX": "756",
+                "positionY": "1714",
+                "text": "1d6+4",
+                "type": "android.widget.Button",
+                "width": "252"
+            }
+        },
+        {
+            "action": "LONG_CLICK",
+            "component": {
+                "description": "",
+                "height": "110",
+                "id": "de.duenndns.gmdice:id/more",
+                "index": "4",
+                "isClickable": false,
+                "positionX": "1008",
+                "positionY": "1714",
+                "text": "...",
+                "type": "android.widget.Button",
+                "width": "192"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "128",
+                "id": "de.duenndns.gmdice:id/text1",
+                "index": "4",
+                "isClickable": false,
+                "positionX": "51",
+                "positionY": "1128",
+                "text": "More...",
+                "type": "android.widget.CheckedTextView",
+                "width": "1102"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "android:id/button2",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "602",
+                "positionY": "782",
+                "text": "Cancel",
+                "type": "android.widget.Button",
+                "width": "316"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "110",
+                "id": "de.duenndns.gmdice:id/more",
+                "index": "4",
+                "isClickable": false,
+                "positionX": "1008",
+                "positionY": "1714",
+                "text": "...",
+                "type": "android.widget.Button",
+                "width": "192"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "128",
+                "id": "de.duenndns.gmdice:id/text1",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "51",
+                "positionY": "612",
+                "text": "1d2",
+                "type": "android.widget.CheckedTextView",
+                "width": "1102"
+            }
+        }
+    ]
+}
