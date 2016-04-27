@@ -1,0 +1,98 @@
+{
+    "appName": "carreport",
+    "packageName": "org.dmfs.tasks",
+    "mainActivity": "org.dmfs.tasks.Tasks",
+    "creenSizeX": "720",
+    "creenSizeY": "1280",
+    "stepTestCases": [        
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "gcjhc",
+                "id": "org.dmfs.tasks:id/floating_action_button",
+                "index": "2",
+                "isClickable": true,
+                "positionX": "680",
+                "positionY": "1200",
+                "text": "",
+                "type": "android.widget.ImageButton",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/text1",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "100",
+                "positionY": "500",
+                "text": "Title",
+                "type": "android.widget.EditText",
+                "width": ""
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "height": "604",
+                "id": "id/keyboard_view",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "100",
+                "positionY": "500",
+                "text": "Get an A in CS435",
+                "type": "android.widget.EditText",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/edit",
+                "index": "1",
+                "isClickable": true,
+                "positionX": "580",
+                "positionY": "500",
+                "text": "",
+                "type": "android.widget.ImageView",
+                "width": ""
+            }
+        },
+        {
+            "action": "SWIPE-UP",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "",
+                "index": "",
+                "isClickable": false,
+                "positionX": "600",
+                "positionY": "600",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "org.dmfs.tasks:id/editor_action_save",
+                "index": "0",
+                "isClickable": true,
+                "positionX": "670",
+                "positionY": "100",
+                "text": "Save",
+                "type": "android.widget.TextView",
+                "width": "600"
+            }
+        }
+    ]
+}

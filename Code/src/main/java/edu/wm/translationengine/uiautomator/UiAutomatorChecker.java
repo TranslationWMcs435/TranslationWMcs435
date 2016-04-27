@@ -41,7 +41,10 @@ public class UiAutomatorChecker extends AbstractChecker {
 		}
 		// Images are impossible to recognize without descriptions.
 		else if(c.getType().equals("android.widget.ImageButton")){
-			if(c.getDescription() == null || c.getDescription().equals("")){
+			if(c.getId() != null && !c.getId().equals("")){
+				return true;
+			}
+			else if(c.getDescription() == null || c.getDescription().equals("")){
 				return false;
 			}
 		}

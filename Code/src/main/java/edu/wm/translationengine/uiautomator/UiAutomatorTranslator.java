@@ -35,7 +35,10 @@ public class UiAutomatorTranslator extends GenericTranslator{
 		packageName = testCase.getPackageName();
 		if(testCase.getPackageName() == null){
 			System.out.println("Package Name is null\n");
-		}	
+		}else{
+			System.out.println("Package exists");
+			uf.setPackage(testCase.getPackageName());
+		}
 		mainActivity = testCase.getMainActivity().substring(packageName.length() + 1);
 		if(testCase.getMainActivity() == null){
 			System.out.println("Main Activity is null\n");

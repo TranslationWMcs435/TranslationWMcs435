@@ -1,5 +1,1 @@
-<<<<<<< Updated upstream
-UIAutomator file ./IO/mileage_type_Mark.txt ./IO/standard_out.txt
-=======
-Appium file ./IO/mileage_type.txt ./IO/weiusd.txt
->>>>>>> Stashed changes
+UIAutomator file ./IO/tasks_test_hard.txt ./IO/standard_out.txt
