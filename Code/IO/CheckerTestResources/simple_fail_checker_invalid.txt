@@ -1,0 +1,35 @@
+{
+    "appName": "gmdice",
+    "packageName": "de.duenndns.gmdice",
+    "mainActivity": "de.duenndns.gmdice.GMDice",
+    "stepTestCases": [
+        {
+            "action": "CLICK",
+            "component": {
+                "isClickable": false,
+                "width": ""
+            }
+        },
+        {
+            "action": "LONG_CLICK",
+            "component": {
+                "isClickable": false,
+                "width": ""
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "isClickable": false,
+                "width": ""
+            }
+        },
+        {
+            "action": "SWIPE-DOWN-LEFT",
+            "component": {
+                "isClickable": false,
+                "width": ""
+            }
+        }
+    ]
+}
