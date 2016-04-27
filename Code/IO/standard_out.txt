@@ -11,8 +11,8 @@ public class TestBackPress extends UiAutomatorTestCase {
 		new UiObject(new UiSelector().resourceId("org.dmfs.tasks:id/floating_action_button")).click();
 		new UiObject(new UiSelector().resourceId("android:id/text1")).click();
 		new UiObject(new UiSelector().resourceId("android:id/text1")).setText("Get an A in CS435");
-		new UiObject(new UiSelector().resourceId("android:id/edit")).click();
-		getUiDevice().swipe(600,600,600,344,5);
+		getUiDevice().swipe(600,600,600,88,5);
+		new UiObject(new UiSelector().resourceId("org.dmfs.tasks:id/percentage_seek_bar")).click();
 		new UiObject(new UiSelector().resourceId("org.dmfs.tasks:id/editor_action_save")).click();
 	}
 }

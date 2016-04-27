@@ -144,39 +144,39 @@ public class UiAutomatorFunctions implements Functions{
 		
 		
 		// Generate the end coordinates based on initial ones and direction. The order is arbitrary.
-		// 256 is a nice number of pixels.
+		// 512 is a nice number of pixels.
 		// Does not know the max screen size, so could try to move off of it when swiping down and right.
 		switch(testCase.getAction()){
 		case "SWIPE-UP-LEFT":
-			endX = Math.max(startX - 256, 0); 
-			endY = Math.max(startY - 256, 0);
+			endX = Math.max(startX - 512, 0); 
+			endY = Math.max(startY - 512, 0);
 			break;
 		case "SWIPE-UP-RIGHT":
-			endX = Math.max(startX + 256, 0); 
-			endY = Math.max(startY - 256, 0);
+			endX = Math.max(startX + 512, 0); 
+			endY = Math.max(startY - 512, 0);
 			break;
 		case "SWIPE-DOWN-LEFT":
-			endX = Math.max(startX - 256, 0); 
-			endY = Math.max(startY + 256, 0);
+			endX = Math.max(startX - 512, 0); 
+			endY = Math.max(startY + 512, 0);
 			break;
 		case "SWIPE-DOWN-RIGHT":
-			endX = Math.max(startX + 256, 0); 
-			endY = Math.max(startY + 256, 0);
+			endX = Math.max(startX + 512, 0); 
+			endY = Math.max(startY + 512, 0);
 			break;
 		case "SWIPE-DOWN":
 			endX = Math.max(startX, 0);
-			endY = Math.max(startY + 256, 0);
+			endY = Math.max(startY + 512, 0);
 			break;
 		case "SWIPE-UP":
 			endX = Math.max(startX, 0);
-			endY = Math.max(startY - 256, 0);
+			endY = Math.max(startY - 512, 0);
 			break;
 		case "SWIPE-LEFT":
-			endX = Math.max(startX - 256, 0);
+			endX = Math.max(startX - 512, 0);
 			endY = Math.max(startY, 0);
 			break;
 		case "SWIPE-RIGHT":
-			endX = Math.max(startX + 256, 0);
+			endX = Math.max(startX + 512, 0);
 			endY = Math.max(startY, 0);
 			break;
 		}

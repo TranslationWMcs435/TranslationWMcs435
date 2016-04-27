@@ -50,21 +50,6 @@
             }
         },
         {
-            "action": "CLICK",
-            "component": {
-                "description": "",
-                "height": "",
-                "id": "android:id/edit",
-                "index": "1",
-                "isClickable": true,
-                "positionX": "580",
-                "positionY": "500",
-                "text": "",
-                "type": "android.widget.ImageView",
-                "width": ""
-            }
-        },
-        {
             "action": "SWIPE-UP",
             "component": {
                 "description": "",
@@ -76,6 +61,21 @@
                 "positionY": "600",
                 "text": "",
                 "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "org.dmfs.tasks:id/percentage_seek_bar",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "564",
+                "positionY": "1100",
+                "text": "",
+                "type": "android.widget.SeekBar",
                 "width": ""
             }
         },
