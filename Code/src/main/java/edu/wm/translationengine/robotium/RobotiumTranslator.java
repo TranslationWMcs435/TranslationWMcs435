@@ -14,8 +14,8 @@ import edu.wm.translationengine.trans.GenericTranslator;
  */
 public class RobotiumTranslator extends GenericTranslator {
 
-	private String mainActivityName;
-	private String packageName;
+	public static String mainActivityName;
+	public static String packageName;
 	private RobotiumFileModifier fileModifier;
 	private RobotiumChecker robotiumChecker;
 	private RobotiumFunctions functions;
@@ -66,5 +66,9 @@ public class RobotiumTranslator extends GenericTranslator {
 	
 	public void addExtras(String bundle) {
 		extraBundle.add(bundle);
+	}
+	
+	public String getPackageName() {
+		return packageName;
 	}
 }
