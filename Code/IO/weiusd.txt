@@ -35,11 +35,19 @@ public class TestFile extends TestSuite{
 	public ActivityTestRule<Mileage> mActivityRule = new ActivityTestRule<Mileage>(Mileage.class);
 	@Test
 	public void test(){
-			onView(withId(R.id.price)).perform(click());
-			onView(withId(R.id.price)).perform(typeText("9999999"));
 			onView(withId(R.id.volume)).perform(click());
-			onView(withId(R.id.volume)).perform(typeText("1234567890"));
+			onView(withId(R.id.volume)).perform(typeText("58"));
+			onView(withId(R.id.price)).perform(click());
+			onView(withId(R.id.price)).perform(typeText("50"));
 			onView(withId(R.id.odometer)).perform(click());
-			onView(withId(R.id.odometer)).perform(typeText("3333333"));
+			onView(withId(R.id.odometer)).perform(typeText("20"));
+			onView(withId(R.id.partial)).perform(click());
+			onView(withHint("Comment")).perform(click());
+			onView(withHint("Comment")).perform(typeText(""));
+			onView(withId(R.id.date)).perform(click());
+			onView(withContentDescription("Increase month")).perform(click());
+			onView(withContentDescription("Decrease day")).perform(click());
+			onView(withContentDescription("Increase year")).perform(click());
+			onView(withText("Done")).perform(click());
 	 }
  }
