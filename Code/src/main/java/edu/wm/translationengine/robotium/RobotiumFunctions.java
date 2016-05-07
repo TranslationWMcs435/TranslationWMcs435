@@ -3,25 +3,43 @@ package edu.wm.translationengine.robotium;
 import edu.wm.translationengine.classes.StepTestCase;
 import edu.wm.translationengine.trans.GenericFunctions;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Specifies how different UI commands should be written
- * for test cases.
- *
+ * The class RobotiumFunctions specifies how 
+ * different UI commands should be written
+ * for UI commands.
  */
 public class RobotiumFunctions extends GenericFunctions {
 	
+	/** Additional helper methods to append to the test file */
 	List<String> extras;
 	
+	/**
+	 * Instantiates a new Robotium function instance.
+	 */
 	public RobotiumFunctions() {
-		
+		this.extras = new LinkedList<String>();
 	}
 	
+	/**
+	 * Instantiates a new Robotium function instance.
+	 *
+	 * @param extras an existing list which contains helper methods or 
+	 * 			other entities to append to the test file.
+	 */
 	public RobotiumFunctions(List<String> extras) {
 		this.extras = extras;
 	}
 	
+	/**
+	 * Write the a test case, which composes of one single 
+	 * UI command.
+	 *
+	 * @param testCase the test case
+	 * @throws Exception any type of exception thrown by the system
+	 */
 	public void writeStep(StepTestCase testCase) throws Exception {
 		
 		String action = testCase.getAction();
@@ -44,7 +62,11 @@ public class RobotiumFunctions extends GenericFunctions {
 	}
 	
 	/**
-	 * Need: type, index
+	 * Write necessary code to generate tap action.
+	 *
+	 * @param testCase the test case
+	 * @return true, if successful
+	 * @throws Exception any type of exception thrown by the system
 	 */
 	@Override
 	public boolean tap(StepTestCase testCase) throws Exception {
@@ -101,7 +123,11 @@ public class RobotiumFunctions extends GenericFunctions {
 	}
 	
 	/**
-	 * Need: type, index
+	 * Write necessary code to generate long tap action.
+	 *
+	 * @param testCase the test case
+	 * @return true, if successful
+	 * @throws Exception any type of exception thrown by the system
 	 */
 	@Override
 	public boolean longTap(StepTestCase testCase) throws Exception {
@@ -118,7 +144,11 @@ public class RobotiumFunctions extends GenericFunctions {
 	}
 
 	/**
-	 * Need: type, index, text
+	 * Write necessary code to generate type action.
+	 *
+	 * @param testCase the test case
+	 * @return true, if successful
+	 * @throws Exception the exception
 	 */
 	@Override
 	public boolean pressKey(StepTestCase testCase) throws Exception {
@@ -134,6 +164,13 @@ public class RobotiumFunctions extends GenericFunctions {
 		return true;
 	}
 
+	/**
+	 * Write necessary code to generate swipe action.
+	 * 
+	 * @param testCase the input test case
+	 * @return true if successful, false otherwise
+	 * @throws Exception any type of exception thrown by the system
+	 */
 	@Override
 	public boolean swipe(StepTestCase testCase) throws Exception {
 		
@@ -183,6 +220,11 @@ public class RobotiumFunctions extends GenericFunctions {
 		return true;
 	}
 	
+	/**
+	 * Get the helper method to swipe down-right.
+	 *
+	 * @return the method in string format.
+	 */
 	private String getSwipeDownRight() {
 		
 		return
@@ -221,6 +263,11 @@ public class RobotiumFunctions extends GenericFunctions {
 				"	}\n";
 	}
 	
+	/**
+	 * Get the helper method to swipe down-left.
+	 *
+	 * @return the method in string format.
+	 */
 	private String getSwipeDownLeft() {
 		
 		return
@@ -259,6 +306,11 @@ public class RobotiumFunctions extends GenericFunctions {
 				"	}\n";
 	}
 	
+	/**
+	 * Get the helper method to swipe up-right.
+	 *
+	 * @return the method in string format.
+	 */
 	private String getSwipeUpRight() {
 		
 		return 
@@ -294,6 +346,11 @@ public class RobotiumFunctions extends GenericFunctions {
 				"	}\n";
 	}
 	
+	/**
+	 * Get the helper method to swipe up-left.
+	 *
+	 * @return the method in string format.
+	 */
 	private String getSwipeUpLeft() {
 		
 		return
@@ -331,6 +388,11 @@ public class RobotiumFunctions extends GenericFunctions {
 				"	}\n";
 	}
 	
+	/**
+	 * Get the helper method to swipe up.
+	 *
+	 * @return the method in string format.
+	 */
 	private String getSwipeUp() {
 		
 		return 
@@ -363,6 +425,11 @@ public class RobotiumFunctions extends GenericFunctions {
 				"	}\n";
 	}
 	
+	/**
+	 * Get the helper method to swipe down.
+	 *
+	 * @return the method in string format.
+	 */
 	private String getSwipeDown() {
 		
 		return 
@@ -395,6 +462,11 @@ public class RobotiumFunctions extends GenericFunctions {
 				"	}\n";
 	}
 	
+	/**
+	 * Get the helper method to swipe left.
+	 *
+	 * @return the method in string format.
+	 */
 	private String getSwipeLeft() {
 		
 		return 
@@ -427,6 +499,11 @@ public class RobotiumFunctions extends GenericFunctions {
 				"	}\n";
 	}
 	
+	/**
+	 * Get the helper method to swipe right.
+	 *
+	 * @return the method in string format.
+	 */
 	private String getSwipeRight() {
 		
 		return 
@@ -459,6 +536,11 @@ public class RobotiumFunctions extends GenericFunctions {
 				"	}\n";
 	}
 	
+	/**
+	 * Write test name.
+	 *
+	 * @param id the id
+	 */
 	private void writeTestName(String id) {
 		
 		if(id != null && !id.equals("")) {

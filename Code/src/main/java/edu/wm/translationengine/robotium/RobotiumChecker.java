@@ -11,10 +11,20 @@ import edu.wm.translationengine.trans.AbstractChecker;
  */
 public class RobotiumChecker extends AbstractChecker {
 	
+	/**
+	 * Instantiates a new Robotium checker.
+	 */
 	public RobotiumChecker() {
 		super();
 	}
 	
+	/** 
+	 * Check if file contains all essential app metadata
+	 * needed to translate.
+	 * 
+	 * @param tc a testcase
+	 * @return true if the file contains all essential metadata, false otherwise
+	 */
 	public boolean checkAppData(TestCase tc) {
 		
 		if(tc.getAppName() == null || tc.getAppName().equals("")) {
@@ -36,6 +46,12 @@ public class RobotiumChecker extends AbstractChecker {
 		return true;	
 	}
 	
+	/**
+	 * Check if component has a valid values to perform click action.
+	 *
+	 * @param c the component
+	 * @return a message to indicate whether the component has valid values needed to perform click
+	 */
 	public boolean checkClick(Component c) {
 				
 		if(!hasBasicComponentInfo(c, "click"))
@@ -44,6 +60,12 @@ public class RobotiumChecker extends AbstractChecker {
 		return true;
 	}
 	
+	/**
+	 * Check if component has a valid values to perform long click action.
+	 *
+	 * @param c the component
+	 * @return a message to indicate whether the component has valid values needed to perform long click
+	 */
 	public boolean checkLongClick(Component c) {
 		
 		if(!hasBasicComponentInfo(c, "long click"))
@@ -52,6 +74,12 @@ public class RobotiumChecker extends AbstractChecker {
 		return true;
 	}
 	
+	/**
+	 * Check if component has a valid values to perform type action.
+	 *
+	 * @param c the component
+	 * @return a message to indicate whether the component has valid values needed to perform type
+	 */
 	public boolean checkType(Component c) {
 		
 		if(c.getText() == null) {
@@ -67,7 +95,11 @@ public class RobotiumChecker extends AbstractChecker {
 	}
 	
 	/**
-	 * Need positionX, positionY
+	 * Check if the component has necessary values needed for 
+	 * swipe action. Needs positionX, positionY.
+	 *
+	 * @param c the component
+	 * @return true, if successful
 	 */
 	public boolean checkSwipe(Component c) {
 
@@ -85,6 +117,13 @@ public class RobotiumChecker extends AbstractChecker {
 		return true;
 	}
 	
+	/**
+	 * Checks for basic component info.
+	 *
+	 * @param c the c
+	 * @param action the action
+	 * @return true, if successful
+	 */
 	private boolean hasBasicComponentInfo(Component c, String action) {
 		
 		String typeErr = checkType(c, action);
@@ -99,9 +138,22 @@ public class RobotiumChecker extends AbstractChecker {
 			return false;
 		}
 		
+		String idErr = checkID(c, action);
+		if(idErr != null) {
+			System.err.println(idErr);
+			return false;
+		}
+		
 		return true;
 	}
 	
+	/**
+	 * Check if component has valid values needed for id.
+	 *
+	 * @param c the c
+	 * @param action the action
+	 * @return a message to indicate whether the component has valid id values
+	 */
 	private String checkID(Component c, String action) {
 		
 		if(c.getId() == null || c.equals("")) {
@@ -112,6 +164,13 @@ public class RobotiumChecker extends AbstractChecker {
 		return null;
 	}
 	
+	/**
+	 * Check if component has valid values needed for type.
+	 *
+	 * @param c the c
+	 * @param action the action
+	 * @return a message to indicate whether the component has all values needed to perform type
+	 */
 	private String checkType(Component c, String action) {
 		
 		if(c.getType() == null || c.getType().equals("")) {
@@ -122,6 +181,13 @@ public class RobotiumChecker extends AbstractChecker {
 		return null;
 	}
 	
+	/**
+	 * Check if component has a valid index.
+	 *
+	 * @param c the component
+	 * @param action the action
+	 * @return a message to indicate whether the component has valid index values
+	 */
 	private String checkIndex(Component c, String action) {
 		
 		if(c.getIndex() == null || c.getIndex().equals("")) {
@@ -131,5 +197,4 @@ public class RobotiumChecker extends AbstractChecker {
 		
 		return null;
 	}
-	
 }

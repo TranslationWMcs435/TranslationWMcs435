@@ -14,10 +14,18 @@ import edu.wm.translationengine.robotium.RobotiumChecker;
 import edu.wm.translationengine.trans.AbstractChecker;
 import edu.wm.translationengine.uiautomator.UiAutomatorChecker;
 
+/**
+ * The Class TestCheckerInvalid tests whether
+ * all checkers can handle JSON files where 
+ * essential keys are missing.
+ */
 public class TestCheckerInvalid {
 	
+	/**
+	 * Test invalid app data.
+	 */
 	@Test
-	public void testInvalidGMDice() throws Exception {
+	public void testAppData() throws Exception {
 		
 		String TEST_FAIL = "./IO/CheckerTestResources/simple_fail_checker_invalid.txt";
 		TestCase testCase;
@@ -83,7 +91,7 @@ public class TestCheckerInvalid {
 	}
 	
 	/**
-	 * Tests long click checking
+	 * Tests long click checking.
 	 */
 	@Test
 	public void testLongClick() throws Exception {
@@ -122,8 +130,9 @@ public class TestCheckerInvalid {
 	/**
 	 * Tests type checking
 	 * 
-	 * All frameworks should return true because
-	 * all allow empty text input
+	 * All frameworks should return false because
+	 * they do not allow missing keys.
+	 *
 	 */
 	@Test
 	public void testType() throws Exception {
@@ -152,6 +161,10 @@ public class TestCheckerInvalid {
 		assertTrue(checker.checkType(steps.get(2).getComponent()));
 	}
 	
+	/**
+	 * Test swipe checking.
+	 *
+	 */
 	@Test
 	public void testSwipe() throws Exception {
 		
@@ -186,4 +199,3 @@ public class TestCheckerInvalid {
 		assertTrue(t instanceof NullPointerException);
 	}
 }
-
