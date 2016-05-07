@@ -1,11 +1,26 @@
 package edu.wm.translationengine.espresso;
+
 import edu.wm.translationengine.classes.Component;
 import edu.wm.translationengine.classes.TestCase;
 import edu.wm.translationengine.trans.AbstractChecker;
 
-
+/**
+ * This is the EspressoChecker class, it extends AbstractChecker. It is 
+ * run before the translating is done to make sure that the JSON file 
+ * given as input has enough information to generate Espresso code that
+ * works.
+ * 
+ * @author Nathan Chen
+ *
+ */
 public class EspressoChecker extends AbstractChecker{
 	
+	/**
+	 * Checks that the TestCase that is being analyzed has enough information
+	 * about the app under test to build a working Espresso test case.
+	 * 
+	 * @param tc TestCase that is being analyzed
+	 */
 	@Override
 	public boolean checkAppData(TestCase tc){
 		int checksum = 0;
@@ -29,6 +44,12 @@ public class EspressoChecker extends AbstractChecker{
 		}
 	}
 	
+	/**
+	 * Checks that the given click component has enough information
+	 * to generate a working Espresso click command.
+	 * 
+	 * @param c Component that is being checked currently
+	 */
 	@Override
 	public boolean checkClick(Component c){
 		if(c.getType().equals("android.widget.CheckedTextView")){
@@ -59,6 +80,12 @@ public class EspressoChecker extends AbstractChecker{
 		return false;
 	}
 	
+	/**
+	 * Checks that the given long click component has enough information
+	 * to generate a working Espresso long click command.
+	 * 
+	 * @param c Component that is being checked currently
+	 */
 	@Override
 	public boolean checkLongClick(Component c){
 		if(c.getType().equals("android.widget.CheckedTextView")){
@@ -89,6 +116,12 @@ public class EspressoChecker extends AbstractChecker{
 		return false;
 	}
 	
+	/**
+	 * Checks that the given type component has enough information
+	 * to generate a working Espresso type command.
+	 * 
+	 * @param c Component that is being checked currently
+	 */
 	@Override
 	public boolean checkType(Component c){
 		if(c.getText() != null){
@@ -96,6 +129,13 @@ public class EspressoChecker extends AbstractChecker{
 		}
 		return false;
 	}
+	
+	/**
+	 * Checks that the given swipe component has enough information
+	 * to generate a working Espresso swipe command.
+	 * 
+	 * @param c Component that is being checked currently
+	 */
 	@Override
 	public boolean checkSwipe(Component c){
 		if(c.getType().equals("android.widget.CheckedTextView")){

@@ -1,27 +1,38 @@
 package edu.wm.translationengine.espresso;
 
-
-//import espresso.EspressoTranslator;
-
 import edu.wm.translationengine.classes.StepTestCase;
 import edu.wm.translationengine.trans.GenericFunctions;
 import edu.wm.translationengine.trans.StepTestCaseDataPrinter;
 
+
+/**
+ * This is the EspressoFunctions class, it is the class that contains the code
+ * that translates StepTestCases into Espresso commands. It works by reading the
+ * different details of each StepTestCase and picks the best way to generate an
+ * Espresso command that generates that action when run.
+ * 
+ * @author Nathan Chen
+ *
+ */
 public class EspressoFunctions extends GenericFunctions{
-	private boolean clicky;
-	private boolean long_clicky;
-	private boolean typey;
-	private boolean swipe_upy;
-	private boolean swipe_downy;
-	private boolean swipe_lefty;
-	private boolean swipe_righty;
+	private boolean clicky;			//These variables that end with a "y" are used to 
+	private boolean long_clicky;	//see whether or not the import statement for this
+	private boolean typey;			//kind of Espresso command has been added to toWrite
+	private boolean swipe_upy;		//already. If the variable is false then it has not been
+	private boolean swipe_downy;	//added yet and it will be added in the espresso_switcher
+	private boolean swipe_lefty;	//method. Once it is added the variable will be set to true
+	private boolean swipe_righty;	//and then the system will know that it has already been added
+									//so it will not be added again.
 	StepTestCaseDataPrinter p;
 	String storedId;
 	String storedText;
 	boolean useId; //if true use id in type else use the text of the component
 	
 	/**
-	 * Constructor for the EspressoFunctions class
+	 * Constructor for the EspressoFunctions class. It initializes 
+	 * variables necessary for adding import statements to toWrite.
+	 * Also initialzes other necessary items like StepTestCaseDataPrinter
+	 * and storedId and storedText.
 	 */
 	public EspressoFunctions(){
 		clicky = false;
@@ -40,8 +51,9 @@ public class EspressoFunctions extends GenericFunctions{
 	/**
 	 * Switching hub for taking different kinds of input, calls methods depending
 	 * on what kind of user input is given.
+	 * 
 	 * @param action String of the action to be performed
-	 * @param s StepTestCase object being looked at 
+	 * @param s StepTestCase object being analyzed
 	 */
 	public void espresso_switcher(String action, StepTestCase s){
 		
@@ -99,7 +111,7 @@ public class EspressoFunctions extends GenericFunctions{
 
 	/**
 	 * Generates the click command formatted in the Espresso framework
-	 * @param c Component object of the current stepTestCase being analyzed
+	 * @param s StepTestCase object being analyzed
 	 */
 	private void make_click_command(StepTestCase s) {
 		String espresso_command = new String();
@@ -139,7 +151,7 @@ public class EspressoFunctions extends GenericFunctions{
 	
 	/**
 	 * Generates the click command formatted in the Espresso framework
-	 * @param c Component object of the current stepTestCase being analyzed
+	 * @param s StepTestCase object being analyzed
 	 */
 	private void make_click_command_with_text(StepTestCase s) {
 		String espresso_command = new String();
@@ -154,7 +166,7 @@ public class EspressoFunctions extends GenericFunctions{
 	
 	/**
 	 * Generates the long click command formatted in the Espresso framework
-	 * @param c Component object of the current stepTestCase being analyzed
+	 * @param s StepTestCase object being analyzed
 	 */
 	private void make_long_click_command(StepTestCase s) {
 		String espresso_command = new String();
@@ -184,7 +196,7 @@ public class EspressoFunctions extends GenericFunctions{
 	}
 	/**
 	 * Generates the long click command formatted in the Espresso framework
-	 * @param c Component object of the current stepTestCase being analyzed
+	 * @param s StepTestCase object being analyzed
 	 */
 	private void make_long_click_command_with_text(StepTestCase s) {
 		String espresso_command = new String();	
@@ -196,7 +208,11 @@ public class EspressoFunctions extends GenericFunctions{
 		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
-
+	/**
+	 * Generates the type command formatted in the Espresso framework.
+	 * 
+	 * @param s StepTestCase object being analyzed
+	 */
 	public void type(StepTestCase s){
 		String espresso_command = new String();
 		if(useId == true){
@@ -209,6 +225,11 @@ public class EspressoFunctions extends GenericFunctions{
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
 
+	/**
+	 * Generates the command to swipe up in the Espresso framework.
+	 * 
+	 * @param s StepTestCase object being analyzed
+	 */
 	public void swipeUp(StepTestCase s){
 		String espresso_command = new String();
 		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
@@ -220,6 +241,12 @@ public class EspressoFunctions extends GenericFunctions{
 		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
+	
+	/**
+	 * Generates the command to swipe down in the Espresso framework.
+	 * 
+	 * @param s StepTestCase object being analyzed
+	 */
 	public void swipeDown(StepTestCase s){
 		String espresso_command = new String();
 		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
@@ -231,6 +258,12 @@ public class EspressoFunctions extends GenericFunctions{
 		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
+	
+	/**
+	 * Generates the command to swipe left in the Espresso framework.
+	 * 
+	 * @param s StepTestCase object being analyzed
+	 */
 	public void swipeLeft(StepTestCase s){
 		String espresso_command = new String();
 		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
@@ -242,6 +275,12 @@ public class EspressoFunctions extends GenericFunctions{
 		}
 		EspressoTranslator.toWrite.add(espresso_command);
 	}
+	
+	/**
+	 * Generates the command to swipe right in the Espresso framework.
+	 * 
+	 * @param s StepTestCase object being analyzed
+	 */
 	public void swipeRight(StepTestCase s){
 		String espresso_command = new String();
 		if(s.getComponent().getType().equals("android.widget.CheckedTextView")){
