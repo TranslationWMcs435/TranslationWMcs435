@@ -39,7 +39,8 @@ public class UiAutomatorTranslator extends GenericTranslator{
 			System.out.println("Package exists");
 			uf.setPackage(testCase.getPackageName());
 		}
-		mainActivity = testCase.getMainActivity().substring(packageName.length() + 1);
+		//UIAutomator does not use mainActivity. Was causing problems when no main activity in json.
+		mainActivity = "";
 		if(testCase.getMainActivity() == null){
 			System.out.println("Main Activity is null\n");
 		}

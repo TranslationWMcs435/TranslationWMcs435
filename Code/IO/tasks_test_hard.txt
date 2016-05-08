@@ -2,8 +2,8 @@
     "appName": "Tasks",
     "packageName": "org.dmfs.tasks",
     "mainActivity": "org.dmfs.tasks.Tasks",
-    "creenSizeX": "720",
-    "creenSizeY": "1280",
+    "screenSizeX": "720",
+    "screenSizeY": "1280",
     "stepTestCases": [        
         {
             "action": "CLICK",

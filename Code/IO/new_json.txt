@@ -1,0 +1,279 @@
+{
+    "appName": "",
+    "packageName": "com.evancharlton.mileage",
+    "mainActivity": "",
+    "screenSizeX": "",
+    "screenSizeY": "",
+    "stepTestCases": [        
+        {
+            "action": "OPEN",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "com.evancharlton.mileage:id/volume",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "com.evancharlton.mileage:id/volume",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "58",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "com.evancharlton.mileage:id/price",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "com.evancharlton.mileage:id/price",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "50",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "com.evancharlton.mileage:id/odometer",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "com.evancharlton.mileage:id/odometer",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "20",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "com.evancharlton.mileage:id/partial",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "OPEN",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "OPEN",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "com.evancharlton.mileage:id/date",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/increment",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/decrement",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/increment",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/button1",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "SWIPE-DOWN-LEFT",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "",
+                "index": "",
+                "isClickable": false,
+                "positionX": 12,
+                "positionY": 1136,
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "SWIPE-UP-RIGHT",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "",
+                "index": "",
+                "isClickable": false,
+                "positionX": 12,
+                "positionY": 625,
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/button1",
+                "index": "",
+                "isClickable": false,
+                "positionX": "",
+                "positionY": "",
+                "text": "",
+                "type": "",
+                "width": ""
+            }
+        }
+    ]
+}

@@ -1,1 +1,1 @@
-UIAutomator file ./IO/mileage_simple_type.txt ./IO/standard_out.txt
+UIAutomator file ./IO/new_json.txt ./IO/standard_out.txt

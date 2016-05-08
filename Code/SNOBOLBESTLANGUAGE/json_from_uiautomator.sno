@@ -1,0 +1,127 @@
+*I'm a bit of a jerk, and I wrote a pattern matching
+*thing in snobol instead of Java, since I know how to do it here
+*and it only should take me an hour or two
+
+*label  code                            goto
+
+defs
+*       The attributes
+		define("reset()")
+		define("print_output()")
+		define("parse(a)")
+		define("setup()")
+		define("direction()")
+init
+		reset()
+		context_comma = ''
+
+*       The characters we see in patterns. For spanning across. If I missed one, just add it.
+		chars = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM_/.:1234567890" '
+		nums = '1234567890'
+*       The patterns
+		act = ')).' ( 'click();' . action | 'setText(' . action break(")") . text ');' )
+		clickmatch = 'new UiObject(new UiSelector().resourceId(' break(")") . id act
+		swipematch = '		getUiDevice().' 'swipe' . action '(' span(nums) . positionX ',' span(nums) . positionY ',' span(nums) . x2 ',' span(nums) . y2 ',5);'
+
+										:(start)
+
+reset
+		appName = ''
+		package = ''
+		main = ''
+		action = '""'
+		description = '""'
+		height = '""'
+		id = '""'
+		index = '""'
+		isClickable = 'false'
+		positionX = '""'
+		positionY = '""'
+		text = '""'
+		type = '""'
+		width = '""'
+										:(return)
+
+direction
+* Isn't this one also super pretty?
+		up =
+		left =
+		up gt(positionY,y2) = "-UP"
+		up lt(positionY,y2) = "-DOWN"
+		left gt(positionX,x2) = "-LEFT"
+		left lt(positionX,x2) = "-RIGHT"
+		direction = up left				:(return)
+
+
+parse
+		a 'click();'                    :s(click)
+		a 'setText('                    :s(typ)
+		a 'swipe'                       :s(swipe)
+
+open    to_return = '"OPEN"'            :(r)
+typ     to_return = '"TYPE"'            :(r)
+click	to_return = '"CLICK"'           :(r)
+swipe
+		dir = direction()
+		to_return = '"SWIPE' dir '"'    :(r)
+r		parse = to_return				:(return)
+
+setup
+		output = '{'
+		output = '    "appName": "' appName '",'
+		output = '    "packageName": "' package '",'
+		output = '    "mainActivity": "' main '",'
+		output = '    "screenSizeX": ' '""' ','
+		output = '    "screenSizeY": ' '""' ','
+		output = '    "stepTestCases": [        '
+										:(return)
+
+*This is why I <3 Snobol. Look how pretty this is.
+print_output
+*Alas, even in snobol we have to deal with the firs or last one being weird.
+		context_comma '        },'      :f(act)
+		output = context_comma
+act		context_comma = '        },'
+		output = '        {'
+		output = '            "action": ' parse(action) ','
+		output = '            "component": {'
+		output = '                "description": ' description ','
+		output = '                "height": ' height ','
+		output = '                "id": ' id ','
+		output = '                "index": ' index ','
+		output = '                "isClickable": ' isClickable ','
+		output = '                "positionX": ' positionX ','
+		output = '                "positionY": ' positionY ','
+		output = '                "text": ' text ','
+		output = '                "type": ' type ','
+		output = '                "width": ' width
+		output = '            }'
+*		output = action " , " description " , " height " , " id " , " index " , "
+*		output = "    " isClickable " , " positionX " , " positionY " , " text " , " type " , " width
+										:(return)
+
+start
+		line = input
+		line "package " span(chars) . package
+to_code
+		line = input
+		line 'public void test_uiautomator() throws UiObjectNotFoundException{' :f(to_code)
+		line = input
+		line '		Intent intent = context.getPackageManager().getLaunchIntentForPackage(' break(')') . package ');'
+		setup()
+
+
+loop
+		line clickmatch
+		line swipematch
+		print_output()
+		action =
+		reset()
+		line = input                    :f(close)
+		line '}'                        :s(close)f(loop)
+
+close
+		output = '        }'
+		output = '    ]'
+		output = '}'
+end
