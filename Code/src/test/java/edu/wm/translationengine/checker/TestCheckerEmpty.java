@@ -2,6 +2,7 @@ package edu.wm.translationengine.checker;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.List;
 import org.junit.Test;
 
@@ -14,10 +15,19 @@ import edu.wm.translationengine.robotium.RobotiumChecker;
 import edu.wm.translationengine.trans.AbstractChecker;
 import edu.wm.translationengine.uiautomator.UiAutomatorChecker;
 
+/**
+ * The Class TestCheckerEmpty checks whether
+ * all checkers can handle an empty input file.
+ */
 public class TestCheckerEmpty {
 	
+	/**
+	 * Tests invalid app data.
+	 * 
+	 * @throws IOException if the input file cannot be found or read
+	 */
 	@Test
-	public void testInvalidGMDice() throws Exception {
+	public void testInvalidAppData() throws IOException {
 		
 		String TEST_FAIL = "./IO/CheckerTestResources/simple_fail_checker.txt";
 		TestCase testCase;
@@ -135,6 +145,10 @@ public class TestCheckerEmpty {
 		assertTrue(checker.checkType(steps.get(2).getComponent()));
 	}
 	
+	/**
+	 * Tests swipe checking.
+	 * 
+	 */
 	@Test
 	public void testSwipe() throws Exception {
 		
@@ -160,4 +174,3 @@ public class TestCheckerEmpty {
 		assertFalse(checker.checkSwipe(steps.get(3).getComponent()));
 	}
 }
-

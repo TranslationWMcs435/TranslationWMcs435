@@ -14,14 +14,29 @@ import edu.wm.translationengine.trans.FileModifier;
  */
 public class RobotiumFileModifier extends FileModifier {
 	
+	/** The package name. */
 	private String packageName;
+	
+	/** The main activity name. */
 	private String mainActivityName;
 	
+	/**
+	 * Instantiates a new robotium file modifier.
+	 *
+	 * @param mainPackageName the main package name
+	 * @param mainActivityName the main activity name
+	 * @param testCase the test case
+	 */
 	public RobotiumFileModifier(String mainPackageName, String mainActivityName, List<StepTestCase> testCase) {
 		this.packageName = mainPackageName;
 		this.mainActivityName = mainActivityName;
 	}
 	
+	/**
+	 * Write file import statements on top of the output file.
+	 * 
+	 * @throws IOException if the program has trouble reading the data
+	 */
 	public void setupFileImports() throws IOException {
 		
 		// package declaration
@@ -42,11 +57,20 @@ public class RobotiumFileModifier extends FileModifier {
 		RobotiumTranslator.toWrite.add("\n");
 	}
 
+	/**
+	 * Write test method.
+	 */
 	public void setupTestMethodHeader() {
 		
 		setupTestMethodHeader(packageName, mainActivityName);
 	}
 
+	/**
+	 * Write test method, which contains the translated UI commands.
+	 * 
+	 * @param a the first string
+	 * @param b the second input string
+	 */
 	public void setupTestMethodHeader(String a, String b) {
 				
 		// Class name
@@ -95,6 +119,9 @@ public class RobotiumFileModifier extends FileModifier {
 		RobotiumTranslator.toWrite.add("\t\tView curView = null;\n");
 	}
 
+	/**
+	 * Write the close down method for the JUnit test case.
+	 */
 	@Override
 	public void closeTestMethod() {
 		
@@ -106,6 +133,12 @@ public class RobotiumFileModifier extends FileModifier {
 		RobotiumTranslator.toWrite.add("\n\n");
 	}
 	
+	/**
+	 * Close the output file by writing additional helper methods
+	 * and also closing the class with a bracket.
+	 *
+	 * @param extras a list of helper methods to additionally write to the file
+	 */
 	public void closeClass(List<String> extras) {
 		
 		for(String method: extras) {
@@ -114,5 +147,4 @@ public class RobotiumFileModifier extends FileModifier {
 		
 		RobotiumTranslator.toWrite.add("}");
 	}
-
 }
