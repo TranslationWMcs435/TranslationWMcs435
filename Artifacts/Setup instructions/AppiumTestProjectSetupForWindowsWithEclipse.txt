@@ -1,0 +1,49 @@
+Appium Testing Setup For Eclipse in Windows
+
+Sources and extra help:
+	https://github.com/appium/appium-dot-exe
+
+PREREQUISITES FOR WINDOWS
+-Android SDK installed
+-Java JDK installed
+-Eclipse installed with ADT plug ins
+-Android Emulating program of your choice or a physical Android Device with developer options set
+-System path variables set for both java and android
+-.NET framework 4.5 redistributable libraries installed on your machine
+	-https://www.microsoft.com/en-us/download/details.aspx?id=30653
+
+
+APPIUM SETUP ON WINDOWS
+1. Head over to appium.io and click "Download Appium." You should be prompted to download a .zip folder titled Appium for windows. Download it. 
+	-if you are not prompted for whatever reason to download that zip file, click on "Downloads", and on the page loaded, click "Appium.exe for Windows".
+
+2.The zip file downloaded should contain two files
+	-appium_installer
+	-update
+  Extract those two files to the location of your choice.
+
+3.Run "appium_installer", allow it the appropriate permissions, choose English as your language, and follow along in the Install Wizard. Pretty much just keep clicking "Next" (install the desktop icon if wanted) until you reach "Install". Click "Install". 
+
+4.Appium is now installed on your computer.
+
+
+CONFIGURING ECLIPSE TO WORK WITH APPIUM 
+1.Download the Java Client for appium from the link below. Choose how you want to do this for your project, be it JARs, Maven dependencies, Gradle, etc. The TranslationTeam has made use of Maven Dependencies.
+	-http://mvnrepository.com/artifact/io.appium/java-client/2.1.0
+
+2.Download the Selenium Client and WebDriver Language bindings from the link below. As above, choose how you want to do this for your own project. We went with Maven Dependencies.
+	-http://repo1.maven.org/maven2/org/seleniumhq/selenium/selenium-java/2.52.0/
+
+3.Open up your Eclipse project if you are adding Appium testing to it or start a new one if you are just starting out with Appium.
+4.Add the Appium Java-Client to your project.
+	
+	-JARS: Go to the build path of your project and select "Add External JARs" if you are working. Navigate to the path of the JAR files you downloaded in step 2. Open the folder. Add the two "selenium-java-<numbers and stuff>.jar" JAR files to your build path. Add External JARs again. Navigate another level deeper by opening the "libs" folder. Add all JAR files inside this location to your Build Path. 
+	Navigate to the location of the java-client JAR and add this JAR as well.
+	
+	-Maven: Add the dependencies to your POM file 
+
+And thats it. All of the code in our code base should work for you as is. 
+
+At this point you can get started writing Appium Code in Eclipse that does automated testing. This will require you to both set your Desired Capabilities and potentially starting the server programatically with java code. This goes beyond set up and more into programming. You're on your own with that, but heres a few links to get you started:
+	-https://github.com/appium/appium/tree/master/docs/en
+	-http://appium.io/slate/en/tutorial/android.html?java#introduction29

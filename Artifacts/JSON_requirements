@@ -15,9 +15,7 @@ Possible solutions: Record more of the hierarchy in JSON files (computationally 
 
 UiAutomator:
 Requires Action for all, since that is crucial to determining how to build the action.
-Preference for application name. This allows UiAutomator to run from the home screen. If your JSON does NOT have an application name
-that matches the name on the app menu on the phone, then DON'T include an application name, and UiAutomator will run in-app when it is
-already launched.
+To open an app, include a JSON component that has the action "OPEN" and the application name AS IT APPEARS IN THE APP MENU as the text.
 Clicks: an ID is a must. Could in theory rewrite framework to parse with bounds, though it requires testing only on the same device.
 It'd be related to this: http://stackoverflow.com/questions/20519905/uiautomator-click-on-a-imagebutton-with-no-text-or-content-desc
 Typing: an ID is optional, since the JSON files show clicks on the same place before typing starts. If that feature goes away,

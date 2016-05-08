@@ -1,6 +1,6 @@
 package edu.wm.translationengine.main;
 
-import edu.semeru.wm.qextractor.processors.SourceCodeProcessor;
+//import edu.semeru.wm.qextractor.processors.SourceCodeProcessor;
 import edu.wm.translationengine.classes.*;
 
 import com.google.gson.Gson;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.eclipse.core.internal.resources.Folder;
+//import org.eclipse.core.internal.resources.Folder;
 
 
 public class Main {
@@ -82,7 +82,7 @@ public class Main {
 		final Charset cs = Charset.defaultCharset();
 		Translator et = null;
 		AbstractChecker checker = null;
-		SourceCodeProcessor processor = null;
+//		SourceCodeProcessor processor = null;
 		
 		//Espresso == 0, Appium == 1. Others to follow.
 		String environment_switch = "0";

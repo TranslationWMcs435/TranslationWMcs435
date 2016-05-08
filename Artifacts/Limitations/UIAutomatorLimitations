@@ -1,0 +1,16 @@
+UIAutomator has several major limitations.
+
+Swiping in-app has not been demonstrated yet. There is output from the parser that should work, but I haven't yet seen it
+swipe something while in a test. Swipes will require (as stated elsewhere) end positions or at least distance/speed ofswipe.
+
+It can handle some android-generated assets, but not others. If there is only one button of that description, for instance,
+it'll guess right. But if there's more than one, it'll take the one first in the tree. See mileage test cases for
+evidence of this failure. This is unfixable with the current content of the JSON files.
+
+Typing requires a click on the item right beforehand. This is because the IDs may be garbled to
+"id/keyboard_view" in the actual typing command.
+
+Opening an app from the home screen may only work on a Nexus... 5 I think. The reason is that the "Apps" button may change
+between versions of Android. When possible, the JSON should include an "OPEN" action with the name of the app as the text
+so that UIAutomator can find the app. The process is slow, since it waits to throw an error when it can't click -- an
+artifact of this being black box testing.

@@ -10,11 +10,26 @@
             "component": {
                 "description": "",
                 "height": "",
-                "id": "org.dmfs.tasks:id/floating_action_button",
+                "id": "android:id/title",
                 "index": "2",
                 "isClickable": false,
                 "positionX": "680",
                 "positionY": "314",
+                "text": "My tasks",
+                "type": "android.widget.TextView",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "org.dmfs.tasks:id/quick_add_task",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "354",
+                "positionY": "669",
                 "text": "",
                 "type": "android.widget.ImageView",
                 "width": ""
@@ -30,7 +45,7 @@
                 "isClickable": false,
                 "positionX": "354",
                 "positionY": "669",
-                "text": "Title",
+                "text": "",
                 "type": "android.widget.EditText",
                 "width": ""
             }
@@ -65,48 +80,18 @@
             }
         },
         {
-            "action": "SWIPE-UP",
-            "component": {
-                "description": "",
-                "height": "",
-                "id": "",
-                "index": "",
-                "isClickable": false,
-                "positionX": "600",
-                "positionY": "600",
-                "text": "",
-                "type": "",
-                "width": ""
-            }
-        },
-        {
             "action": "CLICK",
             "component": {
                 "description": "",
                 "height": "",
-                "id": "org.dmfs.tasks:id/percentage_seek_bar",
+                "id": "org.dmfs.tasks:id/editor_action_save",
                 "index": "0",
                 "isClickable": false,
                 "positionX": "564",
                 "positionY": "1100",
-                "text": "",
-                "type": "android.widget.SeekBar",
-                "width": ""
-            }
-        },
-        {
-            "action": "CLICK",
-            "component": {
-                "description": "",
-                "height": "96",
-                "id": "org.dmfs.tasks:id/editor_action_save",
-                "index": "0",
-                "isClickable": true,
-                "positionX": "670",
-                "positionY": "100",
                 "text": "Save",
                 "type": "android.widget.TextView",
-                "width": "600"
+                "width": ""
             }
         }
     ]

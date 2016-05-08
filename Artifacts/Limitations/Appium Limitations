@@ -1,0 +1,11 @@
+Appium Limitations
+
+Appium will not work properly when there are mobile elements with identical components. Elements should either have their own distinguishable id, their own distinguisable components outside of ID such as index, class, etc., or both.  
+All component information should match up exactly with how it is outlined in UIAutomatorViewer/Appium Inspector. Strings for things such as ids, text, etc. should NOT be truncated or changed in any way when putting them into the JSON file. With proper compliance to these rules xpaths should be an effective failsafe in the event that a find by ID search becomes problematic, as in the case of "android:id/" mobile elements.
+
+I believe that as one final failsafe should be added to make Appium failsafe. Original screensize of the device tested must be added to the JSON file. This will allow for scaled recreation of swipes, and will allow for interactions with mobile elements across various screen sizes.
+As is, the JSON file merely gives an x and y value, which is not enough information to go off of. 
+
+A testfile has been added to the AppiumTest directory to show that swiping does work outside of problematic JSON.
+
+Appium has a scrollTo() function. This is also presented in the AppiumTest directory in a test which is similar to the swipe test. Not implemented in the Live or File Modes, because I believe it may be problematic to instruct the device to scroll until it locates an element which is not visible in the event those items are not on the screen at all.

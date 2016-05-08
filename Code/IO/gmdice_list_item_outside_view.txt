@@ -79,7 +79,7 @@
             }
         },
         {
-            "action": "SWIPE-UP",
+            "action": "CLICK",
             "component": {
                 "description": "",
                 "height": "128",
@@ -88,24 +88,39 @@
                 "isClickable": false,
                 "positionX": "51",
                 "positionY": "1128",
-                "text": "1d2",
+                "text": "More...",
                 "type": "android.widget.CheckedTextView",
                 "width": "1102"
             }
         },
                 {
-            "action": "SWIPE-DOWN",
+            "action": "CLICK",
             "component": {
                 "description": "",
                 "height": "128",
-                "id": "de.duenndns.gmdice:id/text1",
-                "index": "4",
+                "id": "de.duenndns.gmdice:id/spin_sides",
+                "index": "0",
                 "isClickable": false,
                 "positionX": "51",
-                "positionY": "1128",
-                "text": "1d6+1",
-                "type": "android.widget.CheckedTextView",
+                "positionY": "612",
+                "text": "1d2",
+                "type": "android.widget.Spinner",
                 "width": "1102"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "android:id/text1",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "602",
+                "positionY": "782",
+                "text": "100",
+                "type": "android.widget.CheckedTextView",
+                "width": "316"
             }
         }
     ]

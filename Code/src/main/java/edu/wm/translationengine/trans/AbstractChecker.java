@@ -45,7 +45,6 @@ public abstract class AbstractChecker {
 	public boolean runCheck(TestCase tc){
 		
 		appDataPass = checkAppData(tc);
-		
 		List<StepTestCase> stcList = tc.getSteps();
 		
 		for(int i = 0; i < stcList.size(); i++){
@@ -68,6 +67,13 @@ public abstract class AbstractChecker {
 					cases_with_errors.add(cur);
 				}
 			}
+			else if(stcList.get(i).getAction().equals("SWIPE_UP") || stcList.get(i).getAction().equals("SWIPE_DOWN")
+					|| stcList.get(i).getAction().equals("SWIPE_LEFT") || stcList.get(i).getAction().equals("SWIPE_RIGHT")){
+				pass = checkSwipe(cur.getComponent());
+				if(pass == false){
+					cases_with_errors.add(cur);
+				}
+			}
 			// When request to open app.
 			else if(stcList.get(i).getAction().equals("OPEN")){
 				pass = checkType(cur.getComponent());
@@ -81,26 +87,24 @@ public abstract class AbstractChecker {
 				if(pass == false){
 					cases_with_errors.add(cur);
 				}
-			}
+			}						
 		}
 		
 		if(cases_with_errors.isEmpty() && appDataPass == true){
 			return true;
 		}
 		else{
-			StepTestCaseDataPrinter printer = new StepTestCaseDataPrinter();
-			for(int j = 0; j < cases_with_errors.size(); j++){
-				printer.printData(cases_with_errors.get(j));
+			if(!cases_with_errors.isEmpty()){
+				System.out.println("StepTestCase errors:");
+				StepTestCaseDataPrinter printer = new StepTestCaseDataPrinter();
+				for(int j = 0; j < cases_with_errors.size(); j++){
+					printer.printData(cases_with_errors.get(j));
+				}
 			}
 			return false;
 		}
 	}
 	
-	public boolean checkSwipe(Component c) {
-		// Swipes exist, so we should check them.
-		return false;
-	}
-
 	/**
 	 * Checks the app data, makes sure that necessary inputs from
 	 * data such as appName, packageName, and mainActivity are
@@ -152,4 +156,18 @@ public abstract class AbstractChecker {
 	public boolean checkType(Component c){
 		return false;
 	}
+	/**
+	 * Checks that the necessary information for swiping are present
+	 * 
+	 * OVERRIDE THIS METHOD
+	 * 
+	 * @param c
+	 * @return boolean true if necessary data is present else false
+	 */
+	public boolean checkSwipe(Component c){
+		return false;
+	}
+	
+	
+	
 }

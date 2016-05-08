@@ -4,20 +4,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 import edu.wm.translationengine.trans.FileModifier;
 import edu.wm.translationengine.trans.FileModifierInterface;
+
 /**
  * This is the EspressoFileModifier class, it is the centralized hub for formatting the output
  * test file. It sets up the immediately necessary imports and sets of the test method
  * header. It can also close the test method.
+ * 
  * @author Nathan Chen
  *
  */
 public class EspressoFileModifier implements FileModifierInterface{
+	
 	/**
 	 * Constructor for the EspressoFileModifier class.
 	 */
 	public EspressoFileModifier(){		
 	}
 	
+	/**
+	 * Adds the import statements that Espresso needs to run to toWrite to be written into 
+	 * the output file later.
+	 */
 	public void setupFileImports() throws IOException {
 		EspressoTranslator.toWrite.add("import static android.support.test.espresso.action.ViewActions.scrollTo;\n");
 		EspressoTranslator.toWrite.add("import static android.support.test.espresso.Espresso.onView;\n");
@@ -45,6 +52,7 @@ public class EspressoFileModifier implements FileModifierInterface{
 		EspressoTranslator.toWrite.add("import junit.framework.TestSuite;\n");
 		
 	}
+	
 	/**
 	 * Sets up the test method header and the imports for the main activity and R file. Also puts the package name at the
 	 * top of the file, done here because packageName is needed in this function so makes sense to handle package here
@@ -66,6 +74,7 @@ public class EspressoFileModifier implements FileModifierInterface{
 		EspressoTranslator.toWrite.add("\t@Test\n");
 		EspressoTranslator.toWrite.add("\tpublic void test(){\n");
 	}
+	
 	/**
 	 * Closes the test method
 	 */

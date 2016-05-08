@@ -1,27 +1,25 @@
 Creating a Robotium blackbox testing project in Eclipse
 
-1) Create the test project by:
-File-->New-->Project-->Android-->Android Test Project
+1) Create a test project project:
+    File-->New-->Project-->Android-->Android Test Project
 2) Fill all the following fields to create the test project:
+    * Application Name: name of your application
+    * Project name: a descriptive name of your test project
+    * Package name: package of the application you could like to test
+3) Click "Next"
+4) Uncheck "Create custom launcher icon" and "Create activity"
+5) Click "Finish"
+6) Add the following to your "AnroidManifest.xml":
 
-	- Test Project Name: ExampleApplicationTesting
-	- Test Target: Click on "This Project"
-	- Build Target: If the application was developed using SDK version 7 then select Android 2.1 - update 1. If it was developed by SDK version 8 then select Android 2.2
-	- Properties: Application name: ApplicationTesting
-	- Package name: com.Example.ApplicationTesting
-	- Min SDK version: Default value will be there according to Build Target selection.
-	- Then click finish
+	<instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="de.duenndns.gmdice" />
 
-3) In "AnroidManifest.xml":
-
-	- Change <instrumentation android:targetPackage="com.Example.ApplicationTesting"> to <instrumentation!android:targetPackage="com.Example.ApplicationToTest"
-
-4) Add the latest version of the Robotium jar to the project
+7) Add the latest version of the Robotium jar to the project
 
 	- Right click on "ExampleApplicationTesting" project --> Build path --> Configure Build Path
 	- Then select Add External Jars --> select robotium jar file --> Open --> OK
 
-5) The apk file you wish to test has to have the same certificate signature that your test project has. If the applicaiton is signed then you can use the following drag and drop project to resign it:
-www.troido.de/re-sign.jar
+8) The apk file you wish to test has to have the same certificate signature that your test project has. Otherwise, Eclipse will raise an error stating that your project "does not have a signature matching the target". To get rid of this error, you need to resign the apk you would like to test. If the application is signed then you can use the following drag and drop project to resign it: www.troido.de/re-sign.jar
 
-6) Make an example JUnit test case. Then run as "Android JUnit Test"
+9) Make an example JUnit test case. Then run as "Android JUnit Test"
