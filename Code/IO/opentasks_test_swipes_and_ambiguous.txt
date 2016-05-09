@@ -1,0 +1,100 @@
+{
+    "appName": "opentasks",
+    "packageName": "org.dmfs.tasks",
+    "mainActivity": "org.dmfs.tasks.Tasks",
+    "creenSizeX": "720",
+    "creenSizeY": "1280",
+    "stepTestCases": [
+        {
+            "action": "SWIPE-LEFT",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/text2",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "600",
+                "positionY": "600",
+                "text": "0 tasks",
+                "type": "android.widget.TextView",
+                "width": ""
+            }
+        },         
+        {
+            "action": "SWIPE-LEFT",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/text2",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "600",
+                "positionY": "600",
+                "text": "0 tasks",
+                "type": "android.widget.TextView",
+                "width": ""
+            }
+        },      
+        {
+            "action": "SWIPE-LEFT",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/text2",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "600",
+                "positionY": "600",
+                "text": "0 tasks",
+                "type": "android.widget.TextView",
+                "width": ""
+            }
+        },        
+        {
+            "action": "SWIPE-RIGHT",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/title",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "600",
+                "positionY": "600",
+                "text": "High priority",
+                "type": "android.widget.TextView",
+                "width": ""
+            }
+        },          
+        {
+            "action": "SWIPE-RIGHT",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/title",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "600",
+                "positionY": "600",
+                "text": "Someday",
+                "type": "android.widget.TextView",
+                "width": ""
+            }
+        }, 
+                
+        {
+            "action": "SWIPE-RIGHT",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/title",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "600",
+                "positionY": "600",
+                "text": "Next days",
+                "type": "android.widget.TextView",
+                "width": ""
+            }
+        },
+    ]
+}
