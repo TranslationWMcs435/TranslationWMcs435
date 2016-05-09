@@ -1,0 +1,98 @@
+{
+    "appName": "opentasks",
+    "packageName": "org.dmfs.tasks",
+    "mainActivity": "org.dmfs.tasks.Tasks",
+    "creenSizeX": "720",
+    "creenSizeY": "1280",
+    "stepTestCases": [        
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "org.dmfs.tasks:id/floating_action_button",
+                "index": "2",
+                "isClickable": false,
+                "positionX": "680",
+                "positionY": "314",
+                "text": "",
+                "type": "android.widget.ImageView",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "org.dmfs.tasks:id/integer_choice_item_text",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "354",
+                "positionY": "669",
+                "text": "needs action",
+                "type": "android.widget.TextView",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "height": "604",
+                "id": "org.dmfs.tasks:id/integer_choice_item_text",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "354",
+                "positionY": "669",
+                "text": "cancelled",
+                "type": "android.widget.EditText",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/edit",
+                "index": "1",
+                "isClickable": true,
+                "positionX": "580",
+                "positionY": "500",
+                "text": "",
+                "type": "android.widget.ImageView",
+                "width": ""
+            }
+        },
+        {
+            "action": "SWIPE-UP",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "android:id/text1",
+                "index": "",
+                "isClickable": false,
+                "positionX": "600",
+                "positionY": "600",
+                "text": "Title",
+                "type": "android.widget.EditText",
+                "width": ""
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "",
+                "id": "org.dmfs.tasks:id/editor_action_save",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "564",
+                "positionY": "1100",
+                "text": "Save",
+                "type": "android.widget.TextView",
+                "width": ""
+            }
+        }
+    ]
+}

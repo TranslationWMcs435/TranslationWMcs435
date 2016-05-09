@@ -1,0 +1,51 @@
+{
+    "appName": "mileage",
+    "packageName": "com.evancharlton.mileage",
+    "mainActivity": "com.evancharlton.mileage.Mileage",
+    "stepTestCases": [
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/date",
+                "index": "1",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "5/8/16",
+                "type": "android.widget.Button",
+                "width": "384"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "Increase year",
+                "height": "96",
+                "id": "android:id/increment",
+                "index": "0",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "",
+                "type": "android.widget.ImageButton",
+                "width": "384"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "Decrease month",
+                "height": "96",
+                "id": "android:id/decrement",
+                "index": "2",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "",
+                "type": "android.widget.ImageButton",
+                "width": "384"
+            }
+        }
+}

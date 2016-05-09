@@ -1,0 +1,172 @@
+{
+    "appName": "mileage",
+    "packageName": "com.evancharlton.mileage",
+    "mainActivity": "com.evancharlton.mileage.Mileage",
+    "stepTestCases": [
+    {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/price",
+                "index": "0",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "235",
+                "text": "Price per Gallons",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/price",
+                "index": "0",
+                "isClickable": true,
+                "positionX": "384",
+                "positionY": "235",
+                "text": "2134",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/volume",
+                "index": "1",
+                "isClickable": true,
+                "positionX": "384",
+                "positionY": "235",
+                "text": "Gallons",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/volume",
+                "index": "1",
+                "isClickable": true,
+                "positionX": "384",
+                "positionY": "235",
+                "text": "23451",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/odometer",
+                "index": "0",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "Odometer",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        },
+        {
+            "action": "TYPE",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/odometer",
+                "index": "2",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "4355",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/date",
+                "index": "1",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "5/8/16",
+                "type": "android.widget.Button",
+                "width": "384"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "android:id/numberpicker_input",
+                "index": "1",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "08",
+                "type": "android.widget.EditText",
+                "width": "384"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "android:id/button1",
+                "index": "0",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "OK",
+                "type": "android.widget.Button",
+                "width": "384"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/partial",
+                "index": "2",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "Tank was not filled to the top",
+                "type": "android.widget.CheckBox",
+                "width": "384"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "96",
+                "id": "com.evancharlton.mileage:id/save_btn",
+                "index": "1",
+                "isClickable": true,
+                "positionX": "0",
+                "positionY": "331",
+                "text": "Save Fillup",
+                "type": "android.widget.Button",
+                "width": "384"
+            }
+        }
+    ]
+}

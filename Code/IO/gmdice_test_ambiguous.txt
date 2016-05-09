@@ -1,0 +1,52 @@
+{
+    "appName": "gmdice",
+    "packageName": "de.duenndns.gmdice",
+    "mainActivity": "de.duenndns.gmdice.GameMasterDice",
+    "stepTestCases": [
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "110",
+                "id": "de.duenndns.gmdice:id/more",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "0",
+                "positionY": "1714",
+                "text": "...",
+                "type": "android.widget.Button",
+                "width": "252"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "110",
+                "id": "android:id/text1",
+                "index": "6",
+                "isClickable": false,
+                "positionX": "1008",
+                "positionY": "1714",
+                "text": "More...",
+                "type": "android.widget.CheckedTextView",
+                "width": "192"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "128",
+                "id": "de.duenndns.gmdice:id/increment",
+                "index": "0",
+                "isClickable": false,
+                "positionX": "51",
+                "positionY": "612",
+                "text": "",
+                "type": "android.widget.ImageButton",
+                "width": "1102"
+            }
+        }
+    ]
+}

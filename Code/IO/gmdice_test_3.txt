@@ -23,13 +23,13 @@
             "component": {
                 "description": "",
                 "height": "110",
-                "id": "de.duenndns.gmdice:id/die1",
+                "id": "android:id/text1",
                 "index": "1",
                 "isClickable": false,
                 "positionX": "252",
                 "positionY": "1714",
-                "text": "1d20",
-                "type": "android.widget.Button",
+                "text": "1d100",
+                "type": "android.widget.CheckedTextView",
                 "width": "252"
             }
         },
@@ -54,11 +54,71 @@
                 "description": "",
                 "height": "110",
                 "id": "de.duenndns.gmdice:id/die3",
-                "index": "3",
+                "index": "1",
                 "isClickable": false,
                 "positionX": "756",
                 "positionY": "1714",
-                "text": "1d6+4",
+                "text": "1d20",
+                "type": "android.widget.Button",
+                "width": "252"
+            }
+        },
+                {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "110",
+                "id": "de.duenndns.gmdice:id/die3",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "756",
+                "positionY": "1714",
+                "text": "1d20",
+                "type": "android.widget.Button",
+                "width": "252"
+            }
+        },
+                {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "110",
+                "id": "de.duenndns.gmdice:id/die3",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "756",
+                "positionY": "1714",
+                "text": "1d20",
+                "type": "android.widget.Button",
+                "width": "252"
+            }
+        },
+                {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "110",
+                "id": "de.duenndns.gmdice:id/die3",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "756",
+                "positionY": "1714",
+                "text": "1d20",
+                "type": "android.widget.Button",
+                "width": "252"
+            }
+        },
+                {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "110",
+                "id": "de.duenndns.gmdice:id/die3",
+                "index": "1",
+                "isClickable": false,
+                "positionX": "756",
+                "positionY": "1714",
+                "text": "1d20",
                 "type": "android.widget.Button",
                 "width": "252"
             }
@@ -68,12 +128,12 @@
             "component": {
                 "description": "",
                 "height": "110",
-                "id": "de.duenndns.gmdice:id/more",
-                "index": "4",
+                "id": "de.duenndns.gmdice:id/die2",
+                "index": "2",
                 "isClickable": false,
                 "positionX": "1008",
                 "positionY": "1714",
-                "text": "...",
+                "text": "1d6",
                 "type": "android.widget.Button",
                 "width": "192"
             }
@@ -83,12 +143,12 @@
             "component": {
                 "description": "",
                 "height": "128",
-                "id": "de.duenndns.gmdice:id/text1",
-                "index": "4",
+                "id": "android:id/text1",
+                "index": "5",
                 "isClickable": false,
                 "positionX": "51",
                 "positionY": "1128",
-                "text": "More...",
+                "text": "1d30",
                 "type": "android.widget.CheckedTextView",
                 "width": "1102"
             }
@@ -98,12 +158,12 @@
             "component": {
                 "description": "",
                 "height": "96",
-                "id": "android:id/button2",
-                "index": "1",
+                "id": "de.duenndns.gmdice:id/more",
+                "index": "4",
                 "isClickable": false,
                 "positionX": "602",
                 "positionY": "782",
-                "text": "Cancel",
+                "text": "...",
                 "type": "android.widget.Button",
                 "width": "316"
             }
@@ -113,13 +173,13 @@
             "component": {
                 "description": "",
                 "height": "110",
-                "id": "de.duenndns.gmdice:id/more",
-                "index": "4",
+                "id": "android:id/text1",
+                "index": "6",
                 "isClickable": false,
                 "positionX": "1008",
                 "positionY": "1714",
-                "text": "...",
-                "type": "android.widget.Button",
+                "text": "More...",
+                "type": "android.widget.CheckedTextView",
                 "width": "192"
             }
         },
@@ -128,13 +188,43 @@
             "component": {
                 "description": "",
                 "height": "128",
-                "id": "de.duenndns.gmdice:id/text1",
+                "id": "de.duenndns.gmdice:id/spin_sides",
+                "index": "2",
+                "isClickable": false,
+                "positionX": "51",
+                "positionY": "612",
+                "text": "",
+                "type": "android.widget.Spinner",
+                "width": "1102"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "128",
+                "id": "android:id/text1",
+                "index": "3",
+                "isClickable": false,
+                "positionX": "51",
+                "positionY": "612",
+                "text": "10",
+                "type": "android.widget.CheckedTextView",
+                "width": "1102"
+            }
+        },
+        {
+            "action": "CLICK",
+            "component": {
+                "description": "",
+                "height": "128",
+                "id": "android:id/button1",
                 "index": "0",
                 "isClickable": false,
                 "positionX": "51",
                 "positionY": "612",
-                "text": "1d2",
-                "type": "android.widget.CheckedTextView",
+                "text": "OK",
+                "type": "android.widget.Button",
                 "width": "1102"
             }
         }
