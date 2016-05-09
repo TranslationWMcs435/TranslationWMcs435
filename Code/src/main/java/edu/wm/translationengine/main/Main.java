@@ -47,6 +47,7 @@ public class Main {
             return list_of_actions;
         } catch (Exception e){
         	System.out.println("Parsing failed. Returning null.");
+        	e.printStackTrace();
             return list_of_actions;
         }
     }
@@ -219,16 +220,28 @@ public class Main {
         		break;
         }
         
-        System.out.printf(toreturn);
+        System.out.println(toreturn);
         
         /*
          * This is where we add the stuff for AST parsing.
+         * I technically did it, but instead of learning new packages and trash in Java,
+         * I built it from scratch in the dead language Snobol. http://www.snobol4.org I'm sorry.
          */
-        File outfile = new File(outname);
-        File binaries = new File("/libs4ast/temp.txt");
-        String binariesFolder = binaries.getAbsolutePath().replace("/temp.txt", "");
-        //processor.processFolder(outfile.getAbsolutePath(), binariesFolder);
-        
+        Scanner in = new Scanner( System.in );
+        System.out.println("Would you like to parse it back to a JSON again? (UIAutomator only) (y/n)");
+        String ans = in.next();
+        if (ans.equals("y")){
+        	String command = "python ./SNOBOLBESTLANGUAGE/parseback.py " + outname;
+        	try {
+        		Process p = Runtime.getRuntime().exec(command);
+        		p.waitFor();
+        		System.out.println(command);
+        		
+			} catch (IOException | InterruptedException e) {
+				// A lazy Try/Catch
+				e.printStackTrace();
+			}
+        }
 		
 		return;
 	}

@@ -1,1 +1,2 @@
-Espresso file IO/mileage_type.txt ./IO/weiusd.txt
+UIAutomator file ./IO/new_json.txt ./IO/standard_out.txt
+

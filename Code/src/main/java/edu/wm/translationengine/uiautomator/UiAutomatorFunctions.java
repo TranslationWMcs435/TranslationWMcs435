@@ -12,6 +12,8 @@ public class UiAutomatorFunctions implements Functions{
 	String last_id = "";
 	String last_text = "";
 	
+	String pack = "";
+	
 	public UiAutomatorFunctions(){
 		p = new StepTestCaseDataPrinter();
 	}
@@ -53,7 +55,6 @@ public class UiAutomatorFunctions implements Functions{
 		String uiautomator_command = new String();	
 		
 		if(testCase.getComponent().getId().equals("")){
-			System.out.println("Got in, but no ID: " + testCase.getComponent().getText());
 			uiautomator_command += "\t\tnew UiObject(new UiSelector().text(\"" + testCase.getComponent().getText() + "\")).click();\n";
 			UiAutomatorTranslator.toWrite.add(uiautomator_command);
 		}else{
@@ -104,23 +105,21 @@ public class UiAutomatorFunctions implements Functions{
 		if(testCase.getComponent().getId().equals("")){
 			System.out.println("Id field is null in the following stepTestCase:\n");
 			if (last_id.equals("")){
-				System.out.println("No ID on current or last input. Basing from text on last input.");
 				uiautomator_command += "\t\tnew UiObject(new UiSelector().text(\"" + last_text + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
 			}else{
-				System.out.println("ID found from last input.");
 				uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + last_id + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
 				//p.printData(testCase);
 			}
 		}else if(testCase.getComponent().getId().equals("id/keyboard_view")){
-			System.out.println("ID is keyboard, basing location on prior click.");
 			if (last_id.equals("")){
-				System.out.println("No ID on current or last input. Basing from text on last input.");
 				uiautomator_command += "\t\tnew UiObject(new UiSelector().text(\"" + last_text + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
 			}else{
 				System.out.println("ID found from last input.");
 				uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + last_id + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
 				//p.printData(testCase);
 			}
+		}else{
+			uiautomator_command += "\t\tnew UiObject(new UiSelector().resourceId(\"" + testCase.getComponent().getId() + "\")).setText(\"" + testCase.getComponent().getText() + "\");\n";
 		}
 		if(testCase.getComponent().getText().equals("")){
 			System.out.println("Text field is null in the following stepTestCase, so nothing will be typed in-app:\n");
@@ -147,24 +146,40 @@ public class UiAutomatorFunctions implements Functions{
 		
 		
 		// Generate the end coordinates based on initial ones and direction. The order is arbitrary.
-		// 256 is a nice number of pixels.
+		// 512 is a nice number of pixels.
 		// Does not know the max screen size, so could try to move off of it when swiping down and right.
 		switch(testCase.getAction()){
 		case "SWIPE-UP-LEFT":
-			endX = Math.max(startX - 256, 0); 
-			endY = Math.max(startY - 256, 0);
+			endX = Math.max(startX - 512, 0); 
+			endY = Math.max(startY - 512, 0);
 			break;
 		case "SWIPE-UP-RIGHT":
-			endX = Math.max(startX + 256, 0); 
-			endY = Math.max(startY - 256, 0);
+			endX = Math.max(startX + 512, 0); 
+			endY = Math.max(startY - 512, 0);
 			break;
 		case "SWIPE-DOWN-LEFT":
-			endX = Math.max(startX - 256, 0); 
-			endY = Math.max(startY + 256, 0);
+			endX = Math.max(startX - 512, 0); 
+			endY = Math.max(startY + 512, 0);
 			break;
 		case "SWIPE-DOWN-RIGHT":
-			endX = Math.max(startX + 256, 0); 
-			endY = Math.max(startY + 256, 0);
+			endX = Math.max(startX + 512, 0); 
+			endY = Math.max(startY + 512, 0);
+			break;
+		case "SWIPE-DOWN":
+			endX = Math.max(startX, 0);
+			endY = Math.max(startY + 512, 0);
+			break;
+		case "SWIPE-UP":
+			endX = Math.max(startX, 0);
+			endY = Math.max(startY - 512, 0);
+			break;
+		case "SWIPE-LEFT":
+			endX = Math.max(startX - 512, 0);
+			endY = Math.max(startY, 0);
+			break;
+		case "SWIPE-RIGHT":
+			endX = Math.max(startX + 512, 0);
+			endY = Math.max(startY, 0);
 			break;
 		}
 		
@@ -191,37 +206,46 @@ public class UiAutomatorFunctions implements Functions{
 	}
 
 	public boolean launchApp(StepTestCase testCase) throws Exception {
-		// 
-		// Makes a complicated Rube-Goldberg contraption to navigate to the home page and then the app.
-		// Output looks like:
-		/**
-			getUiDevice().pressHome();
-	        UiObject Applications = new UiObject(new UiSelector().description("Apps"));
-	        Applications.clickAndWaitForNewWindow();
-	        int i = 0;
-	        while(i < 10){
-	            try{
-	                new UiObject(new UiSelector().text("Mileage")).click(); //Only real change here.
-	                i = 10;
-	            } catch(Exception e){
-	                i++;
-	                getUiDevice().swipe(500, 500, 10, 500, 5); //Assumed workable for most screen sizes.
-	            }
-	        }
-		 */
-		UiAutomatorTranslator.toWrite.add("\t\tgetUiDevice().pressHome();\n");
-		UiAutomatorTranslator.toWrite.add("\t\tUiObject Applications = new UiObject(new UiSelector().description(\"Apps\"));\n");
-		UiAutomatorTranslator.toWrite.add("\t\tApplications.clickAndWaitForNewWindow();\n");
-		UiAutomatorTranslator.toWrite.add("\t\tint i = 0;\n");
-		UiAutomatorTranslator.toWrite.add("\t\twhile(i < 10){\n");
-		UiAutomatorTranslator.toWrite.add("\t\t\ttry{\n");
-		UiAutomatorTranslator.toWrite.add("\t\t\t\tnew UiObject(new UiSelector().text(\"" + testCase.getComponent().getText() + "\")).click();\n");
-		UiAutomatorTranslator.toWrite.add("\t\t\t\ti = 10;\n");
-		UiAutomatorTranslator.toWrite.add("\t\t\t} catch(Exception e){\n");
-		UiAutomatorTranslator.toWrite.add("\t\t\t\ti++;\n");
-		UiAutomatorTranslator.toWrite.add("\t\t\t\tgetUiDevice().swipe(500, 500, 10, 500, 5);\n");
-		UiAutomatorTranslator.toWrite.add("\t\t\t}\n\t\t}\n");
-		return false;
+		if(pack == null){
+			// Makes a complicated Rube-Goldberg contraption to navigate to the home page and then the app.
+			// Output looks like:
+			/**
+				getUiDevice().pressHome();
+		        UiObject Applications = new UiObject(new UiSelector().description("Apps"));
+		        Applications.clickAndWaitForNewWindow();
+		        int i = 0;
+		        while(i < 10){
+		            try{
+		                new UiObject(new UiSelector().text("Mileage")).click(); //Only real change here.
+		                i = 10;
+		            } catch(Exception e){
+		                i++;
+		                getUiDevice().swipe(500, 500, 10, 500, 5); //Assumed workable for most screen sizes.
+		            }
+		        }
+			 */
+			UiAutomatorTranslator.toWrite.add("\t\tgetUiDevice().pressHome();\n");
+			UiAutomatorTranslator.toWrite.add("\t\tUiObject Applications = new UiObject(new UiSelector().description(\"Apps\"));\n");
+			UiAutomatorTranslator.toWrite.add("\t\tApplications.clickAndWaitForNewWindow();\n");
+			UiAutomatorTranslator.toWrite.add("\t\tint i = 0;\n");
+			UiAutomatorTranslator.toWrite.add("\t\twhile(i < 10){\n");
+			UiAutomatorTranslator.toWrite.add("\t\t\ttry{\n");
+			UiAutomatorTranslator.toWrite.add("\t\t\t\tnew UiObject(new UiSelector().text(\"" + testCase.getComponent().getText() + "\")).click();\n");
+			UiAutomatorTranslator.toWrite.add("\t\t\t\ti = 10;\n");
+			UiAutomatorTranslator.toWrite.add("\t\t\t} catch(Exception e){\n");
+			UiAutomatorTranslator.toWrite.add("\t\t\t\ti++;\n");
+			UiAutomatorTranslator.toWrite.add("\t\t\t\tgetUiDevice().swipe(500, 500, 10, 500, 5);\n");
+			UiAutomatorTranslator.toWrite.add("\t\t\t}\n\t\t}\n");
+			return true;
+		}else{
+			//This does not actually work yet. Like, it does not compile right. That's a problem. More libraries are needed, it looks like.
+			System.out.println("Package still exists");
+			//Intent intent = context.getPackageManager().getLaunchIntentForPackage(packageNameOfYourApp);  //sets the intent to start your app
+			UiAutomatorTranslator.toWrite.add("\t\tIntent intent = context.getPackageManager().getLaunchIntentForPackage(" + pack + ");\n");
+			return true;
+		}
+		
+
 	}
 	
 	/**
@@ -243,6 +267,10 @@ public class UiAutomatorFunctions implements Functions{
 		// Just presses the back button
 		UiAutomatorTranslator.toWrite.add("\t\tgetUiDevice().pressBack();\n");
 		return false;
+	}
+
+	public void setPackage(String packageName) {
+		pack = packageName;
 	}
 
 }
